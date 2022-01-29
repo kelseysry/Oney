@@ -26,8 +26,15 @@ const Navigation = ({count, setCount, open, setOpen}) => {
           <span className="hiUser"> Welcome {sessionUser.username}! </span>
         </li>
         <li>
-          <button className="checkout-button" onClick={() => dispatch(openCart())}>
-            <i className="fas fa-shopping-cart"></i>
+          <NavLink to="/check-out">Check Out</NavLink>
+        </li>
+        <li>
+          <button
+          className="hiUser"
+          // className="checkout-button"
+          onClick={() => dispatch(openCart())}>
+            {/* <i className="fas fa-shopping-cart"></i> */}
+            Cart
           </button>
         </li>
         <li>

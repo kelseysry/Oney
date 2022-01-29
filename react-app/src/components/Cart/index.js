@@ -47,6 +47,8 @@ function Cart({count, setCount, open, setOpen}) {
   const products = Object.values(productObject)
   if (!products.length) return null
 
+  console.log("cartItems", cartItems)
+
 
   if (!cartItems || cartItems.length <=2 ) return (
     <div className="cart">

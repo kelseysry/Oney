@@ -17,6 +17,7 @@ import AddProductForm from './components/AddProductForm'
 import CategoryPage, { CategoryPageRedirectToPageOne } from './components/CategoryPage';
 import CategoryCard from './components/CategoryCard';
 import SearchPage from './components/SearchPage';
+import CheckOut from './components/CheckOut';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -80,6 +81,9 @@ function App() {
         <Route path='/search/:tag' exact={true} >
           <SearchPage />
         </Route>
+        <ProtectedRoute path='/check-out' exact={true}>
+          <CheckOut />
+        </ProtectedRoute>
       </Switch>
       </main>
       <Footer />
