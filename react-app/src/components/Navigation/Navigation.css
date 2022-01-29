@@ -1,0 +1,70 @@
+.headerDiv{
+    margin-left: 100px;
+    margin-right: 100px;
+    border-bottom: solid var(--light-gray) 1px;
+    z-index: 1;
+}
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 10px;
+    list-style: none;
+    gap:50px;
+    justify-content: center;
+}
+
+.searchForm{
+    width: 500px;
+    border-radius: 10px;
+    background-color: rgb(243, 236, 236);
+    border-width: 1px;
+}
+
+
+a {
+    text-decoration: none;
+    color:orangered;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.nav2 {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.Oney {
+    margin-top: none;
+    padding-top: none;
+    font-weight:bolder;
+    font-size:2em !important
+}
+
+.hiUser{
+    color:orangered;
+}
+
+.fa-shopping-cart{
+    color: orangered;
+}
+
+.checkout-button{
+    border:none;
+    background: none;
+    width:30px;
+    height:20px
+}
+
+.checkout-button:hover {
+    background-color:lightgray;
+    border-radius: 50%;
+}

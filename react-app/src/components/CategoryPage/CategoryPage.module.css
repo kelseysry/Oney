@@ -1,0 +1,52 @@
+.categoryPageWrapper {
+  max-width: 1500px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1300px) {
+  .categoryPageWrapper {
+    min-width: 1100px;
+  }
+}
+
+.sideBarCardAreaWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cardArea {
+  max-width: 900px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 20px;
+}
+
+.categoryPageWrapper h2 {
+  font-family: "Roboto";
+  font-style: light;
+  font-weight: 300;
+  font-size: 2rem;
+  margin: 0;
+  padding-top: 20px;
+}
+.categoryPageWrapper p {
+  margin: 0;
+  font-size: 0.9rem;
+  padding: 20px;
+  color: #595959;
+}
+
+
+.error_msg {
+  color: red;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+.error_msg p {
+  margin: 0;
+}
