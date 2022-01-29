@@ -215,7 +215,7 @@ export default function cartReducer(state = {showCart: false }, action) {
       return {
         ...state,
         showCart: false,
-      };                              // backend format for get all cart items 
+      };                              // backend format for get all cart items
     case LOAD_ALL_CART_ITEMS: { // {cartItem.id: cartItem.to_dict() for cartItem in cartItems}
       const newState = {...state};
       for (const[key,value] of Object.entries(action.cartItems)) {
