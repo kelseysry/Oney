@@ -1,10 +1,10 @@
-export const getCartItems = (state) => {
-  return Object.values(state.cart.order)
-    .map(id => ({
-      ...state.cart[id],
-      ...state.product[id],
-    }));
-};
+// export const getCartItems = (state) => {
+//   return Object.values(state.cart.order)
+//     .map(id => ({
+//       ...state.cart[id],
+//       ...state.product[id],
+//     }));
+// };
 
 const ADD_TO_CART = 'cart/addToCart';
 const REMOVE_FROM_CART = 'cart/removeFromCart';
@@ -139,23 +139,6 @@ export const purchaseCart = (id, user_id) => async(dispatch) => {
 }
 
 
-// // thunk to purchase items -> aka delete all items from cart and db
-// export const purchaseCart = (id, user_id) => async(dispatch) => {
-
-//   console.log("hit delete all cart items / purchase  thunk")
-
-//   const response = await fetch(`/api/carts/${user_id}/items/${id}`, {
-//     method: 'DELETE',
-//   });
-
-//   if(response.ok) {
-//     for(let i =0; i < cartItems.length; i++) {
-//       dispatch(removeFromCart(cartItem.id))
-//     }
-//   }
-// }
-
-
 // takes care of deleting and adding existing quantity of item
 // thunk to update cart // works!! :)
 export const updateCartThunk = (editItem, id, user_id) => async(dispatch) => {
@@ -191,50 +174,21 @@ export const allCartItemsThunk = (user_id) => async(dispatch) => {
 
 }
 
-export default function cartReducer(state = { order: [], showCart: false }, action) {
+export default function cartReducer(state = {showCart: false }, action) {
   switch (action.type) {
-    // case ADD_TO_CART: {
-
-    //   if(!state[action.newCartItem.id]) {
-    //     const newState = {
-    //       ...state,
-    //       [action.newCartItem.id]: action.newCartItem
-    //     }
-    //     newState.showCart = true
-    //     console.log("newState in cart reducer add_to_cart", action.newCartItem.created_at)
-
-    //     return newState
-    //   }
-    // }
 
     case ADD_TO_CART: {
       const newState = {...state}
-      const newCount = state[action.newCartItem.id]?.quantity? state[action.newCartItem.id].quantity + 1 : 1;
-      console.log("newCount?????x?????", newCount)
-      const newOrder = state.order.includes(action.newCartItem.id) ? state.order : [ ...state.order, action.newCartItem.id ];
-      console.log("newOrder", newOrder)
-      newState.order = newOrder
       newState.showCart = true
       newState[action.newCartItem.id] = {
             id: action.newCartItem.id,
-            count: newCount}
+          }
       console.log("newState in cart reducer for add_to_cart", newState)
       return newState
-      // return {
-      //   ...state,
-      //   order: newOrder,
-      //   showCart: true,
-      //   [action.id]: {
-      //     id: action.id,
-      //     count: newCount,
-      //   },
       };
 
     case REMOVE_FROM_CART: {
-      const index = state.order.indexOf(action?.id);
-      const newOrder = [ ...state.order.slice(0, index), ...state.order.slice(index + 1) ];
-
-      const newState = { ...state, order: newOrder };
+      const newState = { ...state};
       delete newState[action.id];
       return newState;
     }
@@ -253,14 +207,7 @@ export default function cartReducer(state = { order: [], showCart: false }, acti
         delete newState[action.id];
         return newState;
       }
-    // case PURCHASE:
-    //   const index = state.order.indexOf(action.id);
-    //   const newOrder = [ ...state.order.slice(0, index), ...state.order.slice(index + 1) ];
 
-    //   const newState = { ...state, order: newOrder };
-    //   delete newState[action.id];
-    //   return newState;
-      // return { order: [] };
     case OPEN_CART:
       return {
         ...state,
@@ -273,18 +220,16 @@ export default function cartReducer(state = { order: [], showCart: false }, acti
       };
     case LOAD_ALL_CART_ITEMS: {
       const newState = {...state};
-      // console.log("reducer review", action.reviews)
       for (const[key,value] of Object.entries(action.cartItems)) {
         newState[key] = value
       }
-      // console.log("newState LOAD_REVIEWS", newState)
       return newState
     };
     case CLEAR:{
       return {}
     };
     case PURCHASE_FROM_CART: {
-      return { order: [], showCart: false }
+      return {showCart: false }
     };
 
     default:
