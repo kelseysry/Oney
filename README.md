@@ -1,3 +1,6 @@
+## About 
+- Testing edits to shopping cart and website css. 
+
 ## Original Group Project 
 - [Oney](https://github.com/ily123/oney)
 
