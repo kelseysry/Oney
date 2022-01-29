@@ -180,9 +180,7 @@ export default function cartReducer(state = {showCart: false }, action) {
     case ADD_TO_CART: {
       const newState = {...state}
       newState.showCart = true
-      newState[action.newCartItem.id] = {
-            id: action.newCartItem.id,
-          }
+      newState[action.newCartItem.id] = action.newCartItem // new "cart_item" added to list of cart items
       console.log("newState in cart reducer for add_to_cart", newState)
       return newState
       };
@@ -217,8 +215,8 @@ export default function cartReducer(state = {showCart: false }, action) {
       return {
         ...state,
         showCart: false,
-      };
-    case LOAD_ALL_CART_ITEMS: {
+      };                              // backend format for get all cart items 
+    case LOAD_ALL_CART_ITEMS: { // {cartItem.id: cartItem.to_dict() for cartItem in cartItems}
       const newState = {...state};
       for (const[key,value] of Object.entries(action.cartItems)) {
         newState[key] = value

@@ -13,11 +13,11 @@ import { purchaseCart } from "../../store/cart";
 import CartItem from "../CartItem";
 import './Cart.css';
 
+
+
 function Cart({count, setCount, open, setOpen}) {
   const dispatch = useDispatch();
   const {productId} = useParams()
-
-
 
   const productObject = useSelector((state)=>state.product)
 
@@ -28,7 +28,6 @@ function Cart({count, setCount, open, setOpen}) {
 
   const sessionUser = useSelector((state) => state.session);
   const user_id = sessionUser?.user.id
-
 
   useEffect(()=>{
     dispatch(getOneProduct(productId));
@@ -46,15 +45,6 @@ function Cart({count, setCount, open, setOpen}) {
 
   const products = Object.values(productObject)
   if (!products.length) return null
-
-  console.log("cartItems", cartItems)
-
-
-  if (!cartItems || cartItems.length <=2 ) return (
-    <div className="cart">
-      No items in the cart. Start selecting items to purchase.
-    </div>
-  );
 
   const getProductTitle = async (item_id) => {
     const productTitle = await products.filter(function(el){

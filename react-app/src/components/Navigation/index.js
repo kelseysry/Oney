@@ -7,14 +7,20 @@ import './Navigation.css';
 import SearchForm from './SearchForm'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { openCart, closeCart } from '../../store/cart';
+import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
 
 const Navigation = ({count, setCount, open, setOpen}) => {
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.cart.showCart);
 
+  const currentCart = useSelector((state) => state.cart)
+
   const sessionUser = useSelector(state=>state.session.user)
+
+    console.log("currentCart", Object.values(currentCart))
+
+    const currentCartArr = Object.values(currentCart)
 
 
   let sessionLinks;
@@ -50,11 +56,22 @@ const Navigation = ({count, setCount, open, setOpen}) => {
         style={showCart ? { transform: 'translateX(-100%)' } : {}}
         >
         <div className="sidebar-header">
-        <button className="arrow-button" onClick={() => dispatch(closeCart())}>
+        <button className="arrow-button" onClick={() => {
+          dispatch(closeCart())
+          dispatch(allCartItemsThunk(sessionUser?.id))
+
+          }}>
         <i className="fas fa-arrow-right"></i>
         </button>
         </div>
-        {open && <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>}
+
+        {currentCartArr.length == 1?
+          <div>
+            No items in the cart. Start selecting items to purchase.
+          </div>
+          :
+          <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
+        }
 
       </div>
     </>

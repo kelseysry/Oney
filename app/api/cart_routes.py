@@ -31,8 +31,6 @@ def cart_item_detail(user_id, id):
       return "bad data"
 
 
-
-
 # route to create new cart item
 @cart_routes.route('/<int:user_id>/items', methods=['POST'])
 def add_cart_item(user_id):
