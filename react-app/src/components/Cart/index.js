@@ -30,7 +30,7 @@ function Cart({count, setCount, open, setOpen}) {
     cartItems = Object.values(cartItemsObj)
   }
 
-  console.log("remove updated cart items", cartItems)
+  // console.log("remove updated cart items", cartItems)
 
 
   const sessionUser = useSelector((state) => state.session);

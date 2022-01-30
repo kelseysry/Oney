@@ -9,7 +9,25 @@ function CartItem({ item, count, setCount}) {
   let [quantity, setQuantity] = useState(item.quantity);
   const [products, setProducts] = useState([])
 
+  const [allProducts, setAllProducts] = useState([])
+
+
   const sessionUser = useSelector((state) => state.session);
+
+  const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
+
+  const allProductsArr = Object.values(allProducts)
+
+  let cartItems;
+
+  if(cartItemsObj) {
+    cartItems = Object.values(cartItemsObj)
+  }
+
+  console.log("item", item.product_id)
+
+  // console.log("remove updated cart items in cart items ", cartItems)
+  console.log("products in cart item", products)
 
 
   useEffect(() => {
@@ -22,12 +40,22 @@ function CartItem({ item, count, setCount}) {
   // by just using the user_id in the cart table
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/api/products/cart/${user_id}`)
+      const response = await fetch(`/api/carts/${user_id}`)
       const productsList = await response.json()
-      setProducts(productsList);
+      setProducts(productsList?.allCartItems);
     }
     fetchData();
-  },[count])
+  },[count, products.length])
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/api/products/cart/${user_id}`)
+      const allProductsList = await response.json()
+      setAllProducts(allProductsList);
+    }
+    fetchData();
+  },[count, products.length])
 
   let user_id;
   if(sessionUser) {
@@ -38,11 +66,14 @@ function CartItem({ item, count, setCount}) {
 
 
   const productsArray = Object?.values(products)
+  console.log("productsArray",productsArray)
   const getProductTitle = (item_id) => {
-    const productTitle = productsArray.filter(function(el){
+    const productTitle = allProductsArr.filter(function(el){
+ 
       return el.id === item_id
     });
     if (getProductTitle) {
+      console.log("productTitle",productTitle)
       return productTitle[0]?.title
     }
     else {
@@ -96,7 +127,7 @@ if(!item) {
     <div className="each-cart-item-container">
 
       <div className="cart-item-header">
-        {getProductTitle(item.product_id)}
+        {getProductTitle(item?.product_id)}
       </div>
       {
         item.id && user_id == item.user_id &&

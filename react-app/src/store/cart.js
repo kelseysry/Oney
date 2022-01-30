@@ -183,7 +183,10 @@ export default function cartReducer(state = {showCart: false }, action) {
 
     case REMOVE_FROM_CART: {
       const newState = { ...state};
-      delete newState[action.id];
+      console.log("removeeeee",newState.allCartItems)
+      console.log("removeeeee action.id", action.id)
+      console.log("removeeeee newState.allCartItems[action.id]", newState.allCartItems[action.id])
+      delete newState.allCartItems[action.id];
       console.log("removeeeee from cart", newState)
       return newState;
     }
