@@ -178,16 +178,13 @@ export default function cartReducer(state = {showCart: false }, action) {
   switch (action.type) {
 
     case ADD_TO_CART: {
-      const newState = {...state}
-      newState.showCart = true
-      newState[action.newCartItem.id] = action.newCartItem // new "cart_item" added to list of cart items
-      console.log("newState in cart reducer for add_to_cart", newState)
-      return newState
+      return { ...state, [action.newCartItem.id]: action.newCartItem };
       };
 
     case REMOVE_FROM_CART: {
       const newState = { ...state};
       delete newState[action.id];
+      console.log("removeeeee from cart", newState)
       return newState;
     }
 
@@ -217,11 +214,7 @@ export default function cartReducer(state = {showCart: false }, action) {
         showCart: false,
       };                              // backend format for get all cart items
     case LOAD_ALL_CART_ITEMS: { // {cartItem.id: cartItem.to_dict() for cartItem in cartItems}
-      const newState = {...state};
-      for (const[key,value] of Object.entries(action.cartItems)) {
-        newState[key] = value
-      }
-      return newState
+      return { ...state, ...action.cartItems };
     };
     case CLEAR:{
       return {}

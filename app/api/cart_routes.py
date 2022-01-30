@@ -9,7 +9,8 @@ cart_routes = Blueprint("cart", __name__)
 @cart_routes.route('/<int:user_id>', methods=['GET'])
 def get_cart_items(user_id):
   cartItems = Cart.query.filter(Cart.user_id == user_id).all()
-  return {cartItem.id: cartItem.to_dict() for cartItem in cartItems}
+  return {"allCartItems": {cartItem.id: cartItem.to_dict() for cartItem in cartItems}}
+  # return {cartItem.id: cartItem.to_dict() for cartItem in cartItems}
 
 
 # route to update cart item
@@ -41,7 +42,8 @@ def add_cart_item(user_id):
     form.populate_obj(cart_item)
     db.session.add(cart_item)
     db.session.commit()
-    return {"cart_item":cart_item.to_dict()}
+    return {"msg": "item added"}
+    # return {"cart_item":cart_item.to_dict()}
   else:
     return "bad data"
 

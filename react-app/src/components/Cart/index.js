@@ -22,8 +22,15 @@ function Cart({count, setCount, open, setOpen}) {
   const productObject = useSelector((state)=>state.product)
 
 
-  const cartItemsObj = useSelector((state)=>state.cart)
-  const cartItems = Object.values(cartItemsObj)
+  const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
+
+  let cartItems;
+
+  if(cartItemsObj) {
+    cartItems = Object.values(cartItemsObj)
+  }
+
+  console.log("remove updated cart items", cartItems)
 
 
   const sessionUser = useSelector((state) => state.session);
@@ -31,15 +38,15 @@ function Cart({count, setCount, open, setOpen}) {
 
   useEffect(()=>{
     dispatch(getOneProduct(productId));
-    return () => clearInterval(getOneProduct(productId));
-}, [dispatch, productId, count, cartItems.length, open])
+    // return () => clearInterval(getOneProduct(productId));
+}, [dispatch, productId, count, open])
 
   useEffect(() => {
     dispatch(allCartItemsThunk(user_id))
 
 
-    return () => clearInterval(allCartItemsThunk(user_id));
-  }, [dispatch, user_id, count, cartItems.length, open])
+    // return () => clearInterval(allCartItemsThunk(user_id));
+  }, [dispatch, user_id, count, open])
 
 
 
@@ -72,7 +79,7 @@ function Cart({count, setCount, open, setOpen}) {
   return (
     <div className="cart">
       <ul>
-        {cartItems.map(item => item.id?  <CartItem key={item} item={item} count={count} setCount={setCount}/> :null )}
+        {cartItems?.map(item => item.id?  <CartItem key={item} item={item} count={count} setCount={setCount}/> :null )}
       </ul>
       <form onSubmit={onSubmit}>
         <button className="purchase-button" type="submit">Purchase </button>

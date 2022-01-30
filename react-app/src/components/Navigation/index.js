@@ -6,6 +6,7 @@ import CategoryDropDown from './CategoryDropDown';
 import './Navigation.css';
 import SearchForm from './SearchForm'
 import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 
 import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
@@ -14,13 +15,27 @@ const Navigation = ({count, setCount, open, setOpen}) => {
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.cart.showCart);
 
-  const currentCart = useSelector((state) => state.cart)
+  const currentCart = useSelector((state) => state.cart.allCartItems)
 
   const sessionUser = useSelector(state=>state.session.user)
 
-    console.log("currentCart", Object.values(currentCart))
+  let currentCartArr
+  // const currentCartArr = Object.values(currentCart)
+  if(currentCart) {
+    // console.log("currentCart", Object.values(currentCart).length)
+    currentCartArr = Object.values(currentCart)
+  }
+  console.log("currentCartArr length", currentCartArr)
 
-    const currentCartArr = Object.values(currentCart)
+
+    useEffect(() => {
+      dispatch(allCartItemsThunk(sessionUser.id))
+
+
+      // return () => clearInterval(allCartItemsThunk(user_id));
+    }, [dispatch, open])
+
+
 
 
   let sessionLinks;
@@ -65,12 +80,14 @@ const Navigation = ({count, setCount, open, setOpen}) => {
         </button>
         </div>
 
-        {currentCartArr.length == 1?
+        {currentCartArr?.length > 0 ?
+            <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
+          :
+
           <div>
             No items in the cart. Start selecting items to purchase.
           </div>
-          :
-          <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
+
         }
 
       </div>
