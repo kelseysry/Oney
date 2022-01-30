@@ -24,10 +24,7 @@ function CartItem({ item, count, setCount}) {
     cartItems = Object.values(cartItemsObj)
   }
 
-  console.log("item", item.product_id)
-
-  // console.log("remove updated cart items in cart items ", cartItems)
-  console.log("products in cart item", products)
+  console.log("quantity", quantity)
 
 
   useEffect(() => {
@@ -69,7 +66,7 @@ function CartItem({ item, count, setCount}) {
   console.log("productsArray",productsArray)
   const getProductTitle = (item_id) => {
     const productTitle = allProductsArr.filter(function(el){
- 
+
       return el.id === item_id
     });
     if (getProductTitle) {
@@ -86,9 +83,9 @@ function CartItem({ item, count, setCount}) {
   const handleIncreaseQuantity = async(e) => {
     e.preventDefault();
 
-    await setQuantity(() => {
-      return quantity += 1
-    })
+    if(quantity < 5) {
+      setQuantity(quantity +=1)
+    }
 
      let editItem = {
       id, user_id, product_id, quantity
@@ -101,9 +98,9 @@ function CartItem({ item, count, setCount}) {
   const handleDecreaseQuantity = async(e) => {
     e.preventDefault();
 
-    await setQuantity(() => {
-      return quantity -= 1
-    })
+    if(quantity > 1) {
+      setQuantity(quantity -=1)
+    }
 
      let editItem = {
       id, user_id, product_id, quantity
