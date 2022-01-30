@@ -58,14 +58,18 @@ console.log("allProductsArr",allProductsArr)
 
   return (
     <>
-{/* <div>{allProductsArr[0]?.title}</div> */}
-    {cartItems?.map(item => item.id?  <CheckOutItem key={item} item={item} user_id={user_id}/> :null )}
-
-
-      <form onSubmit={onSubmit}>
-        <button className="purchase-button" type="submit">Purchase </button>
-      </form>
-
+      {cartItems?.map(item =>
+        <section className="CartItemsContainer">
+          <CheckOutItem key={item} item={item} user_id={user_id}/>
+        </section>
+      )}
+      {cartItems?.length?
+          <form onSubmit={onSubmit}>
+            <button className="purchase-button" type="submit">Purchase </button>
+          </form>
+      :
+      <div>nothing in cart</div>
+    }
     </>
   )
 
