@@ -12,21 +12,16 @@ const CheckOut = () => {
   const productObject = useSelector((state)=>state.product)
   const products = Object.values(productObject)
   const dispatch = useDispatch();
-
   const [allProducts, setAllProducts] = useState([])
   const [isLoad, setIsLoaded] = useState(false)
-  console.log("allProducts", allProducts)
   const allProductsArr = Object.values(allProducts)
   const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
-
   const user_id = sessionUser.user.id
 
   let cartItems;
-
   if(cartItemsObj) {
     cartItems = Object.values(cartItemsObj)
   }
-
 
   useEffect(() => {
     async function fetchData() {
@@ -50,11 +45,6 @@ const CheckOut = () => {
 
       cartItems.map((item , idx)=> (dispatch(purchaseCart(item.id, user_id))))
     }
-
-
-
-console.log("allProductsArr",allProductsArr)
-
 
   return (
     <>

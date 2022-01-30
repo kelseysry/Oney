@@ -1,14 +1,9 @@
 import { useState, useEffect } from 'react';
 
 const CheckOutItem = ({item, user_id}) => {
-  console.log("hey bitch")
-
-  console.log("item in checkoutitem", item)
 
   const [allProducts, setAllProducts] = useState([])
   const allProductsArr = Object.values(allProducts)
-
-  const [products, setProducts] = useState([])
 
   useEffect(() => {
     async function fetchData() {
@@ -17,17 +12,14 @@ const CheckOutItem = ({item, user_id}) => {
       setAllProducts(allProductsList);
     }
     fetchData();
-  },[products?.length])
+  },[allProducts])
 
-  const productsArray = Object?.values(products)
-  console.log("productsArray",productsArray)
+
   const getProductTitle = (item_id) => {
     const productTitle = allProductsArr.filter(function(el){
-
       return el.id === item_id
     });
     if (getProductTitle) {
-      console.log("productTitle",productTitle)
       return productTitle[0]?.title
     }
     else {
@@ -37,10 +29,9 @@ const CheckOutItem = ({item, user_id}) => {
 
   return (
     <>
-
-<div className="cart-item-header">
+    <div className="cart-item-header">
         {getProductTitle(item?.product_id)}
-      </div>
+    </div>
 
     </>
   )
