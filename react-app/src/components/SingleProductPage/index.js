@@ -91,36 +91,21 @@ function SingleProductPage({count, setCount, open, setOpen}){
         }
     })
 
-
-    console.log("allProductsArr single product", allProductsArr)
-
-    console.log("cartItems single product", cartItems)
-
-
-
     const checkCartItemQuantity = (productId) => {
         const toBeCartItem = cartItems?.filter(function(el){
-            console.log("cartItems", cartItems)
-            console.log("productId",productId, el.product_id)
             return el.product_id == productId
         });
-        console.log("toBeCartItem", toBeCartItem)
         return toBeCartItem
     }
 
-
     const handleAddToCart = () => {
-        // e.preventDefault();
         let product_id = +productId
 
         if(checkCartItemQuantity(product_id).length) {
-            // item exists in user's card already then we should  update
-
-        // setOpen(true)
+         // item exists in user's card already then we should  update
         let currentItem = checkCartItemQuantity(product_id)
         let quantity = currentItem[0]?.quantity
         let id = currentItem[0]?.id
-        console.log("currentItem",id, quantity)
 
         if(quantity < 5) {
             quantity += 1
@@ -129,32 +114,23 @@ function SingleProductPage({count, setCount, open, setOpen}){
         let editItem = {
             id, user_id, product_id, quantity
         }
-        console.log("handlesubmit", editItem, quantity)
         dispatch(updateCartThunk(editItem, id, user_id)).then(()=>dispatch(openCart()))
         setCount(count +=1)
 
         } else {
-
-            console.log("hit elsee")
             setCount(count+1)
-
             setOpen(true)
 
             let quantity =1
-
             const itemAddToCart = {
                 user_id, product_id,quantity
             }
-
-            console.log("itemAddToCart",itemAddToCart)
 
             let waitAddProduct = dispatch(addToCartThunk(itemAddToCart, user_id))
             if(waitAddProduct) {
                 dispatch(allCartItemsThunk(user_id)).then(()=>dispatch(openCart()))
             }
         }
-
-
     }
 
     return(
