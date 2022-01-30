@@ -13,46 +13,45 @@ import { purchaseCart } from "../../store/cart";
 import CartItem from "../CartItem";
 import './Cart.css';
 
+
+
 function Cart({count, setCount, open, setOpen}) {
   const dispatch = useDispatch();
   const {productId} = useParams()
 
-
-
   const productObject = useSelector((state)=>state.product)
 
 
-  const cartItemsObj = useSelector((state)=>state.cart)
-  const cartItems = Object.values(cartItemsObj)
+  const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
+
+  let cartItems;
+
+  if(cartItemsObj) {
+    cartItems = Object.values(cartItemsObj)
+  }
+
+  // console.log("remove updated cart items", cartItems)
 
 
   const sessionUser = useSelector((state) => state.session);
   const user_id = sessionUser?.user.id
 
-
   useEffect(()=>{
     dispatch(getOneProduct(productId));
-    return () => clearInterval(getOneProduct(productId));
-}, [dispatch, productId, count, cartItems.length, open])
+    // return () => clearInterval(getOneProduct(productId));
+}, [dispatch, productId, count, open])
 
   useEffect(() => {
     dispatch(allCartItemsThunk(user_id))
 
 
-    return () => clearInterval(allCartItemsThunk(user_id));
-  }, [dispatch, user_id, count, cartItems.length, open])
+    // return () => clearInterval(allCartItemsThunk(user_id));
+  }, [dispatch, user_id, count, open])
 
 
 
   const products = Object.values(productObject)
   if (!products.length) return null
-
-
-  if (!cartItems || cartItems.length <=2 ) return (
-    <div className="cart">
-      No items in the cart. Start selecting items to purchase.
-    </div>
-  );
 
   const getProductTitle = async (item_id) => {
     const productTitle = await products.filter(function(el){
@@ -80,7 +79,7 @@ function Cart({count, setCount, open, setOpen}) {
   return (
     <div className="cart">
       <ul>
-        {cartItems.map(item => item.id?  <CartItem key={item} item={item} count={count} setCount={setCount}/> :null )}
+        {cartItems?.map(item => item.id?  <CartItem key={item} item={item} count={count} setCount={setCount}/> :null )}
       </ul>
       <form onSubmit={onSubmit}>
         <button className="purchase-button" type="submit">Purchase </button>

@@ -9,7 +9,22 @@ function CartItem({ item, count, setCount}) {
   let [quantity, setQuantity] = useState(item.quantity);
   const [products, setProducts] = useState([])
 
+  const [allProducts, setAllProducts] = useState([])
+
+
   const sessionUser = useSelector((state) => state.session);
+
+  const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
+
+  const allProductsArr = Object.values(allProducts)
+
+  let cartItems;
+
+  if(cartItemsObj) {
+    cartItems = Object.values(cartItemsObj)
+  }
+
+  console.log("quantity", quantity)
 
 
   useEffect(() => {
@@ -22,12 +37,22 @@ function CartItem({ item, count, setCount}) {
   // by just using the user_id in the cart table
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/api/products/cart/${user_id}`)
+      const response = await fetch(`/api/carts/${user_id}`)
       const productsList = await response.json()
-      setProducts(productsList);
+      setProducts(productsList?.allCartItems);
     }
     fetchData();
-  },[count])
+  },[count, products.length])
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/api/products/cart/${user_id}`)
+      const allProductsList = await response.json()
+      setAllProducts(allProductsList);
+    }
+    fetchData();
+  },[count, products.length])
 
   let user_id;
   if(sessionUser) {
@@ -38,11 +63,14 @@ function CartItem({ item, count, setCount}) {
 
 
   const productsArray = Object?.values(products)
+  console.log("productsArray",productsArray)
   const getProductTitle = (item_id) => {
-    const productTitle = productsArray.filter(function(el){
+    const productTitle = allProductsArr.filter(function(el){
+
       return el.id === item_id
     });
     if (getProductTitle) {
+      console.log("productTitle",productTitle)
       return productTitle[0]?.title
     }
     else {
@@ -55,9 +83,9 @@ function CartItem({ item, count, setCount}) {
   const handleIncreaseQuantity = async(e) => {
     e.preventDefault();
 
-    await setQuantity(() => {
-      return quantity += 1
-    })
+    if(quantity < 5) {
+      setQuantity(quantity +=1)
+    }
 
      let editItem = {
       id, user_id, product_id, quantity
@@ -70,9 +98,9 @@ function CartItem({ item, count, setCount}) {
   const handleDecreaseQuantity = async(e) => {
     e.preventDefault();
 
-    await setQuantity(() => {
-      return quantity -= 1
-    })
+    if(quantity > 1) {
+      setQuantity(quantity -=1)
+    }
 
      let editItem = {
       id, user_id, product_id, quantity
@@ -96,7 +124,7 @@ if(!item) {
     <div className="each-cart-item-container">
 
       <div className="cart-item-header">
-        {getProductTitle(item.product_id)}
+        {getProductTitle(item?.product_id)}
       </div>
       {
         item.id && user_id == item.user_id &&

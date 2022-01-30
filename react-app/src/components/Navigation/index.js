@@ -6,15 +6,41 @@ import CategoryDropDown from './CategoryDropDown';
 import './Navigation.css';
 import SearchForm from './SearchForm'
 import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 
-import { openCart, closeCart } from '../../store/cart';
+import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
 
 const Navigation = ({count, setCount, open, setOpen}) => {
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.cart.showCart);
 
+  const currentCart = useSelector((state) => state.cart.allCartItems)
+
   const sessionUser = useSelector(state=>state.session.user)
+
+  let currentCartArr
+
+  // const [cartItemsDoneLoading, setCartItemsDoneLoading] = useState([])
+
+  console.log("yeee haw currentCart", currentCart)
+
+  // const currentCartArr = Object.values(currentCart)
+
+  if(currentCart) {
+    // console.log("currentCart", Object.values(currentCart).length)
+    currentCartArr = Object.values(currentCart)
+  }
+
+  useEffect(() => {
+    dispatch(allCartItemsThunk(sessionUser.id))
+
+
+    // return () => clearInterval(allCartItemsThunk(user_id));
+  }, [dispatch, open])
+
+  // console.log("currentCartArr", currentCartArr)
+  // console.log("currentCar", currentCart)
 
 
   let sessionLinks;
@@ -26,8 +52,15 @@ const Navigation = ({count, setCount, open, setOpen}) => {
           <span className="hiUser"> Welcome {sessionUser.username}! </span>
         </li>
         <li>
-          <button className="checkout-button" onClick={() => dispatch(openCart())}>
-            <i className="fas fa-shopping-cart"></i>
+          <NavLink to="/check-out">Check Out</NavLink>
+        </li>
+        <li>
+          <button
+          className="hiUser"
+          // className="checkout-button"
+          onClick={() => dispatch(openCart())}>
+            {/* <i className="fas fa-shopping-cart"></i> */}
+            Cart
           </button>
         </li>
         <li>
@@ -43,11 +76,24 @@ const Navigation = ({count, setCount, open, setOpen}) => {
         style={showCart ? { transform: 'translateX(-100%)' } : {}}
         >
         <div className="sidebar-header">
-        <button className="arrow-button" onClick={() => dispatch(closeCart())}>
+        <button className="arrow-button" onClick={() => {
+          dispatch(closeCart())
+          dispatch(allCartItemsThunk(sessionUser?.id))
+
+          }}>
         <i className="fas fa-arrow-right"></i>
         </button>
         </div>
-        {open && <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>}
+
+        {currentCartArr?.length > 0 ?
+            <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
+          :
+
+          <div>
+            No items in the cart. Start selecting items to purchase.
+          </div>
+
+        }
 
       </div>
     </>
