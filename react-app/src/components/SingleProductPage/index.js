@@ -17,24 +17,41 @@ function SingleProductPage({count, setCount, open, setOpen}){
     const productObject = useSelector((state)=>state.product)
     const indProjObj = Object.values(productObject)[0]
     const productImgsObj = Object.values(productObject)[0]
-
     const sessionUser = useSelector((state) => state.session.user);
-
     const {productId} = useParams()
 
     const user_id = sessionUser?.id
 
+    const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
 
-    const cartItemsObj = useSelector((state)=>state?.cart)
-    const cartItems = Object?.values(cartItemsObj)
 
-    let [quantity, setQuantity] = useState(cartItems[0]?.quantity);
+    const [allProducts, setAllProducts] = useState([])
+    const allProductsArr = Object.values(allProducts)
 
+
+    let cartItems;
+    if(cartItemsObj) {
+        cartItems = Object.values(cartItemsObj)
+    }
+
+    let [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         dispatch(allCartItemsThunk(user_id))
         return () => clearInterval(allCartItemsThunk(user_id));
-      }, [dispatch, user_id, cartItems.length, count, productId, open])
+      }, [dispatch, user_id, cartItems?.length, count, productId, open])
+
+
+      useEffect(() => {
+        async function fetchData() {
+          const response = await fetch(`/api/products/cart/${user_id}`)
+          const allProductsList = await response.json()
+
+          setAllProducts(allProductsList);
+        }
+        fetchData();
+      },[allProductsArr.length, count])
+
 
     const [largeSelectedImg, setLargeSelectedImg] = useState(0);
 
@@ -75,48 +92,68 @@ function SingleProductPage({count, setCount, open, setOpen}){
     })
 
 
+    console.log("allProductsArr single product", allProductsArr)
+
+    console.log("cartItems single product", cartItems)
+
+
+
     const checkCartItemQuantity = (productId) => {
         const toBeCartItem = cartItems?.filter(function(el){
-
-
+            console.log("cartItems", cartItems)
+            console.log("productId",productId, el.product_id)
             return el.product_id == productId
         });
-        if(toBeCartItem) { // item exists in user's card already  ->
-            // then we should be running an update
-                 setQuantity(() => {
-                    return quantity += 1
-                })
-
-                let id = toBeCartItem.id
-                let editItem = {
-                id, user_id, productId, quantity
-                }
-
-                dispatch(updateCartThunk(editItem, id, user_id))
-
-        }
-        else {
-            return null
-        }
+        console.log("toBeCartItem", toBeCartItem)
+        return toBeCartItem
     }
 
-    const handleAddToCart = async(e) => {
-        e.preventDefault();
-        setCount(count+1)
 
-        setOpen(true)
-
-        let quantity =1
-
+    const handleAddToCart = () => {
+        // e.preventDefault();
         let product_id = +productId
-        const itemAddToCart = {
-            user_id, product_id,quantity
+
+        if(checkCartItemQuantity(product_id).length) {
+            // item exists in user's card already then we should  update
+
+        // setOpen(true)
+        let currentItem = checkCartItemQuantity(product_id)
+        let quantity = currentItem[0]?.quantity
+        let id = currentItem[0]?.id
+        console.log("currentItem",id, quantity)
+
+        if(quantity < 5) {
+            quantity += 1
         }
 
-        let waitAddProduct = await dispatch(addToCartThunk(itemAddToCart, user_id))
-        if(waitAddProduct) {
-            dispatch(allCartItemsThunk(user_id)).then(()=>dispatch(openCart()))
+        let editItem = {
+            id, user_id, product_id, quantity
         }
+        console.log("handlesubmit", editItem, quantity)
+        dispatch(updateCartThunk(editItem, id, user_id)).then(()=>dispatch(openCart()))
+        setCount(count +=1)
+
+        } else {
+
+            console.log("hit elsee")
+            setCount(count+1)
+
+            setOpen(true)
+
+            let quantity =1
+
+            const itemAddToCart = {
+                user_id, product_id,quantity
+            }
+
+            console.log("itemAddToCart",itemAddToCart)
+
+            let waitAddProduct = dispatch(addToCartThunk(itemAddToCart, user_id))
+            if(waitAddProduct) {
+                dispatch(allCartItemsThunk(user_id)).then(()=>dispatch(openCart()))
+            }
+        }
+
 
     }
 
