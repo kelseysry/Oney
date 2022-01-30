@@ -2,12 +2,13 @@ import User from "../User";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { clearCartItems, getCartItems } from '../../store/cart';
+import { clearCartItems, closeCart, getCartItems } from '../../store/cart';
 import { useParams} from 'react-router-dom';
 import { getOneProduct } from "../../store/product";
 import { allCartItemsThunk } from "../../store/cart";
 import { deleteCartItem } from "../../store/cart";
 import { purchaseCart } from "../../store/cart";
+import {useHistory} from "react-router";
 
 
 import CartItem from "../CartItem";
@@ -18,6 +19,7 @@ import './Cart.css';
 function Cart({count, setCount, open, setOpen}) {
   const dispatch = useDispatch();
   const {productId} = useParams()
+  const history = useHistory();
 
   const productObject = useSelector((state)=>state.product)
 
@@ -66,24 +68,30 @@ function Cart({count, setCount, open, setOpen}) {
     }
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    window.alert(
-      "Thank you for purchasing! Your items will arrive in 2 business days."
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   window.alert(
+  //     "Thank you for purchasing! Your items will arrive in 2 business days."
 
-       );
+  //      );
 
-      cartItems.map((item , idx)=> (dispatch(purchaseCart(item.id, user_id))))
-    }
+  //     cartItems.map((item , idx)=> (dispatch(purchaseCart(item.id, user_id))))
+  //   }
+  const handleCheckOutRedirect = () => {
+    history.push('/check-out')
+    dispatch(closeCart())
+
+  }
 
   return (
     <div className="cart">
       <ul>
         {cartItems?.map(item => item.id?  <CartItem key={item} item={item} count={count} setCount={setCount}/> :null )}
       </ul>
-      <form onSubmit={onSubmit}>
+      {/* <form onSubmit={onSubmit}>
         <button className="purchase-button" type="submit">Purchase </button>
-      </form>
+      </form> */}
+      <button className="purchase-button" type="submit" onClick={handleCheckOutRedirect}>Check Out</button>
     </div>
   )
 }
