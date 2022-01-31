@@ -120,11 +120,17 @@ if(!item) {
   return null
 }
 
+
+  // console.log("item in cart item", item)
+
   return (
     <div className="each-cart-item-container">
 
       <div className="cart-item-header">
         {getProductTitle(item?.product_id)}
+      </div>
+      <div>
+        ${item?.products?.price}
       </div>
       {
         item.id && user_id == item.user_id &&

@@ -32,11 +32,28 @@ function Cart({count, setCount, open, setOpen}) {
     cartItems = Object.values(cartItemsObj)
   }
 
-  // console.log("remove updated cart items", cartItems)
 
+  console.log("remove updated cart items", cartItems)
+  console.log("productObject",productObject)
 
   const sessionUser = useSelector((state) => state.session);
   const user_id = sessionUser?.user.id
+
+  const [allProducts, setAllProducts] = useState([])
+  const allProductsArr = Object.values(allProducts)
+
+
+  console.log("allProducts",allProducts)
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/api/products/cart/${user_id}`)
+      const allProductsList = await response.json()
+      setAllProducts(allProductsList);
+    }
+    fetchData();
+  },[allProductsArr?.length])
+
 
   useEffect(()=>{
     dispatch(getOneProduct(productId));
@@ -51,6 +68,18 @@ function Cart({count, setCount, open, setOpen}) {
   }, [dispatch, user_id, count, open])
 
 
+  const getPrice = async (item_id) => {
+    const price = await allProductsArr.filter(function(el){
+      console.log("el.id", el.id, item_id)
+      return el.id === item_id
+    });
+    if(price) {
+      console.log("price",price)
+      return price
+    }
+  }
+
+  console.log("geprice",getPrice(8))
 
   const products = Object.values(productObject)
   if (!products.length) return null
@@ -68,19 +97,10 @@ function Cart({count, setCount, open, setOpen}) {
     }
   }
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   window.alert(
-  //     "Thank you for purchasing! Your items will arrive in 2 business days."
 
-  //      );
-
-  //     cartItems.map((item , idx)=> (dispatch(purchaseCart(item.id, user_id))))
-  //   }
   const handleCheckOutRedirect = () => {
     history.push('/check-out')
     dispatch(closeCart())
-
   }
 
   return (
@@ -88,9 +108,6 @@ function Cart({count, setCount, open, setOpen}) {
       <ul>
         {cartItems?.map(item => item.id?  <CartItem key={item} item={item} count={count} setCount={setCount}/> :null )}
       </ul>
-      {/* <form onSubmit={onSubmit}>
-        <button className="purchase-button" type="submit">Purchase </button>
-      </form> */}
       <button className="purchase-button" type="submit" onClick={handleCheckOutRedirect}>Check Out</button>
     </div>
   )
