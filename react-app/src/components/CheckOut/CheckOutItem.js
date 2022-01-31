@@ -5,6 +5,9 @@ const CheckOutItem = ({item, user_id}) => {
   const [allProducts, setAllProducts] = useState([])
   const allProductsArr = Object.values(allProducts)
 
+
+  console.log("allProducts",allProducts)
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(`/api/products/cart/${user_id}`)

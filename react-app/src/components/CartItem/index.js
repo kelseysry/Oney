@@ -2,30 +2,19 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { updateCartThunk, deleteCartItem } from '../../store/cart';
 
-
-
 function CartItem({ item, count, setCount}) {
   const dispatch = useDispatch();
   let [quantity, setQuantity] = useState(item.quantity);
   const [products, setProducts] = useState([])
-
   const [allProducts, setAllProducts] = useState([])
-
-
   const sessionUser = useSelector((state) => state.session);
-
   const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
-
   const allProductsArr = Object.values(allProducts)
 
   let cartItems;
-
   if(cartItemsObj) {
     cartItems = Object.values(cartItemsObj)
   }
-
-  console.log("quantity", quantity)
-
 
   useEffect(() => {
     setQuantity(item.quantity);
@@ -61,9 +50,8 @@ function CartItem({ item, count, setCount}) {
     return null
   }
 
-
   const productsArray = Object?.values(products)
-  console.log("productsArray",productsArray)
+  // console.log("productsArray",productsArray)
   const getProductTitle = (item_id) => {
     const productTitle = allProductsArr.filter(function(el){
 
@@ -92,8 +80,8 @@ function CartItem({ item, count, setCount}) {
     }
     console.log("handlesubmit", editItem, quantity)
     dispatch(updateCartThunk(editItem, id, user_id))
+    setCount(count +=1)
   }
-
 
   const handleDecreaseQuantity = async(e) => {
     e.preventDefault();
@@ -106,6 +94,8 @@ function CartItem({ item, count, setCount}) {
       id, user_id, product_id, quantity
     }
     dispatch(updateCartThunk(editItem, id, user_id))
+    setCount(count + 1)
+
   }
 
   const handleDeleteCartItem = async(e) => {
@@ -120,11 +110,17 @@ if(!item) {
   return null
 }
 
+
+  // console.log("item in cart item", item)
+
   return (
     <div className="each-cart-item-container">
 
       <div className="cart-item-header">
         {getProductTitle(item?.product_id)}
+      </div>
+      <div>
+        ${item?.products?.price}
       </div>
       {
         item.id && user_id == item.user_id &&

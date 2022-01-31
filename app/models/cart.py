@@ -1,6 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
-
+from app.models import Product
 
 class Cart(db.Model):
     __tablename__ = 'carts'
@@ -16,11 +16,13 @@ class Cart(db.Model):
     products = db.relationship("Product", back_populates="cart")
 
     def to_dict(self):
+        # print("prinnnnnnnt", self.products.to_dict())
         return {
             'id': self.id,
             'user_id': self.user_id,
             'product_id': self.product_id,
             'quantity': self.quantity,
+            'products': self.products.to_dict(),
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
