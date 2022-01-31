@@ -32,6 +32,10 @@ function Cart({count, setCount, open, setOpen}) {
     cartItems = Object.values(cartItemsObj)
   }
 
+  // try grabbing the cartItems by using a useEffect so you can
+
+  console.log("count change", count)
+
 
   console.log("remove updated cart items", cartItems)
   console.log("productObject",productObject)
@@ -52,7 +56,7 @@ function Cart({count, setCount, open, setOpen}) {
       setAllProducts(allProductsList);
     }
     fetchData();
-  },[allProductsArr?.length])
+  },[allProductsArr?.length,count])
 
 
   useEffect(()=>{
@@ -70,18 +74,9 @@ function Cart({count, setCount, open, setOpen}) {
 
   console.log("cartItems", cartItems)
 
-  const getPrice = (cartItems) => {
-    const prices =  cartItems.filter(function(cartItem){
-      return cartItem.products.price
-    });
-    if(prices) {
-      console.log("prices",prices)
-      return prices
-    }
-  }
 
   const prices = cartItems.map(function(el) {
-    return el.products.price
+    return ((el?.products?.price)*(el?.quantity))
      }
   )
 

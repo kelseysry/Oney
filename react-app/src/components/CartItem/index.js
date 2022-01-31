@@ -80,6 +80,7 @@ function CartItem({ item, count, setCount}) {
     }
     console.log("handlesubmit", editItem, quantity)
     dispatch(updateCartThunk(editItem, id, user_id))
+    setCount(count +=1)
   }
 
   const handleDecreaseQuantity = async(e) => {
@@ -93,6 +94,8 @@ function CartItem({ item, count, setCount}) {
       id, user_id, product_id, quantity
     }
     dispatch(updateCartThunk(editItem, id, user_id))
+    setCount(count + 1)
+
   }
 
   const handleDeleteCartItem = async(e) => {
