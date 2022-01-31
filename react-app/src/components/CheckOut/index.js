@@ -18,6 +18,10 @@ const CheckOut = () => {
   const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
   const user_id = sessionUser.user.id
 
+  console.log("sessionUser", sessionUser.user.address)
+
+  const userAddress = sessionUser.user.address
+
   let cartItems;
   if(cartItemsObj) {
     cartItems = Object.values(cartItemsObj)
@@ -48,6 +52,7 @@ const CheckOut = () => {
 
   return (
     <>
+    {userAddress? userAddress.street_address : null}
       {cartItems?.map(item =>
         <section className="CartItemsContainer">
           <CheckOutItem key={item} item={item} user_id={user_id}/>
@@ -59,7 +64,7 @@ const CheckOut = () => {
           </form>
       :
       <div>nothing in cart</div>
-    }
+      }
     </>
   )
 
