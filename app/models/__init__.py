@@ -5,3 +5,4 @@ from .product import Product
 from .review import Review
 from .cart import Cart
 from .address import Address
+from .credit import Credit

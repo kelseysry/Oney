@@ -5,7 +5,7 @@ from .products import seed_products, undo_products
 from .reviews import seed_reviews, undo_reviews
 from .carts import seed_carts, undo_carts
 from .addresses import seed_addresses, undo_addresses
-
+from .credits import seed_credits, undo_credits
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -16,6 +16,7 @@ seed_commands = AppGroup('seed')
 def seed():
     # Seed the most important tables first
     seed_addresses()
+    seed_credits()
     seed_users()
     seed_categories()
     seed_products()
@@ -35,4 +36,5 @@ def undo():
     undo_categories()
     undo_users()
     undo_addresses()
+    undo_credits()
     # Add other undo functions here
