@@ -130,7 +130,7 @@ if(!item) {
 
             <label>
                 <input
-                  className="cart-item"
+                  className="quantity"
                   type="number"
                   placeholder="quantity"
                   value={quantity}

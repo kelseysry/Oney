@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { updateCartThunk, deleteCartItem } from '../../store/cart';
+import './CheckOut.css'
 
 function ItemQuantity({ item, count, setCount}) {
   const dispatch = useDispatch();
@@ -111,7 +112,7 @@ if(!item) {
 
             <label>
                 <input
-                  className="cart-item"
+                  className="quantity"
                   type="number"
                   placeholder="quantity"
                   value={quantity}
