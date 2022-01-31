@@ -5,7 +5,7 @@ import CheckOutItem from './CheckOutItem';
 import { purchaseCart } from "../../store/cart";
 
 
-const CheckOut = () => {
+const CheckOut = ({count, setCount}) => {
 
   // const [products, setProducts] = useState([])
   const sessionUser = useSelector((state) => state.session);
@@ -55,7 +55,7 @@ const CheckOut = () => {
     {userAddress? userAddress.street_address : null}
       {cartItems?.map(item =>
         <section className="CartItemsContainer">
-          <CheckOutItem key={item} item={item} user_id={user_id}/>
+          <CheckOutItem key={item} item={item} user_id={user_id} count={count} setCount ={setCount}/>
         </section>
       )}
       {cartItems?.length?

@@ -1,0 +1,25 @@
+.cart-item-img-checkout {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.cart-img-container {
+  width: 160px;
+  height: 160px;
+  border-radius: 5px;
+}
+
+.cart-item-header {
+  text-decoration: none;
+  color: #222222;
+  transition: opacity 200ms ease-out;
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 300px;
+}
+
+.cart-item-container {
+  display: flex;
+}

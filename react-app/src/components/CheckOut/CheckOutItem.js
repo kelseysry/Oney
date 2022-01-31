@@ -1,40 +1,35 @@
 import { useState, useEffect } from 'react';
+import './CheckOut.css'
+import ItemQuantity from './ItemQuantity';
 
-const CheckOutItem = ({item, user_id}) => {
+const CheckOutItem = ({item, user_id, count, setCount}) => {
 
-  const [allProducts, setAllProducts] = useState([])
-  const allProductsArr = Object.values(allProducts)
+  console.log("item", item)
 
+  const imgObj = Object.values(item.products.images)[0]
+  const imgUrl = Object.values(imgObj)
 
-  console.log("allProducts",allProducts)
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/products/cart/${user_id}`)
-      const allProductsList = await response.json()
-      setAllProducts(allProductsList);
-    }
-    fetchData();
-  },[allProducts])
-
-
-  const getProductTitle = (item_id) => {
-    const productTitle = allProductsArr.filter(function(el){
-      return el.id === item_id
-    });
-    if (getProductTitle) {
-      return productTitle[0]?.title
-    }
-    else {
-      return null
-    }
-  }
 
   return (
     <>
-    <div className="cart-item-header">
-        {getProductTitle(item?.product_id)}
-    </div>
+
+    <section className="cart-item-container">
+
+      <div className="cart-img-container">
+        <img className="cart-item-img-checkout" src={imgUrl} />
+      </div>
+      <div>
+        <div className="cart-item-header">
+          {item.products.title}
+        </div>
+        <div className="cart-item-quantity">
+          <ItemQuantity item={item} count={count} setCount ={setCount}/>
+        </div>
+      </div>
+
+
+    </section>
+
 
     </>
   )
