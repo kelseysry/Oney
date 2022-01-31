@@ -4,3 +4,4 @@ from .edit_product_form import EditProductForm
 from .new_product_form import NewProductForm
 from .review_form import ReviewForm
 from .cart_form import CartForm
+from .address_form import AddressForm
