@@ -33,7 +33,7 @@ const Navigation = ({count, setCount, open, setOpen}) => {
   }
 
   useEffect(() => {
-    dispatch(allCartItemsThunk(sessionUser.id))
+    dispatch(allCartItemsThunk(sessionUser?.id))
 
 
     // return () => clearInterval(allCartItemsThunk(user_id));
