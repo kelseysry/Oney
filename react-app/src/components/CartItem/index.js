@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { updateCartThunk, deleteCartItem } from '../../store/cart';
+import './CartItem.css'
 
 function CartItem({ item, count, setCount}) {
   const dispatch = useDispatch();
@@ -10,6 +11,10 @@ function CartItem({ item, count, setCount}) {
   const sessionUser = useSelector((state) => state.session);
   const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
   const allProductsArr = Object.values(allProducts)
+
+  const imgObj = Object.values(item.products.images)[0]
+  const imgUrl = Object.values(imgObj)
+
 
   let cartItems;
   if(cartItemsObj) {
@@ -115,7 +120,9 @@ if(!item) {
 
   return (
     <div className="each-cart-item-container">
-
+      <span className="cart-item-menu">
+        <img className="cart-item-img-checkout" src={imgUrl} />
+      </span>
       <div className="cart-item-header">
         {getProductTitle(item?.product_id)}
       </div>
