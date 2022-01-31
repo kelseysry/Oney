@@ -68,18 +68,29 @@ function Cart({count, setCount, open, setOpen}) {
   }, [dispatch, user_id, count, open])
 
 
-  const getPrice = async (item_id) => {
-    const price = await allProductsArr.filter(function(el){
-      console.log("el.id", el.id, item_id)
-      return el.id === item_id
+  console.log("cartItems", cartItems)
+
+  const getPrice = (cartItems) => {
+    const prices =  cartItems.filter(function(cartItem){
+      return cartItem.products.price
     });
-    if(price) {
-      console.log("price",price)
-      return price
+    if(prices) {
+      console.log("prices",prices)
+      return prices
     }
   }
 
-  console.log("geprice",getPrice(8))
+  const prices = cartItems.map(function(el) {
+    return el.products.price
+     }
+  )
+
+  let total = prices.reduce(function(a,b) {
+    return a + b
+  })
+
+  console.log("priceees", total)
+
 
   const products = Object.values(productObject)
   if (!products.length) return null
@@ -108,6 +119,14 @@ function Cart({count, setCount, open, setOpen}) {
       <ul>
         {cartItems?.map(item => item.id?  <CartItem key={item} item={item} count={count} setCount={setCount}/> :null )}
       </ul>
+      <section>
+        <div>
+          Total
+        </div>
+        <div>
+        ${total}
+        </div>
+      </section>
       <button className="purchase-button" type="submit" onClick={handleCheckOutRedirect}>Check Out</button>
     </div>
   )
