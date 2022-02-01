@@ -1,8 +1,22 @@
+import { useEffect } from 'react'
 import './Address.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { getAddress } from '../../store/address';
 
-const Address = ({userAddress}) => {
+const Address = ({user_id}) => {
+  const dispatch = useDispatch();
+  const getUserAddress = useSelector((state) => state.address.address);
+
+  let userAddress;
+  if(getUserAddress) {
+    userAddress = getUserAddress[0]
+  }
 
   console.log("userAddress",userAddress)
+
+  useEffect(() => {
+    dispatch(getAddress(user_id))
+  },[dispatch])
 
   return (
     <>

@@ -56,7 +56,7 @@ const CheckOut = ({count, setCount}) => {
   return (
     <>
 
-      {userAddress? <Address userAddress={userAddress}/> : null}
+      {user_id? <Address user_id={user_id}/> : null}
       <hr className="checkout-hr"></hr>
       {/* {userCredit? <Credit userCredit={userCredit}/> : null} */}
 
