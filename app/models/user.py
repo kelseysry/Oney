@@ -12,8 +12,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    address_id = db.Column(db.Integer, db.ForeignKey("addresses.id"), nullable=True)
-    credit_id = db.Column(db.Integer, db.ForeignKey("credits.id"), nullable=True)
+    # address_id = db.Column(db.Integer, db.ForeignKey("addresses.id"), nullable=True)
+    # credit_id = db.Column(db.Integer, db.ForeignKey("credits.id"), nullable=True)
 
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
     reviews = db.relationship("Review", back_populates="user")
     cart = db.relationship("Cart", back_populates="user")
     address = db.relationship("Address", back_populates="user")
-    credit = db.relationship("Credit", back_populates="user")
+    # credit = db.relationship("Credit", back_populates="user")
 
     @property
     def password(self):
@@ -36,20 +36,21 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        if self.address is None:
-            value = self.address
-        else:
-            value = self.address.to_dict()
-        if self.credit is None:
-            value2 = self.credit
-        else:
-            value2 = self.credit.to_dict()
+        # print("address", self.address)
+        # if self.address is None:
+        #     value = self.address
+        # else:
+        #     value = self.address.to_dict()
+        # if self.credit is None:
+        #     value2 = self.credit
+        # else:
+        #     value2 = self.credit.to_dict()
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'address_id': self.address_id,
-            'address': value,
-            'credit_id': self.credit_id,
-            'credit': value2
+            # 'address': self.address
+            # 'address': value,
+            # 'credit_id': self.credit_id,
+            # 'credit': value2
         }

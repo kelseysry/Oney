@@ -1,12 +1,12 @@
 
 
-const Credit = ({userCredit}) => {
+const Credit = ({}) => {
 
 
   return (
     <>
     <div>Payment method...make ternary if no credit yet</div>
-    <div>{userCredit.card_number}</div>
+    {/* <div>{userCredit.card_number}</div> */}
 
     </>
   )

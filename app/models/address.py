@@ -5,6 +5,7 @@ class Address(db.Model):
     __tablename__ = 'addresses'
 
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
     full_name = db.Column(db.String(60), nullable=False)
     country = db.Column(db.String(60), nullable=False)
     street_address = db.Column(db.String(255), nullable=False)
@@ -20,6 +21,7 @@ class Address(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'user_id': self.user_id,
             'full_name': self.full_name,
             'country': self.country,
             'street_address': self.street_address,

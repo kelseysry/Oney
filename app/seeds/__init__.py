@@ -15,9 +15,9 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     # Seed the most important tables first
-    seed_addresses()
     seed_credits()
     seed_users()
+    seed_addresses()
     seed_categories()
     seed_products()
     seed_reviews()
@@ -34,7 +34,7 @@ def undo():
     undo_reviews()
     undo_products()
     undo_categories()
-    undo_users()
     undo_addresses()
+    undo_users()
     undo_credits()
     # Add other undo functions here

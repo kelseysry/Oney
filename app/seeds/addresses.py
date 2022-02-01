@@ -3,6 +3,7 @@ from app.models import db, Address
 
 def seed_addresses():
     user1 = Address(
+      user_id = 1, 
       full_name = 'Demo User',
       country = 'United States',
       street_address = '825 Battery St',

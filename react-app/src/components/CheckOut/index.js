@@ -23,7 +23,7 @@ const CheckOut = ({count, setCount}) => {
   console.log("sessionUser", sessionUser.user.credit)
 
   const userAddress = sessionUser.user.address
-  const userCredit = sessionUser.user.credit
+  // const userCredit = sessionUser.user.credit
 
   let cartItems;
   if(cartItemsObj) {
@@ -58,7 +58,7 @@ const CheckOut = ({count, setCount}) => {
 
       {userAddress? <Address userAddress={userAddress}/> : null}
       <hr className="checkout-hr"></hr>
-      {userCredit? <Credit userCredit={userCredit}/> : null}
+      {/* {userCredit? <Credit userCredit={userCredit}/> : null} */}
 
 
       {cartItems?.map(item =>

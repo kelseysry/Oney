@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, Email, ValidationError, NumberRange
 from app.models import Address
 
 class AddressForm(FlaskForm):
+    user_id = IntegerField('user_id', validators=[DataRequired()])
     full_name = StringField('full_name',validators=[DataRequired()])
     country = StringField('country',validators=[DataRequired()])
     street_address = StringField('street_address',validators=[DataRequired()])
