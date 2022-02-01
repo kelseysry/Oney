@@ -17,21 +17,13 @@ const Address = ({userAddress}) => {
           <li>{userAddress.street_address}{userAddress?.apt_suite_other}</li>
           <li>{userAddress.city}, {userAddress.state} {userAddress.zip_code}</li>
           <li>{userAddress.country}</li>
-
         </ul>
-
       </main>
 
-
-
-
-
+      <div>
+        <button className="edit-address-btn">Edit</button>
+      </div>
     </section>
-
-
-
-    <span>Edit</span>
-
     </>
   )
 
