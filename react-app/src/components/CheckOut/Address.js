@@ -1,4 +1,4 @@
-
+import './Address.css'
 
 const Address = ({userAddress}) => {
 
@@ -6,8 +6,31 @@ const Address = ({userAddress}) => {
 
   return (
     <>
-    <div>Shipping Address...make ternary if no shipping address yet</div> <span>Edit</span>
-    <div>{userAddress.street_address}</div>
+    <section className="address-container">
+      <header className="address-header">
+        Shipping Address
+      </header>
+
+      <main>
+        <ul>
+          <li>{userAddress.full_name}</li>
+          <li>{userAddress.street_address}{userAddress?.apt_suite_other}</li>
+          <li>{userAddress.city}, {userAddress.state} {userAddress.zip_code}</li>
+          <li>{userAddress.country}</li>
+
+        </ul>
+
+      </main>
+
+
+
+
+
+    </section>
+
+
+
+    <span>Edit</span>
 
     </>
   )
