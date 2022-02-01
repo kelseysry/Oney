@@ -1,5 +1,5 @@
 const LOAD_ADDRESS = "address/LOAD_ADDRESS";
-
+const EDIT_ADDRESS = "address/EDIT_ADDRESS"
 
 // action creator load user's address
 const loadAddress = (address) => ({
@@ -7,6 +7,10 @@ const loadAddress = (address) => ({
   address
 });
 
+const editUserAddressAction = (updatedUserAddress) => ({
+  type: EDIT_ADDRESS,
+  updatedUserAddress
+});
 
 // thunk to get one address
 export const getAddress = (user_id) => async(dispatch) => {
@@ -18,19 +22,19 @@ export const getAddress = (user_id) => async(dispatch) => {
 }
 
 // thunk to edit address
-// export const editAddress = (editReview,product_id, id) => async dispatch => {
-//   const response = await fetch(`/api/address/${product_id}/reviews/${id}`, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type':'application/json'
-//   },
-//     body: JSON.stringify(editReview)
-//   });
+export const editAddress = (editUserAddress, user_id) => async dispatch => {
+  const response = await fetch(`/api/address/user/${user_id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type':'application/json'
+  },
+    body: JSON.stringify(editUserAddress)
+  });
 
-//   const review = await response.json();
-//   dispatch(editReviewAction(review, id))
-//   return review
-// }
+  const updatedUserAddress = await response.json();
+  dispatch(editUserAddressAction(updatedUserAddress))
+  return updatedUserAddress
+}
 
 
 // reducer
@@ -38,12 +42,11 @@ const initialState = {};
 const addressReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ADDRESS: {
-
-
       return { ...state, ...action.address};
-
     }
-
+    case EDIT_ADDRESS:
+      return { ...state, [action.updatedUserAddress.id]: action.updatedUserAddress };
+      
     // case ADD_ONE : {
     //   if(!state[action.newReview.id]) {
     //     const newState = {
