@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { editAddress, getAddress } from '../../store/address';
+import { createAddress, editAddress, getAddress } from '../../store/address';
 
-const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
+const NewAddressForm = ({user_id, setShowModal2, showModal2}) => {
 
   const dispatch = useDispatch();
 
-  const [full_name, setFull_name] = useState(userAddress?.full_name)
-  const [country, setCountry] = useState(userAddress.country)
-  const [street_address, setStreetAddress] = useState(userAddress?.street_address)
-  const [apt_suite_other, setAptSuiteOther] = useState(userAddress?.apt_suite_other)
-  const [zip_code, setZipCode] = useState(userAddress?.zip_code)
-  const [city,setCity] = useState(userAddress?.city)
-  const [state, setState] = useState(userAddress?.state)
+  const [full_name, setFull_name] = useState('')
+  const [country, setCountry] = useState('')
+  const [street_address, setStreetAddress] = useState('')
+  const [apt_suite_other, setAptSuiteOther] = useState('')
+  const [zip_code, setZipCode] = useState('')
+  const [city,setCity] = useState('')
+  const [state, setState] = useState('')
   const [validationErrors, setValidationErrors] = useState([]);
   const [errors, setErrors] = useState([]);
 
@@ -73,12 +73,12 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
 
     if (frontErrors.length === 0) {
 
-      const editUserAddress = {full_name, country, street_address, apt_suite_other, zip_code, city, state, user_id}
+      const newUserAddress = {full_name, country, street_address, apt_suite_other, zip_code, city, state, user_id}
 
-      const updated = await dispatch(editAddress(editUserAddress, user_id));
+      const updated = await dispatch(createAddress(newUserAddress));
       if (updated) {
         dispatch(getAddress(user_id))
-        setShowModal(false)
+        setShowModal2(false)
       }
     }
   };
@@ -159,4 +159,4 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
 
 }
 
-export default EditAddressForm
+export default NewAddressForm

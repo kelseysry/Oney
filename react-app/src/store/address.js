@@ -1,6 +1,6 @@
 const LOAD_ADDRESS = "address/LOAD_ADDRESS";
-const EDIT_ADDRESS = "address/EDIT_ADDRESS"
-
+const EDIT_ADDRESS = "address/EDIT_ADDRESS";
+const ADD_ADDRESS = "address/ADD_ADDRESS";
 // action creator load user's address
 const loadAddress = (address) => ({
   type: LOAD_ADDRESS,
@@ -11,6 +11,11 @@ const editUserAddressAction = (updatedUserAddress) => ({
   type: EDIT_ADDRESS,
   updatedUserAddress
 });
+
+const addAddress = (userAddress) => ({
+  type: ADD_ADDRESS,
+  userAddress
+})
 
 // thunk to get one address
 export const getAddress = (user_id) => async(dispatch) => {
@@ -23,7 +28,6 @@ export const getAddress = (user_id) => async(dispatch) => {
 
 // thunk to edit address
 export const editAddress = (editUserAddress, user_id) => async(dispatch) => {
-  console.log("thunk", editUserAddress, user_id )
   const response = await fetch(`/api/addresses/user/edit/${user_id}`, {
     method: 'PUT',
     headers: {
@@ -33,11 +37,25 @@ export const editAddress = (editUserAddress, user_id) => async(dispatch) => {
   });
 
   const updatedUserAddress = await response.json();
-  console.log("updatedUserAddress", updatedUserAddress)
   dispatch(editUserAddressAction(updatedUserAddress))
   return updatedUserAddress
 }
 
+export const createAddress = (newUserAddress) => async(dispatch) => {
+  console.log("newUserAddres thunk", newUserAddress)
+  const response = await fetch(`/api/addresses/user/new/`, {
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newUserAddress)
+  });
+
+  const userAddress = await response.json();
+  dispatch(addAddress(userAddress))
+  return userAddress
+
+}
 
 // reducer
 const initialState = {};
@@ -49,27 +67,15 @@ const addressReducer = (state = initialState, action) => {
     case EDIT_ADDRESS:
       return { ...state, [action.updatedUserAddress.id]: action.updatedUserAddress };
 
-    // case ADD_ONE : {
-    //   if(!state[action.newReview.id]) {
-    //     const newState = {
-    //       ...state,
-    //       [action.newReview.review.id]: action.newReview.review
-    //       // because youre sending a key value pair back from the backend, return {"review":review.to_dict()}  when you dispatch that action.newReview is that key value pair.  needing to be dotted into one further
-    //     }
-    //     return newState
-    //   }
-    // }
-
-    // case EDIT_ONE_REVIEW: {
-    //   if(!state[action.review]) {
-    //     const newState = {
-    //       ...state, [action.review.id]: action.review
-    //     };
-
-    //     return newState
-    //   }
-    //   return state
-    // }
+    case ADD_ADDRESS : {
+      if(!state[action.userAddress.id]) {
+        const newState = {
+          ...state,
+          [action.userAddress.id]: action.userAddress
+        }
+        return newState
+      }
+    }
 
     default:
       return state;

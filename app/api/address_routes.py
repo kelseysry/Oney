@@ -33,3 +33,17 @@ def user_address_update(user_id):
     else:
       # print("errrrrrrrrrors", form.errors)
       return "bad data"
+
+@address_routes.route('/user/new/', methods=['POST'])
+def create_address():
+  form = AddressForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    address = Address()
+    form.populate_obj(address)
+    db.session.add(address)
+    db.session.commit()
+    return {"msg": "address added"}
+  else:
+    print("errrrrrrrrrors", form.errors)
+    return "bad data"
