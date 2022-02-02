@@ -21,12 +21,6 @@ const Address = ({user_id}) => {
     dispatch(getAddress(user_id))
   },[dispatch])
 
-  const handleEditAddress = () => {
-
-    dispatch(editAddress(user_id));
-
-  }
-
   return (
     <>
     <section className="address-container">
@@ -51,7 +45,7 @@ const Address = ({user_id}) => {
 
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
-            <EditAddressForm />
+            <EditAddressForm userAddress={userAddress} user_id={user_id} setShowModal={setShowModal} showModal={showModal} />
           </Modal>
         )}
 

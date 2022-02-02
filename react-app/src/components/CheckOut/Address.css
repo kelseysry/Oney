@@ -16,3 +16,8 @@
   border: none;
   background-color: transparent !important;
 }
+
+.address-form {
+  display: flex;
+  flex-direction: column;
+}

@@ -13,7 +13,7 @@ const EditOneReview = () => {
   const {productId} = useParams();
   const { id } = useParams();
 
-    const review = useSelector((state) => state.review[id])
+  const review = useSelector((state) => state.review[id])
 
   const [rating, setRating] = useState(review?.rating);
   const [content, setContent] = useState(review?.content);

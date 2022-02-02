@@ -22,8 +22,9 @@ export const getAddress = (user_id) => async(dispatch) => {
 }
 
 // thunk to edit address
-export const editAddress = (editUserAddress, user_id) => async dispatch => {
-  const response = await fetch(`/api/address/user/${user_id}`, {
+export const editAddress = (editUserAddress, user_id) => async(dispatch) => {
+  console.log("thunk", editUserAddress, user_id )
+  const response = await fetch(`/api/addresses/user/edit/${user_id}`, {
     method: 'PUT',
     headers: {
       'Content-Type':'application/json'
@@ -32,6 +33,7 @@ export const editAddress = (editUserAddress, user_id) => async dispatch => {
   });
 
   const updatedUserAddress = await response.json();
+  console.log("updatedUserAddress", updatedUserAddress)
   dispatch(editUserAddressAction(updatedUserAddress))
   return updatedUserAddress
 }
@@ -46,7 +48,7 @@ const addressReducer = (state = initialState, action) => {
     }
     case EDIT_ADDRESS:
       return { ...state, [action.updatedUserAddress.id]: action.updatedUserAddress };
-      
+
     // case ADD_ONE : {
     //   if(!state[action.newReview.id]) {
     //     const newState = {
