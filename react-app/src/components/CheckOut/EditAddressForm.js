@@ -83,10 +83,17 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
     }
   };
 
+  const handleCancel = () => {
+
+    setShowModal(false)
+
+  }
+
 
   return (
     <form className="address-form" onSubmit={onSubmit}>
       <input
+        className='address-input'
         type="text"
         placeholder="Full Name"
         value={full_name}
@@ -94,6 +101,7 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
       >
       </input>
       <input
+        className='address-input'
         type="text"
         placeholder="Country"
         value={country}
@@ -101,6 +109,7 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
       >
       </input>
       <input
+        className='address-input'
         type="text"
         placeholder="Street Address"
         value={street_address}
@@ -108,6 +117,7 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
       >
       </input>
       <input
+        className='address-input'
         type="text"
         placeholder="Apt / Suite / Other"
         value={apt_suite_other}
@@ -115,6 +125,7 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
       >
       </input>
       <input
+        className='address-input'
         type="text"
         placeholder="Zip Code"
         value={zip_code}
@@ -122,6 +133,7 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
       >
       </input>
       <input
+        className='address-input'
         type="text"
         placeholder="City"
         value={city}
@@ -129,6 +141,7 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
       >
       </input>
       <input
+        className='address-input'
         type="text"
         placeholder="State"
         value={state}
@@ -150,7 +163,11 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
       }
 
       <div className="center-signup-button">
-        <button className="login-button" type='submit'>Submit</button>
+        <button className="address-button" type='submit'>Submit</button>
+        <button className="address-button"
+          onClick={handleCancel}
+          type='submit'>Cancel</button>
+
       </div>
 
 
