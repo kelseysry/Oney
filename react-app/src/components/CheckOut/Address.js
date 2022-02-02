@@ -38,10 +38,15 @@ const Address = ({user_id}) => {
       </main>
 
       <div>
+
+      {userAddress?
         <button className="edit-address-btn"
           onClick={() => setShowModal(true)}
           >Edit
         </button>
+        : null
+    }
+
 
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
