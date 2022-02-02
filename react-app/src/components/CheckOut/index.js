@@ -22,13 +22,21 @@ const CheckOut = ({count, setCount}) => {
 
   console.log("sessionUser", sessionUser.user.credit)
 
-  const userAddress = sessionUser.user.address
   // const userCredit = sessionUser.user.credit
 
   let cartItems;
   if(cartItemsObj) {
     cartItems = Object.values(cartItemsObj)
   }
+
+  const getUserAddress = useSelector((state) => state.address.address);
+
+  let userAddress;
+  if(getUserAddress) {
+    userAddress = getUserAddress[0]
+  }
+
+
 
   useEffect(() => {
     async function fetchData() {
@@ -53,6 +61,21 @@ const CheckOut = ({count, setCount}) => {
       cartItems.map((item , idx)=> (dispatch(purchaseCart(item.id, user_id))))
     }
 
+  let purchaseMsg;
+  if(cartItems?.length === 0 ) {
+    purchaseMsg = (
+      <div>
+        Your cart is empty!
+      </div>
+    )
+  } else {
+    purchaseMsg = (
+      <div>Please add credit and shipping information in order to purchase</div>
+    )
+  }
+
+  console.log("cartItems", cartItems)
+
   return (
     <>
 
@@ -67,12 +90,16 @@ const CheckOut = ({count, setCount}) => {
         </section>
       )}
 
-      {cartItems?.length?
+      {/* add conditional for credit once added to db *********************/}
+      {cartItems?.length && userAddress ?  (
+
           <form onSubmit={onSubmit}>
             <button className="purchase-button" type="submit">Purchase </button>
           </form>
+
+      )
       :
-      <div>nothing in cart</div>
+        purchaseMsg
       }
     </>
   )
