@@ -1,20 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { updateCartThunk, deleteCartItem } from '../../store/cart';
-import './CartItem.css'
+import './CheckOut.css'
 
-function CartItem({ item, count, setCount}) {
+function ItemQuantity({ item, count, setCount}) {
   const dispatch = useDispatch();
   let [quantity, setQuantity] = useState(item.quantity);
   const [products, setProducts] = useState([])
   const [allProducts, setAllProducts] = useState([])
   const sessionUser = useSelector((state) => state.session);
   const cartItemsObj = useSelector((state)=>state.cart.allCartItems)
-  const allProductsArr = Object.values(allProducts)
-
-  const imgObj = Object.values(item.products.images)[0]
-  const imgUrl = Object.values(imgObj)
-
 
   let cartItems;
   if(cartItemsObj) {
@@ -26,9 +21,6 @@ function CartItem({ item, count, setCount}) {
      return () => clearInterval(setQuantity(item.quantity));
   }, [item.quantity, count]);
 
-
-  // NOTE: so the cart.id doesn't have any meaning, we connect the user to their cart
-  // by just using the user_id in the cart table
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(`/api/carts/${user_id}`)
@@ -55,21 +47,6 @@ function CartItem({ item, count, setCount}) {
     return null
   }
 
-  const productsArray = Object?.values(products)
-  // console.log("productsArray",productsArray)
-  const getProductTitle = (item_id) => {
-    const productTitle = allProductsArr.filter(function(el){
-
-      return el.id === item_id
-    });
-    if (getProductTitle) {
-      console.log("productTitle",productTitle)
-      return productTitle[0]?.title
-    }
-    else {
-      return null
-    }
-  }
 
   let id = item.id // the id of the cart with the item
   let product_id = item.product_id
@@ -120,11 +97,9 @@ if(!item) {
 
   return (
     <div className="each-cart-item-container">
-      <span className="cart-item-menu">
-        <img className="cart-item-img-checkout" src={imgUrl} />
-      </span>
+
       <div className="cart-item-header">
-        {getProductTitle(item?.product_id)}
+
       </div>
       <div>
         ${item?.products?.price}
@@ -180,4 +155,4 @@ if(!item) {
   )
 }
 
-export default CartItem;
+export default ItemQuantity;

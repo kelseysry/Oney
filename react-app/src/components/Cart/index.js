@@ -75,12 +75,12 @@ function Cart({count, setCount, open, setOpen}) {
   console.log("cartItems", cartItems)
 
 
-  const prices = cartItems.map(function(el) {
+  const prices = cartItems?.map(function(el) {
     return ((el?.products?.price)*(el?.quantity))
      }
   )
 
-  let total = prices.reduce(function(a,b) {
+  let total = prices?.reduce(function(a,b) {
     return a + b
   })
 

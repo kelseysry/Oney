@@ -1,0 +1,23 @@
+
+.address-container {
+  display: flex;
+}
+
+.address-header {
+  font-weight: 900;
+  padding-right: 20px;
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+.edit-address-btn {
+  padding-left: 130px;
+  padding-top: 15px;
+  border: none;
+  background-color: transparent !important;
+}
+
+.address-form {
+  display: flex;
+  flex-direction: column;
+}

@@ -19,11 +19,12 @@ const Navigation = ({count, setCount, open, setOpen}) => {
 
   const sessionUser = useSelector(state=>state.session.user)
 
+  console.log("sessionUser", sessionUser)
+
   let currentCartArr
 
   // const [cartItemsDoneLoading, setCartItemsDoneLoading] = useState([])
 
-  console.log("yeee haw currentCart", currentCart)
 
   // const currentCartArr = Object.values(currentCart)
 

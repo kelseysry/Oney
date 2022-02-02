@@ -72,6 +72,7 @@ export const createOneReview = (formData, product_id) => async (dispatch) => {
 
 //thunk for editing a review
 export const editOneReview = (editReview,product_id, id) => async dispatch => {
+  console.log("editReview",editReview)
   const response = await fetch(`/api/products/${product_id}/reviews/${id}`, {
     method: 'PUT',
     headers: {

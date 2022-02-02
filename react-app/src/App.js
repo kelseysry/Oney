@@ -82,7 +82,7 @@ function App() {
           <SearchPage />
         </Route>
         <ProtectedRoute path='/check-out' exact={true}>
-          <CheckOut />
+          <CheckOut count={count} setCount={setCount}/>
         </ProtectedRoute>
       </Switch>
       </main>

@@ -1,9 +1,9 @@
 :root {
-  --text-color: #222222;
+  /* --text-color: #222222;
   --light-gray: #EAEAEA;
   --gray: #eeeeee;
   --light-peach: #F8EBE6;
-  --orange: #ED5219;
+  --orange: #ED5219; */
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900,100thin,300light);
@@ -38,5 +38,5 @@ body {
   height: 100%;
 }
 main {
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
 }
