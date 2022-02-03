@@ -1,0 +1,23 @@
+
+.credit-container {
+  display: flex;
+}
+
+.credit-header {
+  font-weight: 900;
+  padding-right: 20px;
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+.edit-credit-btn {
+  padding-left: 130px;
+  padding-top: 15px;
+  border: none;
+  background-color: transparent !important;
+}
+
+.credit-form {
+  display: flex;
+  flex-direction: column;
+}

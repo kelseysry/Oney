@@ -7,6 +7,7 @@ import category from './category'
 import searchResults from './search'
 import cartReducer from './cart';
 import address from './address';
+import credit from './credit';
 
 const rootReducer = combineReducers({
   session,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   category,
   searchResults,
   cart : cartReducer,
-  address
+  address,
+  credit
 });
 
 
