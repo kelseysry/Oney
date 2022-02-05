@@ -1,22 +1,25 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { editCredit, getCredit } from '../../store/credit';
+import { createCredit, editCredit, getCredit } from '../../store/credit';
 
-const EditCreditForm = ({userCredit, user_id, setShowModal, showModal}) => {
+const CreditForm = ({user_id, setShowModal, showModal}) => {
 
   const dispatch = useDispatch();
 
-  const [full_name, setFull_name] = useState(userCredit?.full_name)
-  const [card_number, setCardNumber] = useState(userCredit.card_number)
-  const [expiration_date_month, setExpirationDateMonth] = useState(String(userCredit?.expiration_date_month))
-  const [expiration_date_year, setExpirationDateYear] = useState(String(userCredit?.expiration_date_year))
-  const [security_code, setSecurityCode] = useState(userCredit?.security_code)
+  const [full_name, setFull_name] = useState('')
+  const [card_number, setCardNumber] = useState('')
+  const [expiration_date_month, setExpirationDateMonth] = useState('1')
+  const [expiration_date_year, setExpirationDateYear] = useState('1')
+  const [security_code, setSecurityCode] = useState('')
   const [validationErrors, setValidationErrors] = useState([]);
   const [errors, setErrors] = useState([]);
 
   function checkIfNumeric(number) {
     return number === +number && number === (number|0);
   }
+
+
+  console.log("expiration_date_month", typeof(expiration_date_month))
 
   const validate = () => {
 
@@ -54,9 +57,12 @@ const EditCreditForm = ({userCredit, user_id, setShowModal, showModal}) => {
 
     if (frontErrors.length === 0) {
 
-      const editUserCredit = {full_name, card_number, expiration_date_month, expiration_date_year, security_code, user_id}
+      console.log("expiration_date_month",expiration_date_month)
+      // expiration_date_month = String(expiration_date_month)
+      // expiration_date_year = String(expiration_date_year)
+      const newUserCredit = {full_name, card_number, expiration_date_month, expiration_date_year, security_code, user_id}
 
-      const updated = await dispatch(editCredit(editUserCredit, user_id));
+      const updated = await dispatch(createCredit(newUserCredit, user_id));
       if (updated) {
         dispatch(getCredit(user_id))
         setShowModal(false)
@@ -86,7 +92,7 @@ const EditCreditForm = ({userCredit, user_id, setShowModal, showModal}) => {
         type="text"
         // placeholder="Expiration Date Month"
         value={expiration_date_month}
-        onChange={(e) => setExpirationDateMonth(e.target.value)}
+        onChange={(e) => setExpirationDateMonth(String(e.target.value))}
       >
         <option value="1">1</option>
         <option value="2">2</option>
@@ -105,7 +111,7 @@ const EditCreditForm = ({userCredit, user_id, setShowModal, showModal}) => {
       <select
         type="text"
         value={expiration_date_year}
-        onChange={(e) => setExpirationDateYear(e.target.value)}
+        onChange={(e) => setExpirationDateYear(String(e.target.value))}
       >
         <option value="2022">2022</option>
         <option value="2023">2023</option>
@@ -150,4 +156,4 @@ const EditCreditForm = ({userCredit, user_id, setShowModal, showModal}) => {
 
 }
 
-export default EditCreditForm
+export default CreditForm

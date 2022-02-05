@@ -4,6 +4,7 @@ import { getCredit } from "../../store/credit";
 import { Modal } from '../../context/Modal';
 import './Credit.css'
 import EditCreditForm from './EditCredit';
+import CreditForm from './NewCreditForm';
 
 const Credit = ({user_id}) => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const Credit = ({user_id}) => {
 
       {showModal2 && (
         <Modal onClose={() => setShowModal2(false)}>
-          {/* <NewAddressForm user_id={user_id} setShowModal2={setShowModal2} showModal2={showModal2} /> */}
+          <CreditForm user_id={user_id} setShowModal={setShowModal} showModal={showModal}/>
         </Modal>
         )}
 

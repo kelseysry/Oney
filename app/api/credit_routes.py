@@ -32,3 +32,17 @@ def user_credit_update(user_id):
     else:
       print("errrrrrrrrrors", form.errors)
       return "bad data"
+
+
+@credit_routes.route('/user/new/', methods=['POST'])
+def create_credit():
+  form = CreditForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    credit = Credit()
+    form.populate_obj(credit)
+    db.session.add(credit)
+    db.session.commit()
+    return {"msg": "credit added"}
+  else:
+    return "bad data"

@@ -1,6 +1,7 @@
 
 const LOAD_CREDIT = "credit/LOAD_CREDIT";
 const EDIT_CREDIT = "credit/EDIT_CREDIT"
+const ADD_CREDIT = "credit/ADD_CREDIT"
 
 const loadCredit = (credit) => ({
   type: LOAD_CREDIT,
@@ -11,6 +12,12 @@ const editUserCreditAction = (updatedUserCredit) => ({
   type: EDIT_CREDIT,
   updatedUserCredit
 });
+
+
+const addCredit = (userCredit) => ({
+  type: ADD_CREDIT,
+  userCredit
+})
 
 // thunk to get one credit
 export const getCredit = (user_id) => async(dispatch) => {
@@ -38,6 +45,23 @@ export const editCredit = (editUserCredit, user_id) => async(dispatch) => {
   return updatedUserCredit
 }
 
+export const createCredit = (newUserCredit) => async(dispatch) => {
+  console.log("newUserCredit", newUserCredit)
+  const response = await fetch(`/api/credits/user/new/`, {
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newUserCredit)
+  });
+
+  const userCredit = await response.json();
+
+  console.log("userCreditttttt", userCredit)
+  dispatch(addCredit(userCredit))
+  return userCredit
+}
+
 const initialState = {};
 const creditReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -47,15 +71,15 @@ const creditReducer = (state = initialState, action) => {
     case EDIT_CREDIT:
       return { ...state, [action.updatedUserCredit.id]: action.updatedUserCredit };
 
-    // case ADD_ADDRESS : {
-    //   if(!state[action.userAddress.id]) {
-    //     const newState = {
-    //       ...state,
-    //       [action.userAddress.id]: action.userAddress
-    //     }
-    //     return newState
-    //   }
-    // }
+    case ADD_CREDIT : {
+      if(!state[action.userCredit.id]) {
+        const newState = {
+          ...state,
+          [action.userCredit.id]: action.userCredit
+        }
+        return newState
+      }
+    }
 
     default:
       return state;
