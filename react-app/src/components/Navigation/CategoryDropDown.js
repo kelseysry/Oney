@@ -56,15 +56,24 @@ function Menu({ category }) {
 
             </NavLink>
             {showMenu && (
-                <ul className={styles.menu}>
+                <ul className={styles.meu}>
+
+
                     {category.children.map(child => {
                         return (
-                            <li key={child.id} className={styles.item}>
+                            <li key={child.id} className={styles.itm}>
                                 <NavLink to={`/category/${child.id}`}>
 
+                        <div
+                            className={styles.childSign}
+                            style={{
+                            backgroundImage: `url("${pictures.collection[4].imageUrl}")`
+                            }}>
+                                <label className={styles.childLabel}>
+                                {child.short_name}
+                                </label>
+                        </div>
 
-
-                                    {child.short_name}
 
                                     </NavLink>
                             </li>

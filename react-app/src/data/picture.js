@@ -21,7 +21,13 @@ const pictures = {
       "imageNumber":"3",
       "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1644040044/oney/wood2_og5ibt.png",
       "title":"wood"
+    },
+    {
+      "imageNumber":"4",
+      "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1644044082/oney/vine2_c52amy.png",
+      "title":"vine"
     }
+
 
 
   ]
