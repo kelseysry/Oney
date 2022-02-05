@@ -25,26 +25,15 @@ const Navigation = ({count, setCount, open, setOpen}) => {
 
   let currentCartArr
 
-  // const [cartItemsDoneLoading, setCartItemsDoneLoading] = useState([])
 
-
-  // const currentCartArr = Object.values(currentCart)
 
   if(currentCart) {
-    // console.log("currentCart", Object.values(currentCart).length)
     currentCartArr = Object.values(currentCart)
   }
 
   useEffect(() => {
     dispatch(allCartItemsThunk(sessionUser?.id))
-
-
-    // return () => clearInterval(allCartItemsThunk(user_id));
   }, [dispatch, open])
-
-  // console.log("currentCartArr", currentCartArr)
-  // console.log("currentCar", currentCart)
-
 
   let sessionLinks;
   if(sessionUser) {
@@ -128,9 +117,9 @@ const Navigation = ({count, setCount, open, setOpen}) => {
     <div className="">
       <section
       className='coverPhoto'
-      style={{
-        backgroundImage: `url("${pictures.collection[1].imageUrl}")`
-      }}>
+        style={{
+          backgroundImage: `url("${pictures.collection[1].imageUrl}")`
+       }}>
         &nbsp;
         {sessionLinks}
         <div className="img-search-container">
@@ -138,11 +127,22 @@ const Navigation = ({count, setCount, open, setOpen}) => {
           <div className="searchForm">
             <SearchForm />
           </div>
-
         </div>
       </section>
 
-      <CategoryDropDown />
+      <section>
+        {/* <img src={pictures.collection[2].imageUrl} /> */}
+      <div
+        className='categorySkyContainer'
+        style={{
+          backgroundImage: `url("${pictures.collection[2].imageUrl}")`
+        }}>
+
+        <CategoryDropDown />
+        </div>
+
+
+      </section>
     </div>
   );
 }

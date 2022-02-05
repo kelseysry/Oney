@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategoryTree } from '../../store/category';
+import pictures from '../../data/picture';
 
 export default function CategoryDropDown() {
     const dispatch = useDispatch();
@@ -37,13 +38,35 @@ function Menu({ category }) {
             onMouseOver={openMenu} onMouseLeave={closeMenu}
             className={styles.dropdownWrapper}
         >
-            <NavLink className={styles.head} to={`/category/${category.id}`}>{category.short_name}</NavLink>
+
+            <NavLink className={styles.head} to={`/category/${category.id}`}>
+                 {/* <img
+                className={styles.categorySign}
+                src={pictures.collection[3].imageUrl} /> */}
+
+        <div
+            className={styles.categorySign}
+            style={{
+            backgroundImage: `url("${pictures.collection[3].imageUrl}")`
+            }}>
+                <label className={styles.categoryLabel}>
+                    {category.short_name}
+                </label>
+        </div>
+
+            </NavLink>
             {showMenu && (
                 <ul className={styles.menu}>
                     {category.children.map(child => {
                         return (
                             <li key={child.id} className={styles.item}>
-                                <NavLink to={`/category/${child.id}`}>{child.short_name}</NavLink>
+                                <NavLink to={`/category/${child.id}`}>
+
+
+
+                                    {child.short_name}
+
+                                    </NavLink>
                             </li>
                         )
                     })}
