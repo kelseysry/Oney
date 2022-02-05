@@ -14,29 +14,29 @@ body {
   margin: 0;
 }
 
-html {
+/* html {
     box-sizing: border-box;
     height: 100%;
-}
+} */
 
-*,
+/* *,
 *::before,
 *::after {
     box-sizing: inherit;
-}
+} */
 
-body {
+/* body {
     width: 100%;
     height: 100%;
-}
+} */
 
-#root {
+/* #root {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   height: 100%;
-}
+} */
 main {
   /* padding-bottom: 50px; */
 }

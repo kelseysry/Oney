@@ -58,7 +58,8 @@ const CheckOut = ({count, setCount}) => {
 
       {user_id? <Address user_id={user_id}/> : null}
       <hr className="checkout-hr"></hr>
-      {/* {userCredit? <Credit userCredit={userCredit}/> : null} */}
+      {/* {user_id? <Credit user_id={user_id}/> : null} */}
+      <Credit user_id={user_id} />
 
 
       {cartItems?.map(item =>

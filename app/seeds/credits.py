@@ -3,6 +3,7 @@ from app.models import db, Credit
 
 def seed_credits():
     user1 = Credit(
+      user_id = 1,
       full_name = 'Demo User',
       card_number = 1234567891234567,
       expiration_date_month = 1,

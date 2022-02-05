@@ -54,7 +54,6 @@ export const createAddress = (newUserAddress) => async(dispatch) => {
   const userAddress = await response.json();
   dispatch(addAddress(userAddress))
   return userAddress
-
 }
 
 // reducer

@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SubmitField, IntegerField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Email, ValidationError, NumberRange
-from app.models import Address
+from app.models import Credit
 
 class CreditForm(FlaskForm):
+    user_id = IntegerField('user_id', validators=[DataRequired()])
     full_name = StringField('full_name',validators=[DataRequired()])
     card_number = StringField('card_number', validators=[DataRequired()])
     expiration_date_month = IntegerField('expiration_date_month', validators=[DataRequired()])
