@@ -2,6 +2,7 @@
 const LOAD_CREDIT = "credit/LOAD_CREDIT";
 const EDIT_CREDIT = "credit/EDIT_CREDIT"
 const ADD_CREDIT = "credit/ADD_CREDIT"
+const CLEAR_CREDIT = "credit/CLEAR_CREDIT"
 
 const loadCredit = (credit) => ({
   type: LOAD_CREDIT,
@@ -17,6 +18,10 @@ const editUserCreditAction = (updatedUserCredit) => ({
 const addCredit = (userCredit) => ({
   type: ADD_CREDIT,
   userCredit
+})
+
+export const clearCredit = () => ({
+  type: CLEAR_CREDIT
 })
 
 // thunk to get one credit
@@ -79,6 +84,10 @@ const creditReducer = (state = initialState, action) => {
         }
         return newState
       }
+    }
+    case CLEAR_CREDIT : {
+      state = {}
+      return state
     }
 
     default:

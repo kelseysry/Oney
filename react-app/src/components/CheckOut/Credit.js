@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCredit } from "../../store/credit";
+import { getCredit, clearCredit } from "../../store/credit";
 import { Modal } from '../../context/Modal';
 import './Credit.css'
 import EditCreditForm from './EditCredit';
@@ -18,6 +18,7 @@ const Credit = ({user_id}) => {
   }
 
   useEffect(() => {
+    dispatch(clearCredit())
     dispatch(getCredit(user_id))
   },[dispatch])
 
@@ -57,7 +58,7 @@ const Credit = ({user_id}) => {
 
       {showModal2 && (
         <Modal onClose={() => setShowModal2(false)}>
-          <CreditForm user_id={user_id} setShowModal={setShowModal} showModal={showModal}/>
+          <CreditForm user_id={user_id} setShowModal2={setShowModal2} showModal2={showModal2}/>
         </Modal>
         )}
 

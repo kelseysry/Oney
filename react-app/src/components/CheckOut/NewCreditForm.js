@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { createCredit, editCredit, getCredit } from '../../store/credit';
 
-const CreditForm = ({user_id, setShowModal, showModal}) => {
+const CreditForm = ({user_id, setShowModal2, showModal2}) => {
 
   const dispatch = useDispatch();
 
@@ -65,7 +65,7 @@ const CreditForm = ({user_id, setShowModal, showModal}) => {
       const updated = await dispatch(createCredit(newUserCredit, user_id));
       if (updated) {
         dispatch(getCredit(user_id))
-        setShowModal(false)
+        setShowModal2(false)
       }
     }
   };
