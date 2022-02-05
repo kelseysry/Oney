@@ -10,8 +10,10 @@ import { useState, useEffect } from 'react';
 
 import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
+import pictures from '../../data/picture';
 
 const Navigation = ({count, setCount, open, setOpen}) => {
+
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.cart.showCart);
 
@@ -48,7 +50,15 @@ const Navigation = ({count, setCount, open, setOpen}) => {
   if(sessionUser) {
     sessionLinks = (
     <>
+
       <ul className="nav2">
+        <li>
+          <div className="Oney">
+              <NavLink to='/' exact={true} activeClassName='active'>
+                Oney
+              </NavLink>
+            </div>
+        </li>
         <li>
           <span className="hiUser"> Welcome {sessionUser.username}! </span>
         </li>
@@ -58,9 +68,7 @@ const Navigation = ({count, setCount, open, setOpen}) => {
         <li>
           <button
           className="hiUser"
-          // className="checkout-button"
           onClick={() => dispatch(openCart())}>
-            {/* <i className="fas fa-shopping-cart"></i> */}
             Cart
           </button>
         </li>
@@ -77,25 +85,22 @@ const Navigation = ({count, setCount, open, setOpen}) => {
         style={showCart ? { transform: 'translateX(-100%)' } : {}}
         >
         <div className="sidebar-header">
-        <button className="arrow-button" onClick={() => {
-          dispatch(closeCart())
-          dispatch(allCartItemsThunk(sessionUser?.id))
+          <button className="arrow-button" onClick={() => {
+            dispatch(closeCart())
+            dispatch(allCartItemsThunk(sessionUser?.id))
 
-          }}>
-        <i className="fas fa-arrow-right"></i>
-        </button>
+            }}>
+          <i className="fas fa-arrow-right"></i>
+          </button>
         </div>
 
         {currentCartArr?.length > 0 ?
             <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
           :
-
           <div>
             No items in the cart. Start selecting items to purchase.
           </div>
-
         }
-
       </div>
     </>
 
@@ -120,24 +125,23 @@ const Navigation = ({count, setCount, open, setOpen}) => {
 
 
   return (
-    <div className="headerDiv">
-      <nav>
-        <ul className="navigation">
-          <li>
-            <div className="Oney">
-              <NavLink to='/' exact={true} activeClassName='active'>
-                Oney
-              </NavLink>
-            </div>
-          </li>
-          <li>
+    <div className="">
+      <section
+      className='coverPhoto'
+      style={{
+        backgroundImage: `url("${pictures.collection[1].imageUrl}")`
+      }}>
+        &nbsp;
+        {sessionLinks}
+        <div className="img-search-container">
+        <img src={pictures.collection[0].imageUrl} />
+          <div className="searchForm">
             <SearchForm />
-          </li>
-          <li>
-            {sessionLinks}
-          </li>
-        </ul>
-      </nav>
+          </div>
+
+        </div>
+      </section>
+
       <CategoryDropDown />
     </div>
   );

@@ -14,6 +14,7 @@ const CategoryCard = () => {
 
         return (
                 <div className="categCard">
+
                     {(cardDetailsList.map(cardDetails =>{
                         return (
                             <div key={"cardDetails-"+cardDetails.id} className="catge_effect">
