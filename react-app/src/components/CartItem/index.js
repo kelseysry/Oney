@@ -168,7 +168,7 @@ if(!item) {
 
           </div>
         </form>
-        <hr></hr>
+        <hr className="cart-hr"></hr>
         </>
 
 

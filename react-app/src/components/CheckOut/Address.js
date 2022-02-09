@@ -33,7 +33,7 @@ const Address = ({user_id}) => {
 
       {
       userAddress?
-      <main>
+      <main className="shipping-address-details">
         <ul>
           <li>{userAddress?.full_name}</li>
           <li>{userAddress?.street_address}{userAddress?.apt_suite_other}</li>

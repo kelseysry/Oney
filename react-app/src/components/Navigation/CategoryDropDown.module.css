@@ -3,6 +3,7 @@ ul {
 }
 .categoryList, .categoryList ul {
   list-style-type: none;
+
 }
 .categoryList li a:hover {
   text-decoration: none;
@@ -11,27 +12,89 @@ ul {
 .categoryList {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  column-gap: 30px;
+  justify-content: space-evenly;
+  column-gap: 5px;
+  margin: 0px 0px !important;
 }
 
 .dropdownWrapper {
   position: relative;
+  z-index: 2;
 }
+
 .dropdownWrapper .head {
   font-weight: normal;
   font-size: 0.95em;
   color: black;
 }
+
 .dropdownWrapper .menu {
   position: absolute;
   background-color: white;
   border: 1px solid rgba(0,0,0, 0.1);
   padding: 10px;
   min-width: 150px;
+
 }
 .dropdownWrapper .menu .item a {
   font-weight: normal;
   font-size: 0.9em;
   color: black;
+}
+
+
+.categorySign {
+  padding-top: 10px;
+  width: 125px;
+  height: 90px;
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  margin: 0px 0px !important;
+  /* background-position-x: 50%; */
+  background-position-y: 24%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(26, 27, 28, 0.7));
+}
+
+.categoryLabel {
+  word-break: normal;
+  width: 100px;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 2px 3px 3px black;
+  color: white;
+  font-size: 18px;
+}
+
+
+.childSign {
+  /* padding-top: 10px; */
+  /* width: 120px;
+  height: 50px; */
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  margin: 0px 0px !important;
+  /* background-position-x: 50%; */
+  background-position-y: 24%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0.3rem 0.4rem 0.4rem rgba(26, 27, 28, 0.7));
+
+  height: 60%;
+  width: 100%;
+  border-radius: 5;
+}
+
+.childLabel {
+  word-break: normal;
+  width: 100px;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px black;
+  color: white;
+  font-size: 12px;
+  padding: 5px 0px;
 }

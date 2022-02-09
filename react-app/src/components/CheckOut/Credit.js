@@ -32,7 +32,7 @@ const Credit = ({user_id}) => {
 
       {
       userCredit?
-      <main>
+      <main className="shipping-address-details">
         <ul>
           <li>{userCredit?.full_name}</li>
           <li>{userCredit?.card_number}</li>

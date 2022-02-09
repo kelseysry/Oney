@@ -11,10 +11,11 @@
 }
 
 .edit-credit-btn {
-  padding-left: 130px;
+  padding-left: 100px;
   padding-top: 15px;
   border: none;
   background-color: transparent !important;
+  padding-right: 15px;
 }
 
 .credit-form {

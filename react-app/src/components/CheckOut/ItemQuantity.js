@@ -97,10 +97,6 @@ if(!item) {
 
   return (
     <div className="each-cart-item-container">
-
-      <div className="cart-item-header">
-
-      </div>
       <div>
         ${item?.products?.price}
       </div>
@@ -143,7 +139,6 @@ if(!item) {
 
           </div>
         </form>
-        <hr></hr>
         </>
 
 

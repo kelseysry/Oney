@@ -22,6 +22,10 @@
 
 .cart-item-container {
   display: flex;
+  justify-content: center;
+  /* border-bottom: #222222 1px solid; */
+  height: 220px;
+  align-items: center;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -63,4 +67,135 @@ input[type=number] {
   line-height: 19px;
   margin-top: 0;
   margin-bottom: 14px;
+}
+
+.bigLeaf {
+  width: 300px;
+  position: absolute;
+  left: -150px;
+  top: -30px;
+  z-index: 1;
+}
+
+.shipping-credit-container {
+  display: flex;
+  /* width: 50%;
+  height: 50vh; */
+  margin: 30px auto;
+  box-shadow:
+   -10px 0 0 0 #F9A90B,
+    10px 0 0 0 #F9A90B,
+    0 -10px 0 0 #F9A90B,
+    0 10px 0 0 #F9A90B;
+  position: relative;
+
+}
+
+.cart-items-container {
+  box-shadow:
+  -10px 0 0 0 #F9A90B,
+   10px 0 0 0 #F9A90B,
+   0 -10px 0 0 #F9A90B,
+   0 10px 0 0 #F9A90B;
+}
+
+.check-out-page {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.purchase-total-container {
+  margin-top: 30px;
+  position: sticky;
+  top: 100px;
+  right:0;
+  margin-bottom: auto;
+  padding-bottom: 50px;
+  box-shadow:
+  -10px 0 0 0 #F9A90B,
+   10px 0 0 0 #F9A90B,
+   0 -10px 0 0 #F9A90B,
+   0 10px 0 0 #F9A90B;
+   width: 300px;
+   height: 300px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.address-container, .credit-container {
+  padding-left: 100px;
+}
+
+.address-header, .credit-header {
+  width: 180px;
+}
+
+.shipping-address-details {
+  width: 180px;
+}
+
+.checkout-title-container {
+  height: 52px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.checkout-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  font-weight: bolder;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+}
+
+.cart-pic{
+  width: 45px;
+  padding-left: 10px;
+}
+
+.checkout-out-page {
+  z-index: 1;
+}
+
+.cart-item-button {
+  background-color: transparent;
+}
+
+.cart-page-hr {
+  border: none;
+  border-top: 2px solid #e1d9c5;
+  color: #e6e6e6;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  padding: 0px 0px !important;
+  width:500px;
+}
+
+
+.cart-item-header-quantity-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: flex-start;
+}
+
+.leaf-hr {
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* width: 200px; */
+  height: 70px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.leaf-hr-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 50px;
 }

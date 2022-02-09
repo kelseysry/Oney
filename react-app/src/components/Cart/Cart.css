@@ -82,8 +82,7 @@ input[type="number"] {
 }
 
 
-
-hr {
+.cart-hr {
   border: none;
   border-top: 5px solid #e1d9c5;
   color: #e6e6e6;
@@ -91,7 +90,6 @@ hr {
   text-align: center;
   height: 5px;
   padding: 0px 0px !important;
-
 }
 
 .each-cart-item-container {
