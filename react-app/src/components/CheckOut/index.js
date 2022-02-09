@@ -54,7 +54,7 @@ const CheckOut = ({count, setCount}) => {
     }
 
   return (
-    <>
+    <section className="page-checkout">
       <div
         className="checkout-title-container"
           style={{
@@ -106,7 +106,7 @@ const CheckOut = ({count, setCount}) => {
 
 
 
-    </>
+    </section>
   )
 
 }

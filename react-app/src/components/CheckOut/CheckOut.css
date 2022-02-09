@@ -69,7 +69,8 @@ input[type=number] {
   width: 300px;
   position: absolute;
   left: -150px;
-  top: -30px
+  top: -30px;
+  z-index: 1;
 }
 
 .shipping-credit-container {
@@ -78,12 +79,20 @@ input[type=number] {
   height: 50vh; */
   margin: 30px auto;
   box-shadow:
-   -15px 0 0 0 #F9A90B,
-    15px 0 0 0 #F9A90B,
-    0 -15px 0 0 #F9A90B,
-    0 15px 0 0 #F9A90B;
+   -10px 0 0 0 #F9A90B,
+    10px 0 0 0 #F9A90B,
+    0 -10px 0 0 #F9A90B,
+    0 10px 0 0 #F9A90B;
   position: relative;
 
+}
+
+.cart-items-container {
+  box-shadow:
+  -10px 0 0 0 #F9A90B,
+   10px 0 0 0 #F9A90B,
+   0 -10px 0 0 #F9A90B,
+   0 10px 0 0 #F9A90B;
 }
 
 .check-out-page {
@@ -131,4 +140,8 @@ input[type=number] {
 .cart-pic{
   width: 45px;
   padding-left: 10px;
+}
+
+.checkout-out-page {
+  z-index: 1;
 }
