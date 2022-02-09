@@ -48,7 +48,6 @@ const CheckOut = ({count, setCount}) => {
     e.preventDefault();
     window.alert(
       "Thank you for purchasing! Your items will arrive in 2 business days."
-
        );
 
       cartItems.map((item , idx)=> (dispatch(purchaseCart(item.id, user_id))))
@@ -56,16 +55,17 @@ const CheckOut = ({count, setCount}) => {
 
   return (
     <>
-{/*
-<section className="purchase-total-container">
-        {cartItems?.length?
-            <form onSubmit={onSubmit}>
-              <button className="purchase-button" type="submit">Purchase </button>
-            </form>
-        :
-        <div>nothing in cart</div>
-        }
-      </section> */}
+      <div
+        className="checkout-title-container"
+          style={{
+            backgroundImage: `url("${pictures.collection[6].imageUrl}")`
+        }}>
+          <div className='checkout-title'>
+            Checkout
+            <img className='cart-pic' src={pictures.collection[7].imageUrl}/>
+          </div>
+      </div>
+
 
     <section className="check-out-page">
       <section>
@@ -89,9 +89,15 @@ const CheckOut = ({count, setCount}) => {
 
       <section className="purchase-total-container">
         {cartItems?.length?
-            <form onSubmit={onSubmit}>
-              <button className="purchase-button" type="submit">Purchase </button>
-            </form>
+            <div>
+              <form onSubmit={onSubmit}>
+                <button className="purchase-button" type="submit">Place Your Order </button>
+              </form>
+              <div>
+                <h1>Order Summary</h1>
+
+              </div>
+            </div>
         :
         <div>nothing in cart</div>
         }

@@ -66,16 +66,17 @@ input[type=number] {
 }
 
 .bigLeaf {
-  width: 400px;
+  width: 300px;
   position: absolute;
-  left: -200px;
+  left: -150px;
+  top: -30px
 }
 
 .shipping-credit-container {
   display: flex;
   /* width: 50%;
   height: 50vh; */
-  margin: 2em auto;
+  margin: 30px auto;
   box-shadow:
    -15px 0 0 0 #F9A90B,
     15px 0 0 0 #F9A90B,
@@ -87,7 +88,7 @@ input[type=number] {
 
 .check-out-page {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .purchase-total-container {
@@ -96,4 +97,38 @@ input[type=number] {
   right:0;
   margin-bottom: auto;
   padding-bottom: 50px;
+}
+
+.address-container, .credit-container {
+  padding-left: 100px;
+}
+
+.address-header, .credit-header {
+  width: 180px;
+}
+
+.shipping-address-details {
+  width: 180px;
+}
+
+.checkout-title-container {
+  height: 52px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.checkout-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  font-weight: bolder;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+}
+
+.cart-pic{
+  width: 45px;
+  padding-left: 10px;
 }

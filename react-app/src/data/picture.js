@@ -31,7 +31,18 @@ const pictures = {
       "imageNumber":"5",
       "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1644374791/oney/plant_ehp9ye.png",
       "title":"vineBigLeaves"
+    },
+    {
+      "imageNumber":"6",
+      "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1644385739/oney/oneyHeader_jn73uy.png",
+      "title":"title-checkout"
+    },
+    {
+      "imageNumber":"7",
+      "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1644385895/oney/cartt_vowt38.png",
+      "title":"cart"
     }
+
 
 
 
