@@ -64,3 +64,36 @@ input[type=number] {
   margin-top: 0;
   margin-bottom: 14px;
 }
+
+.bigLeaf {
+  width: 400px;
+  position: absolute;
+  left: -200px;
+}
+
+.shipping-credit-container {
+  display: flex;
+  /* width: 50%;
+  height: 50vh; */
+  margin: 2em auto;
+  box-shadow:
+   -15px 0 0 0 #F9A90B,
+    15px 0 0 0 #F9A90B,
+    0 -15px 0 0 #F9A90B,
+    0 15px 0 0 #F9A90B;
+  position: relative;
+
+}
+
+.check-out-page {
+  display: flex;
+  justify-content: center;
+}
+
+.purchase-total-container {
+  position: sticky;
+  top: 100px;
+  right:0;
+  margin-bottom: auto;
+  padding-bottom: 50px;
+}

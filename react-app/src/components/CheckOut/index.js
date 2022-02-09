@@ -5,6 +5,7 @@ import CheckOutItem from './CheckOutItem';
 import { purchaseCart } from "../../store/cart";
 import Address from './Address';
 import Credit from './Credit';
+import pictures from '../../data/picture';
 
 
 const CheckOut = ({count, setCount}) => {
@@ -55,26 +56,50 @@ const CheckOut = ({count, setCount}) => {
 
   return (
     <>
+{/*
+<section className="purchase-total-container">
+        {cartItems?.length?
+            <form onSubmit={onSubmit}>
+              <button className="purchase-button" type="submit">Purchase </button>
+            </form>
+        :
+        <div>nothing in cart</div>
+        }
+      </section> */}
 
-      {user_id? <Address user_id={user_id}/> : null}
-      <hr className="checkout-hr"></hr>
-      {/* {user_id? <Credit user_id={user_id}/> : null} */}
-      <Credit user_id={user_id} />
+    <section className="check-out-page">
+      <section>
+        <div className="shipping-credit-container">
+          <img className="bigLeaf" src={pictures.collection[5].imageUrl} />
+          <div>
+            {user_id? <Address user_id={user_id}/> : null}
+            <hr className="checkout-hr"></hr>
+            <Credit user_id={user_id} />
+          </div>
+        </div>
+
+        <div className="cart-items-container">
+          {cartItems?.map(item =>
+            <div className="CartItemsContainer">
+              <CheckOutItem key={item} item={item} user_id={user_id} count={count} setCount ={setCount}/>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="purchase-total-container">
+        {cartItems?.length?
+            <form onSubmit={onSubmit}>
+              <button className="purchase-button" type="submit">Purchase </button>
+            </form>
+        :
+        <div>nothing in cart</div>
+        }
+      </section>
+    </section>
 
 
-      {cartItems?.map(item =>
-        <section className="CartItemsContainer">
-          <CheckOutItem key={item} item={item} user_id={user_id} count={count} setCount ={setCount}/>
-        </section>
-      )}
 
-      {cartItems?.length?
-          <form onSubmit={onSubmit}>
-            <button className="purchase-button" type="submit">Purchase </button>
-          </form>
-      :
-      <div>nothing in cart</div>
-      }
     </>
   )
 
