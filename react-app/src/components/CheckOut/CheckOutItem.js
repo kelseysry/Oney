@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './CheckOut.css'
 import ItemQuantity from './ItemQuantity';
+import pictures from '../../data/picture';
 
 const CheckOutItem = ({item, user_id, count, setCount}) => {
 
@@ -28,7 +29,11 @@ const CheckOutItem = ({item, user_id, count, setCount}) => {
       </div>
     </section>
 
-      <hr className="cart-page-hr"></hr>
+      {/* <hr className="cart-page-hr"></hr> */}
+      <div className='leaf-hr-container'>
+        <img className="leaf-hr" src={pictures.collection[8].imageUrl} />        <img className="leaf-hr" src={pictures.collection[8].imageUrl} />
+      
+      </div>
 
     </>
   )

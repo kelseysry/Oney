@@ -41,6 +41,11 @@ const pictures = {
       "imageNumber":"7",
       "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1644385895/oney/cartt_vowt38.png",
       "title":"cart"
+    },
+    {
+      "imageNumber":"8",
+      "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1644389618/oney/planthr_dawwe0.png",
+      "title":"plantHr"
     }
 
 

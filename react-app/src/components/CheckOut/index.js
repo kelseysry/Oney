@@ -83,7 +83,7 @@ const CheckOut = ({count, setCount}) => {
           <img className="bigLeaf" src={pictures.collection[5].imageUrl} />
           <div>
             {user_id? <Address user_id={user_id}/> : null}
-            <hr className="checkout-hr"></hr>
+            {/* <hr className="checkout-hr"></hr> */}
             <Credit user_id={user_id} />
           </div>
         </div>

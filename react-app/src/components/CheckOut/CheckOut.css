@@ -183,3 +183,19 @@ input[type=number] {
   justify-content: center;
   justify-content: flex-start;
 }
+
+.leaf-hr {
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* width: 200px; */
+  height: 70px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.leaf-hr-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+}
