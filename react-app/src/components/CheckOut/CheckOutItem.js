@@ -18,7 +18,7 @@ const CheckOutItem = ({item, user_id, count, setCount}) => {
       <div className="cart-img-container">
         <img className="cart-item-img-checkout" src={imgUrl} />
       </div>
-      <div>
+      <div className="cart-item-header-quantity-container">
         <div className="cart-item-header">
           {item.products.title}
         </div>
@@ -26,10 +26,9 @@ const CheckOutItem = ({item, user_id, count, setCount}) => {
           <ItemQuantity item={item} count={count} setCount ={setCount}/>
         </div>
       </div>
-
-
     </section>
 
+      <hr className="cart-page-hr"></hr>
 
     </>
   )

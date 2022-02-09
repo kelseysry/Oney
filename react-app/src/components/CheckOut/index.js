@@ -31,6 +31,16 @@ const CheckOut = ({count, setCount}) => {
     cartItems = Object.values(cartItemsObj)
   }
 
+  const prices = cartItems?.map(function(el) {
+    return ((el?.products?.price)*(el?.quantity))
+     }
+  )
+
+  let total = prices?.reduce(function(a,b) {
+    return a + b
+  })
+
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(`/api/products/cart/${user_id}`)
@@ -95,7 +105,11 @@ const CheckOut = ({count, setCount}) => {
               </form>
               <div>
                 <h1>Order Summary</h1>
-
+                <ul>
+                  <li>Items: ${total}</li>
+                  <li>Shipping & handling : $0.00</li>
+                </ul>
+                <h1>Order total: ${total}</h1>
               </div>
             </div>
         :
