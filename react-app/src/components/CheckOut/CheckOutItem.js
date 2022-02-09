@@ -29,11 +29,11 @@ const CheckOutItem = ({item, user_id, count, setCount}) => {
       </div>
     </section>
 
-      {/* <hr className="cart-page-hr"></hr> */}
-      <div className='leaf-hr-container'>
-        <img className="leaf-hr" src={pictures.collection[8].imageUrl} />        <img className="leaf-hr" src={pictures.collection[8].imageUrl} />
-      
-      </div>
+      <hr className="cart-page-hr"></hr>
+      {/* <div className='leaf-hr-container'>
+        <img className="leaf-hr" src={pictures.collection[8].imageUrl} />
+        <img className="leaf-hr" src={pictures.collection[8].imageUrl} />
+      </div> */}
 
     </>
   )
