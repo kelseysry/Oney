@@ -49,15 +49,10 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute> */}
+        
+
         <Route path='/products/:productId' exact={true}>
           <SingleProductPage count={count} setCount ={setCount} open={open} setOpen={setOpen}/>
-
         </Route>
         <ProtectedRoute path='/products/:productId/edit' exact={true}>
           <EditProductForm />
