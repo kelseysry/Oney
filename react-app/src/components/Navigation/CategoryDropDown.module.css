@@ -20,6 +20,7 @@ ul {
 .dropdownWrapper {
   position: relative;
   z-index: 2;
+  /* text-shadow: 5px 3px 3px black; */
 }
 
 .dropdownWrapper .head {
@@ -92,9 +93,10 @@ ul {
   word-break: normal;
   width: 100px;
   text-align: center;
-  font-weight: 600;
-  text-shadow: 1px 1px 1px black;
+  font-weight: 900;
+  text-shadow: 2px 1px 1px rgb(128, 104, 10);
   color: white;
-  font-size: 12px;
+  font-size: 13px;
   padding: 5px 0px;
+  letter-spacing: 2px;
 }
