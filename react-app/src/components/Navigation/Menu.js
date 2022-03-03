@@ -56,14 +56,18 @@ function Menu({count, setCount, open, setOpen}) {
 
       </section>
 
-      <section className="top-nav-icon">
-        <button
-        className="top-nav-button"
-        onClick={() => dispatch(openCart())}>
-          <i className="fas fa-shopping-cart fa-2x"></i>
-        </button>
+    {sessionUser?
 
-      </section>
+    <section className="top-nav-icon">
+    <button
+    className="top-nav-button"
+    onClick={() => dispatch(openCart())}>
+      <i className="fas fa-shopping-cart fa-2x"></i>
+    </button>
+
+    </section>
+      : null
+    }
 
       <div
         className="sidebar"

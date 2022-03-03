@@ -36,9 +36,12 @@ const CheckOut = ({count, setCount}) => {
      }
   )
 
-  let total = prices?.reduce(function(a,b) {
-    return a + b
-  })
+  let total;
+  if(prices?.length > 0) {
+    total = prices?.reduce(function(a,b) {
+      return a + b
+    })
+  }
 
 
   useEffect(() => {
