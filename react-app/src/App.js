@@ -18,6 +18,7 @@ import CategoryPage, { CategoryPageRedirectToPageOne } from './components/Catego
 import CategoryCard from './components/CategoryCard';
 import SearchPage from './components/SearchPage';
 import CheckOut from './components/CheckOut';
+import Menu from './components/Navigation/Menu';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      {/* <Menu count={count} setCount ={setCount} open={open} setOpen={setOpen} /> */}
       <Navigation count={count} setCount ={setCount} open={open} setOpen={setOpen}/>
 
       <main>
@@ -49,7 +51,7 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        
+
 
         <Route path='/products/:productId' exact={true}>
           <SingleProductPage count={count} setCount ={setCount} open={open} setOpen={setOpen}/>
