@@ -45,9 +45,9 @@ const Navigation = ({count, setCount, open, setOpen}) => {
           backgroundImage: `url("${pictures.collection[1].imageUrl}")`
        }}>
         &nbsp;
-        <div className="top-menu-position">
+        <section className="top-menu-position">
           <Menu count={count} setCount ={setCount} open={open} setOpen={setOpen} />
-        </div>
+        </section>
 
         <div className="img-search-container">
         <img src={pictures.collection[0].imageUrl} />

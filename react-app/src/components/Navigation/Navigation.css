@@ -74,10 +74,6 @@ a:hover{
 }
 
 
-.fa-shopping-cart{
-    color: orangered;
-}
-
 .checkout-button{
     border:none;
     background: none;
@@ -137,8 +133,8 @@ a:hover{
 
 .TopMenu {
     position: absolute;
-    /* top: 0; */
-    /* right: 100; */
+    top: 0;
+    right: 0;
     /* bottom: 0;
     width: 300px;
     right: -300px; */
@@ -148,7 +144,7 @@ a:hover{
     z-index: 3;
     overflow-y:auto;
     color: black;
-    width: 1000px;
+    width: 100%;
     background-color: pink;
   }
 
@@ -157,7 +153,18 @@ a:hover{
       /* top: 5px;
       position: absolute;
       right: 10px; */
-      background-color: palegreen;
-      position: left;
+      /* background-color: palegreen; */
       width: 100%;
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .top-nav-icon {
+      padding-right: 15px;
+    }
+
+    .top-nav-button {
+    background: transparent !important;
+    border: none;
+    color: white;
   }

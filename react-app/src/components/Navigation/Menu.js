@@ -43,8 +43,8 @@ function Menu({count, setCount, open, setOpen}) {
 
   return (
     <>
-
-        <button className="" onClick={() => handleOpenNav(openTopNav)}>
+      <section className="top-nav-icon">
+        <button className="top-nav-button" onClick={() => handleOpenNav(openTopNav)}>
           <i class="fas fa-bars fa-2x"></i>
         </button>
 
@@ -54,35 +54,39 @@ function Menu({count, setCount, open, setOpen}) {
         {openTopNav ? <TopMenu /> : null}
       </div>
 
-      <button
-        className="hiUser"
+      </section>
+
+      <section className="top-nav-icon">
+        <button
+        className="top-nav-button"
         onClick={() => dispatch(openCart())}>
-          Cart
+          <i className="fas fa-shopping-cart fa-2x"></i>
         </button>
 
+      </section>
 
-  <div
-    className="sidebar"
-    style={showCart ? { transform: 'translateX(-100%)' } : {}}
-    >
-    <div className="sidebar-header">
-      <button className="arrow-button" onClick={() => {
-        dispatch(closeCart())
-        dispatch(allCartItemsThunk(sessionUser?.id))
+      <div
+        className="sidebar"
+        style={showCart ? { transform: 'translateX(-100%)' } : {}}
+        >
+        <div className="sidebar-header">
+          <button className="arrow-button" onClick={() => {
+            dispatch(closeCart())
+            dispatch(allCartItemsThunk(sessionUser?.id))
 
-        }}>
-      <i className="fas fa-arrow-right"></i>
-      </button>
-    </div>
+            }}>
+          <i className="fas fa-arrow-right"></i>
+          </button>
+        </div>
 
-    {currentCartArr?.length > 0 ?
-        <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
-      :
-      <div>
-        No items in the cart. Start selecting items to purchase.
+        {currentCartArr?.length > 0 ?
+            <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
+          :
+          <div>
+            No items in the cart. Start selecting items to purchase.
+          </div>
+        }
       </div>
-    }
-  </div>
 
 
 
