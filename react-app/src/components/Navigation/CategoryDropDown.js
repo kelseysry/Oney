@@ -67,7 +67,7 @@ function Menu({ category }) {
                         <div
                             className={styles.childSign}
                             style={{
-                            backgroundImage: `url("${pictures.collection[4].imageUrl}")`
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url("${pictures.collection[4].imageUrl}")`
                             }}>
                                 <label className={styles.childLabel}>
                                 {child.short_name}

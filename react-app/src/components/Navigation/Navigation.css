@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@500&display=swap');
+
 .headerDiv{
     margin-left: 100px;
     margin-right: 100px;
@@ -20,7 +22,9 @@
 
 a {
     text-decoration: none;
-    color:orangered;
+    /* color:orangered; */
+    /* color: whitesmoke;
+    text-shadow: 1px 1px 1px black */
 }
 
 a:hover{
@@ -34,6 +38,23 @@ a:hover{
     gap: 30px;
     justify-content: center;
     margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    align-items: center;
+    height: 130px;
+    filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(26, 27, 28, 0.7));
+
+}
+
+.nav2 a {
+    /* color: #d7ae69; */
+    /* color: rgb(242, 169, 12); */
+    color: black;
+    font-size: 25px;
+    /* text-shadow: 0 2px 0 rgb(244, 239, 239); */
+    padding: 10px 10px;
+    border-radius: 10px;
+    /* font-family: 'Press Start 2P', cursive; */
 }
 
 .Oney {
@@ -44,12 +65,18 @@ a:hover{
 }
 
 .hiUser{
-    color:orangered;
+    /* color: rgb(242, 180, 47); */
+    color: black;
+    font-size: 25px;
+    text-shadow: 0 1px 0 rgb(97, 96, 96);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    padding: 10px 10px;
+    border-radius: 10px;
 }
 
-.fa-shopping-cart{
-    color: orangered;
-}
 
 .checkout-button{
     border:none;
@@ -107,3 +134,41 @@ a:hover{
     /* background-position-x: 50%; */
     background-position-y: 24%;
 }
+
+.TopMenu {
+    position: absolute;
+    top: -103px;
+    right: 0;
+    /* bottom: 0;
+    width: 300px;
+    right: -300px; */
+    transition: all 0.2s linear;
+    /* background-color: rgb(239, 239, 239);
+    box-shadow: 0px 0 15px 1px lightgray; */
+    z-index: 3;
+    overflow-y:auto;
+    color: black;
+    width: 100%;
+    /* background-color: pink; */
+  }
+
+
+  .top-menu-position {
+      /* top: 5px;
+      position: absolute;
+      right: 10px; */
+      /* background-color: palegreen; */
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .top-nav-icon {
+      padding-right: 15px;
+    }
+
+    .top-nav-button {
+    background: transparent !important;
+    border: none;
+    color: white;
+  }

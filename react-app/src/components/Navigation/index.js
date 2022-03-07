@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
 import pictures from '../../data/picture';
+import Menu from './Menu';
 
 const Navigation = ({count, setCount, open, setOpen}) => {
 
@@ -35,83 +36,6 @@ const Navigation = ({count, setCount, open, setOpen}) => {
     dispatch(allCartItemsThunk(sessionUser?.id))
   }, [dispatch, open])
 
-  let sessionLinks;
-  if(sessionUser) {
-    sessionLinks = (
-    <>
-
-      <ul className="nav2">
-        <li>
-          <div className="Oney">
-              <NavLink to='/' exact={true} activeClassName='active'>
-                Oney
-              </NavLink>
-            </div>
-        </li>
-        <li>
-          <span className="hiUser"> Welcome {sessionUser.username}! </span>
-        </li>
-        <li>
-          <NavLink to="/check-out">Check Out</NavLink>
-        </li>
-        <li>
-          <button
-          className="hiUser"
-          onClick={() => dispatch(openCart())}>
-            Cart
-          </button>
-        </li>
-        <li>
-          <NavLink to="/new-product">Sell Product</NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
-
-      <div
-        className="sidebar"
-        style={showCart ? { transform: 'translateX(-100%)' } : {}}
-        >
-        <div className="sidebar-header">
-          <button className="arrow-button" onClick={() => {
-            dispatch(closeCart())
-            dispatch(allCartItemsThunk(sessionUser?.id))
-
-            }}>
-          <i className="fas fa-arrow-right"></i>
-          </button>
-        </div>
-
-        {currentCartArr?.length > 0 ?
-            <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
-          :
-          <div>
-            No items in the cart. Start selecting items to purchase.
-          </div>
-        }
-      </div>
-    </>
-
-
-    )
-  } else {
-    sessionLinks = (
-      <ul className="nav2">
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                Sign Up
-          </NavLink>
-        </li>
-      </ul>
-    )
-  }
-
 
   return (
     <div className="">
@@ -121,7 +45,10 @@ const Navigation = ({count, setCount, open, setOpen}) => {
           backgroundImage: `url("${pictures.collection[1].imageUrl}")`
        }}>
         &nbsp;
-        {sessionLinks}
+        <section className="top-menu-position">
+          <Menu count={count} setCount ={setCount} open={open} setOpen={setOpen} />
+        </section>
+
         <div className="img-search-container">
         <img src={pictures.collection[0].imageUrl} />
           <div className="searchForm">
@@ -131,7 +58,6 @@ const Navigation = ({count, setCount, open, setOpen}) => {
       </section>
 
       <section>
-        {/* <img src={pictures.collection[2].imageUrl} /> */}
       <div
         className='categorySkyContainer'
         style={{
