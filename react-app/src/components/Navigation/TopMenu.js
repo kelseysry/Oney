@@ -57,7 +57,7 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
   <>
   {sessionUser?
       <ul className="nav2" style={{
-        backgroundImage: `url("${pictures.collection[2].imageUrl}")`
+        backgroundImage: `url("${pictures.collection[9].imageUrl}")`
      }}>
         <li>
           <div className="Oney">

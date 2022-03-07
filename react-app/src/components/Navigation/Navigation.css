@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@500&display=swap');
+
 .headerDiv{
     margin-left: 100px;
     margin-right: 100px;
@@ -46,11 +48,13 @@ a:hover{
 
 .nav2 a {
     /* color: #d7ae69; */
-    color: rgb(242, 180, 47);
+    /* color: rgb(242, 169, 12); */
+    color: black;
     font-size: 25px;
-    text-shadow: 0 3px 0 rgb(97, 96, 96);
+    /* text-shadow: 0 2px 0 rgb(244, 239, 239); */
     padding: 10px 10px;
     border-radius: 10px;
+    /* font-family: 'Press Start 2P', cursive; */
 }
 
 .Oney {
@@ -61,14 +65,14 @@ a:hover{
 }
 
 .hiUser{
-    color: rgb(242, 180, 47);
+    /* color: rgb(242, 180, 47); */
+    color: black;
     font-size: 25px;
-    /* text-shadow: 0 3px 0 rgb(97, 96, 96); */
+    text-shadow: 0 1px 0 rgb(97, 96, 96);
     background-color: transparent;
     border: none;
     outline: none;
     font-weight: 600;
-    background-color: whitesmoke;
     padding: 10px 10px;
     border-radius: 10px;
 }
@@ -133,7 +137,7 @@ a:hover{
 
 .TopMenu {
     position: absolute;
-    top: -110px;
+    top: -103px;
     right: 0;
     /* bottom: 0;
     width: 300px;

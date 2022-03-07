@@ -46,6 +46,11 @@ const pictures = {
       "imageNumber":"8",
       "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1644389618/oney/planthr_dawwe0.png",
       "title":"plantHr"
+    },
+    {
+      "imageNumber":"9",
+      "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/e_green:0/a_180/v1646691707/khmer_food/oney_tfd80l.png",
+      "title":"pink-background"
     }
 
 
