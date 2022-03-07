@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
-// import pictures from '../../data/picture';
+import pictures from '../../data/picture';
 
 const TopMenu = ({count, setCount, open, setOpen}) => {
 
@@ -35,7 +35,9 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
   let noSessionUser;
 
     noSessionUser = (
-      <ul className="nav2">
+      <ul className="nav2" style={{
+        backgroundImage: `url("${pictures.collection[4].imageUrl}")`
+     }}>
         <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
@@ -54,27 +56,29 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
 
   <>
   {sessionUser?
-      <ul className="nav2">
-      <li>
-        <div className="Oney">
-            <NavLink to='/' exact={true} activeClassName='active'>
-              Oney
-            </NavLink>
-          </div>
-      </li>
-      <li>
-        <span className="hiUser"> Welcome {sessionUser.username}! </span>
-      </li>
-      <li>
-        <NavLink to="/check-out">Check Out</NavLink>
-      </li>
-      
-      <li>
-        <NavLink to="/new-product">Sell Product</NavLink>
-      </li>
-      <li>
-        <LogoutButton />
-      </li>
+      <ul className="nav2" style={{
+        backgroundImage: `url("${pictures.collection[2].imageUrl}")`
+     }}>
+        <li>
+          <div className="Oney">
+              <NavLink to='/' exact={true} activeClassName='active'>
+                Oney
+              </NavLink>
+            </div>
+        </li>
+        <li>
+          <span className="hiUser"> Welcome {sessionUser.username}! </span>
+        </li>
+        <li>
+          <NavLink to="/check-out">Check Out</NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/new-product">Sell Product</NavLink>
+        </li>
+        <li>
+          <LogoutButton />
+        </li>
       </ul>
 
   :
