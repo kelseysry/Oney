@@ -36,7 +36,7 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
 
     noSessionUser = (
       <ul className="nav2" style={{
-        backgroundImage: `url("${pictures.collection[4].imageUrl}")`
+        backgroundImage: `url("${pictures.collection[10].imageUrl}")`
      }}>
         <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
@@ -57,7 +57,7 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
   <>
   {sessionUser?
       <ul className="nav2" style={{
-        backgroundImage: `url("${pictures.collection[9].imageUrl}")`
+        backgroundImage: `url("${pictures.collection[10].imageUrl}")`
      }}>
         <li>
           <div className="Oney">
