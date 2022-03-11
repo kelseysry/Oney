@@ -8,21 +8,22 @@ import { useState, useEffect } from 'react';
 import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
 import pictures from '../../data/picture';
+import * as sessionActions from '../../store/session';
 
 const TopMenu = ({count, setCount, open, setOpen}) => {
 
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState([]);
+
+
   const showCart = useSelector((state) => state.cart.showCart);
 
   const currentCart = useSelector((state) => state.cart.allCartItems)
 
   const sessionUser = useSelector(state=>state.session.user)
 
-  console.log("sessionUser", sessionUser)
 
   let currentCartArr
-
-
 
   if(currentCart) {
     currentCartArr = Object.values(currentCart)
@@ -31,6 +32,18 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
   useEffect(() => {
     dispatch(allCartItemsThunk(sessionUser?.id))
   }, [dispatch, open])
+
+  const handleDemoLogin = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    const email = 'demo@aa.io';
+    const password = 'password';
+    dispatch(sessionActions.login(
+      email, password
+    ))
+  }
+
+
 
   let noSessionUser;
 
@@ -47,6 +60,9 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
                 Sign Up
           </NavLink>
+        </li>
+        <li>
+         <button className="nav-demo-button" onClick={handleDemoLogin} type="submit">Demo</button>
         </li>
       </ul>
     )

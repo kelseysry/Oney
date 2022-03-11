@@ -1,19 +1,15 @@
 .logoutButton{
-    color: black;
-    /* color: rgb(242, 180, 47); */
-    font-size: 25px;
-    text-shadow: 0 1px 0 rgb(97, 96, 96);
-    background-color: transparent;
+    background: transparent !important;
     border: none;
-    outline: none;
+    color: white;
+    font-size: 25px;
+    text-shadow: 0 2px 0 rgb(131, 116, 35);
     font-weight: 600;
-
+    letter-spacing: 1px;
 }
 
 .logoutButton:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-
+    color: black;
 }
 
 /* form styling */
