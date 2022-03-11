@@ -58,11 +58,13 @@ input[type="number"] {
   width: 300px;
   right: -300px;
   transition: all 0.2s linear;
-  background-color: rgb(239, 239, 239);
-  box-shadow: 0px 0 15px 1px lightgray;
+  /* box-shadow: 0px 0 15px 1px lightgray; */
   z-index: 3;
   overflow-y:auto;
   color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(26, 27, 28, 0.7));
 }
 
 
@@ -97,13 +99,13 @@ input[type="number"] {
 }
 
 .arrow-button{
-  background-color: none !important;
   padding: 20px 20px;
   border: none;
+  background: transparent !important;
 }
 
 .fa-arrow-right {
-  color: rgb(226, 153, 26);
+  color: rgb(255, 255, 255);
   font-size: 30px;
 }
 
