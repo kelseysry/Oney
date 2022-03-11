@@ -122,9 +122,9 @@ if(!item) {
     <div className="each-cart-item-container">
       <span className="cart-item-menu">
         <img className="cart-item-img-checkout" src={imgUrl} />
+        {getProductTitle(item?.product_id)}
       </span>
       <div className="cart-item-header">
-        {getProductTitle(item?.product_id)}
       </div>
       <div>
         ${item?.products?.price}

@@ -8,21 +8,22 @@ import { useState, useEffect } from 'react';
 import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
 import pictures from '../../data/picture';
+import * as sessionActions from '../../store/session';
 
 const TopMenu = ({count, setCount, open, setOpen}) => {
 
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState([]);
+
+
   const showCart = useSelector((state) => state.cart.showCart);
 
   const currentCart = useSelector((state) => state.cart.allCartItems)
 
   const sessionUser = useSelector(state=>state.session.user)
 
-  console.log("sessionUser", sessionUser)
 
   let currentCartArr
-
-
 
   if(currentCart) {
     currentCartArr = Object.values(currentCart)
@@ -32,11 +33,23 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
     dispatch(allCartItemsThunk(sessionUser?.id))
   }, [dispatch, open])
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    const email = 'demo@aa.io';
+    const password = 'password';
+    dispatch(sessionActions.login(
+      email, password
+    ))
+  }
+
+
+
   let noSessionUser;
 
     noSessionUser = (
       <ul className="nav2" style={{
-        backgroundImage: `url("${pictures.collection[4].imageUrl}")`
+        backgroundImage: `url("${pictures.collection[10].imageUrl}")`
      }}>
         <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
@@ -48,6 +61,9 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
                 Sign Up
           </NavLink>
         </li>
+        <li>
+         <button className="nav-demo-button" onClick={handleDemoLogin} type="submit">Demo</button>
+        </li>
       </ul>
     )
 
@@ -57,7 +73,7 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
   <>
   {sessionUser?
       <ul className="nav2" style={{
-        backgroundImage: `url("${pictures.collection[9].imageUrl}")`
+        backgroundImage: `url("${pictures.collection[10].imageUrl}")`
      }}>
         <li>
           <div className="Oney">

@@ -41,7 +41,7 @@ function Cart({count, setCount, open, setOpen}) {
   console.log("productObject",productObject)
 
   const sessionUser = useSelector((state) => state.session);
-  const user_id = sessionUser?.user.id
+  const user_id = sessionUser?.user?.id
 
   const [allProducts, setAllProducts] = useState([])
   const allProductsArr = Object.values(allProducts)
@@ -84,8 +84,6 @@ function Cart({count, setCount, open, setOpen}) {
     return a + b
   })
 
-  console.log("priceees", total)
-
 
   const products = Object.values(productObject)
   if (!products.length) return null
@@ -114,15 +112,15 @@ function Cart({count, setCount, open, setOpen}) {
       <ul>
         {cartItems?.map(item => item.id?  <CartItem key={item} item={item} count={count} setCount={setCount}/> :null )}
       </ul>
-      <section>
-        <div>
+      <section className="total-section">
+        <div className="total-cart">
           Total
         </div>
-        <div>
+        <div className="total-cart">
         ${total}
         </div>
+        <button className="purchase-button" type="submit" onClick={handleCheckOutRedirect}>Check Out</button>
       </section>
-      <button className="purchase-button" type="submit" onClick={handleCheckOutRedirect}>Check Out</button>
     </div>
   )
 }

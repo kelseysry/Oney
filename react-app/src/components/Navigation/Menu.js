@@ -8,6 +8,7 @@ import './Navigation.css'
 import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import { useState, useEffect } from 'react';
 import Cart from "../Cart";
+import pictures from '../../data/picture';
 
 function Menu({count, setCount, open, setOpen}) {
 
@@ -71,8 +72,10 @@ function Menu({count, setCount, open, setOpen}) {
 
       <div
         className="sidebar"
-        style={showCart ? { transform: 'translateX(-100%)' } : {}}
+        style={showCart ? { transform: 'translateX(-100%)', backgroundImage: `url("${pictures.collection[10].imageUrl}")` } : {backgroundImage: `url("${pictures.collection[10].imageUrl}")`}}
         >
+
+
         <div className="sidebar-header">
           <button className="arrow-button" onClick={() => {
             dispatch(closeCart())
