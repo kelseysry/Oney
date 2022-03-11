@@ -29,7 +29,7 @@
 .cart-item-menu {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 8px;
 }
@@ -79,18 +79,22 @@ input[type="number"] {
   border: none;
   padding: 10px 10px !important;
   color: white;
-
-
+  margin-top: 20px;
+  font-size: 25px;
+  text-shadow: 0 2px 0 rgb(131, 116, 35);
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 
 .cart-hr {
   border: none;
-  border-top: 5px solid #e1d9c5;
+  border-top: 3px solid #ffffff;
   color: #e6e6e6;
   overflow: visible;
   text-align: center;
   height: 5px;
+  margin-top: 30px;
   padding: 0px 0px !important;
 }
 
@@ -109,8 +113,20 @@ input[type="number"] {
   font-size: 30px;
 }
 
-.fa-minus-square, .fa-plus-square{
+.fa-minus-square, .fa-plus-square, .fa-trash-alt{
   color: rgb(226, 153, 26) !important;
   font-size: 20px;
+  text-shadow: 0 3px 0 rgb(240, 239, 234);
+}
 
+.total-cart {
+  color: rgb(226, 153, 26) ;
+  font-size: 25px;
+  text-shadow: 0 3px 0 rgb(240, 239, 234);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.total-section {
+  padding-left: 15px;
 }
