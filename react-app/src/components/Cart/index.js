@@ -41,7 +41,7 @@ function Cart({count, setCount, open, setOpen}) {
   console.log("productObject",productObject)
 
   const sessionUser = useSelector((state) => state.session);
-  const user_id = sessionUser?.user.id
+  const user_id = sessionUser?.user?.id
 
   const [allProducts, setAllProducts] = useState([])
   const allProductsArr = Object.values(allProducts)
