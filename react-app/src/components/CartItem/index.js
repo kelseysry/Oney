@@ -142,9 +142,7 @@ if(!item) {
           {getProductTitle(item?.product_id)}
         </div>
       </div>
-      <div className='cart-price'>
-        {/* ${item?.products?.price} */}
-      </div>
+
 
       <section className='quantity-add-subtract'>
         {

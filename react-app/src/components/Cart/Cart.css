@@ -6,7 +6,6 @@
 .cart-item-button {
   min-width: 24px;
   height: 24px;
-  margin-left: 8px;
   border: none;
 }
 
@@ -27,11 +26,10 @@
 }
 
 .cart-item-menu {
-  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 30px;
 }
 
 .cart button[type="submit"] {
@@ -40,10 +38,7 @@
   padding: 0 16px;
 }
 
-.cart form {
-  display: flex;
-  justify-content: flex-end;
-}
+
 
 input[type="number"] {
   -moz-appearance: textfield;
@@ -73,7 +68,7 @@ input[type="number"] {
 }
 
 .purchase-button {
-  background-color: rgb(226, 153, 26);
+  background-color: rgb(249 169 11);
   border-radius: 10px;
   border: none;
   padding: 10px 10px !important;
@@ -115,13 +110,13 @@ input[type="number"] {
 }
 
 .fa-minus-square, .fa-plus-square {
-  color: rgb(226, 153, 26) !important;
-  font-size: 20px;
-  text-shadow: 0 3px 0 rgb(240, 239, 234);
+  color: rgb(249 169 11) !important;
+  font-size: 25px;
+  filter: drop-shadow(0.2rem 0.1rem 0.1rem rgba(255, 255, 255, 0.968));
 }
 
 .total-cart {
-  color: rgb(226, 153, 26) ;
+  color: rgb(249 169 11) !important;
   font-size: 25px;
   text-shadow: 0 3px 0 rgb(240, 239, 234);
   font-weight: 600;
@@ -164,4 +159,6 @@ input[type="number"] {
 
 .trash-cart-item {
   padding-bottom: 5px;
+  display: flex;
+  justify-content: flex-end;
 }
