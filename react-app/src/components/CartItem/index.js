@@ -56,21 +56,19 @@ function CartItem({ item, count, setCount}) {
   }
 
   const productsArray = Object?.values(products)
-  // console.log("productsArray",productsArray)
   const getProductTitle = (item_id) => {
     const productTitle = allProductsArr.filter(function(el){
 
       return el.id === item_id
     });
     if (getProductTitle) {
-      if(productTitle[0]?.title.length > 6) {
+      if(productTitle[0]?.title.length > 10) {
         let shorterTitleArr = productTitle[0]?.title.split(' ')
-        let shorterTitle = shorterTitleArr.slice(0,6).join(' ')
+        let shorterTitle = shorterTitleArr.slice(0,10).join(' ')
         return `${shorterTitle}...`
       } else {
         return productTitle[0]?.title
       }
-      // return productTitle[0]?.title.slice(0,50)
     }
     else {
       return null
@@ -120,10 +118,10 @@ if(!item) {
   return null
 }
 
-
   return (
-    <div className="each-cart-item-container">
-      <div className="cart-iem-menu">
+
+    <section className="each-cart-item-container">
+      <div className="cart-item-menu">
         <img className="cart-item-img-checkout" src={imgUrl} />
         <div className="cart-item-header">
           {getProductTitle(item?.product_id)}
@@ -180,7 +178,7 @@ if(!item) {
 
 
 
-      </div>
+      </section>
   )
 }
 

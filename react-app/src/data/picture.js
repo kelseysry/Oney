@@ -56,6 +56,11 @@ const pictures = {
       "imageNumber":"10",
       "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1647025629/oney/Screen_Shot_2022-03-11_at_11.06.28_AM_jiivvj.png",
       "title":"green-background"
+    },
+    {
+      "imageNumber":"11",
+      "imageUrl":"https://res.cloudinary.com/mabmab/image/upload/v1647116691/oney/Screen_Shot_2022-03-12_at_12.24.38_PM_cspha9.png",
+      "title":"darker green background"
     }
 
 
