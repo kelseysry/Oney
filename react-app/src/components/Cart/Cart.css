@@ -58,6 +58,7 @@ input[type="number"] {
   color: black;
   background-size: cover;
   filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(26, 27, 28, 0.7));
+  padding-bottom: 30px;
 }
 
 
@@ -71,13 +72,15 @@ input[type="number"] {
   background-color: rgb(249 169 11);
   border-radius: 10px;
   border: none;
-  padding: 10px 10px !important;
+  padding: 13px 10px !important;
   color: white;
   margin-top: 20px;
   font-size: 25px;
   text-shadow: 0 2px 0 rgb(131, 116, 35);
   font-weight: 600;
   letter-spacing: 1px;
+  width: 100%;
+  padding-bottom: 50px;
 }
 
 
@@ -116,11 +119,14 @@ input[type="number"] {
 }
 
 .total-cart {
-  color: rgb(249 169 11) !important;
+  color: whitesmoke;
   font-size: 25px;
-  text-shadow: 0 3px 0 rgb(240, 239, 234);
+  text-shadow: 0 3px 0 rgb(249 169 11);
   font-weight: 600;
   letter-spacing: 1px;
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .total-section {
@@ -150,7 +156,7 @@ input[type="number"] {
   font-weight: 600;
   letter-spacing: 1px;
   padding: 10px 0px;
-  padding-right: 10px;
+  padding-left: 15px;
 }
 
 .fa-times-circle {

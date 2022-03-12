@@ -184,7 +184,7 @@ if(!item) {
               </button> */}
 
               <span className='cart-price'>
-              ${item?.products?.price}
+              ${item?.products?.price * quantity}
             </span>
 
             </div>

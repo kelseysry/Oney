@@ -188,13 +188,13 @@ input[type=number] {
   height: 50px;
 }
 
-/* 
-.cart-item-header {
+
+.cart-item-header-check-out {
   text-decoration: none;
-  color: whitesmoke;
+  color: black;
   text-shadow: #222222;
   transition: opacity 200ms ease-out;
   padding-top: 10px;
   padding-left: 10px;
   width: 300px;
-} */
+}

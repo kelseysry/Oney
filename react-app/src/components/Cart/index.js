@@ -114,11 +114,14 @@ function Cart({count, setCount, open, setOpen}) {
       </ul>
       <section className="total-section">
         <div className="total-cart">
-          Total
+          <span>
+            Total
+          </span>
+          <span>
+          ${total}
+          </span>
         </div>
-        <div className="total-cart">
-        ${total}
-        </div>
+
         <button className="purchase-button" type="submit" onClick={handleCheckOutRedirect}>Check Out</button>
       </section>
     </div>
