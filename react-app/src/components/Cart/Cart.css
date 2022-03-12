@@ -68,7 +68,8 @@ input[type="number"] {
 
 
 .fa-trash-alt {
-  color: rgb(226, 153, 26) !important;
+  /* color: rgb(226, 153, 26) !important; */
+  color: white;
 }
 
 .purchase-button {
@@ -113,7 +114,7 @@ input[type="number"] {
   font-size: 30px;
 }
 
-.fa-minus-square, .fa-plus-square, .fa-trash-alt{
+.fa-minus-square, .fa-plus-square {
   color: rgb(226, 153, 26) !important;
   font-size: 20px;
   text-shadow: 0 3px 0 rgb(240, 239, 234);
@@ -136,16 +137,31 @@ input[type="number"] {
 }
 
 
-.cart-item-header {
+.cart-item-header{
   text-decoration: none;
   color: whitesmoke;
-  /* text-shadow: #222222; */
-  transition: opacity 200ms ease-out;
-  /* padding-top: 1px; */
   padding-left: 15px;
-  color: white;
   font-size: 20px;
   text-shadow: 0 1px 0 rgb(131 116 35);
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+
+.cart-price {
+  color: white;
+  font-size: 25px;
+  text-shadow: 0 1px 0 rgb(131 116 35);
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 10px 0px;
+  padding-right: 10px;
+}
+
+.fa-times-circle {
+  color: white;
+}
+
+.trash-cart-item {
+  padding-bottom: 5px;
 }

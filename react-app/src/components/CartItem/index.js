@@ -121,14 +121,29 @@ if(!item) {
   return (
 
     <section className="each-cart-item-container">
+
+      <div className='trash-cart-item'>
+        {
+        item.id && user_id == item.user_id &&
+        <form>
+        <button
+            className="cart-item-button"
+            onClick={handleDeleteCartItem}
+          >
+            <i class="fas fa-times-circle fa-2x"></i>
+          </button>
+        </form>
+        }
+      </div>
+
       <div className="cart-item-menu">
         <img className="cart-item-img-checkout" src={imgUrl} />
         <div className="cart-item-header">
           {getProductTitle(item?.product_id)}
         </div>
       </div>
-      <div>
-        ${item?.products?.price}
+      <div className='cart-price'>
+        {/* ${item?.products?.price} */}
       </div>
 
       <section className='quantity-add-subtract'>
@@ -137,6 +152,7 @@ if(!item) {
           <>
           <form>
             <div className="cart-item-menu">
+
 
               <label>
                   <input
@@ -162,12 +178,16 @@ if(!item) {
                 <i className="fas fa-minus-square"></i>
               </button>
 
-              <button
+              {/* <button
                 className="cart-item-button"
                 onClick={handleDeleteCartItem}
               >
                 <i className="fas fa-trash-alt"></i>
-              </button>
+              </button> */}
+
+              <span className='cart-price'>
+              ${item?.products?.price}
+            </span>
 
             </div>
           </form>
