@@ -63,8 +63,14 @@ function CartItem({ item, count, setCount}) {
       return el.id === item_id
     });
     if (getProductTitle) {
-      console.log("productTitle",productTitle)
-      return productTitle[0]?.title
+      if(productTitle[0]?.title.length > 6) {
+        let shorterTitleArr = productTitle[0]?.title.split(' ')
+        let shorterTitle = shorterTitleArr.slice(0,6).join(' ')
+        return `${shorterTitle}...`
+      } else {
+        return productTitle[0]?.title
+      }
+      // return productTitle[0]?.title.slice(0,50)
     }
     else {
       return null
@@ -83,7 +89,6 @@ function CartItem({ item, count, setCount}) {
      let editItem = {
       id, user_id, product_id, quantity
     }
-    console.log("handlesubmit", editItem, quantity)
     dispatch(updateCartThunk(editItem, id, user_id))
     setCount(count +=1)
   }
@@ -116,63 +121,62 @@ if(!item) {
 }
 
 
-  // console.log("item in cart item", item)
-
   return (
     <div className="each-cart-item-container">
-      <span className="cart-item-menu">
+      <div className="cart-iem-menu">
         <img className="cart-item-img-checkout" src={imgUrl} />
-        {getProductTitle(item?.product_id)}
-      </span>
-      <div className="cart-item-header">
+        <div className="cart-item-header">
+          {getProductTitle(item?.product_id)}
+        </div>
       </div>
       <div>
         ${item?.products?.price}
       </div>
-      {
-        item.id && user_id == item.user_id &&
-        <>
-        <form>
-          <div className="cart-item-menu">
 
-            <label>
-                <input
-                  className="quantity"
-                  type="number"
-                  placeholder="quantity"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
-            </label>
+      <section className='quantity-add-subtract'>
+        {
+          item.id && user_id == item.user_id &&
+          <>
+          <form>
+            <div className="cart-item-menu">
 
-            <button
-            className="cart-item-button"
-              onClick={handleIncreaseQuantity}
-            >
-              <i className="fas fa-plus-square"></i>
-            </button>
+              <label>
+                  <input
+                    className="quantity"
+                    type="number"
+                    placeholder="quantity"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                  />
+              </label>
 
-            <button
-            className="cart-item-button"
-              onClick={handleDecreaseQuantity}
-            >
-              <i className="fas fa-minus-square"></i>
-            </button>
-
-            <button
+              <button
               className="cart-item-button"
-              onClick={handleDeleteCartItem}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </button>
+                onClick={handleIncreaseQuantity}
+              >
+                <i className="fas fa-plus-square"></i>
+              </button>
 
-          </div>
-        </form>
-        <hr className="cart-hr"></hr>
-        </>
+              <button
+              className="cart-item-button"
+                onClick={handleDecreaseQuantity}
+              >
+                <i className="fas fa-minus-square"></i>
+              </button>
 
+              <button
+                className="cart-item-button"
+                onClick={handleDeleteCartItem}
+              >
+                <i className="fas fa-trash-alt"></i>
+              </button>
 
-      }
+            </div>
+          </form>
+          <hr className="cart-hr"></hr>
+          </>
+        }
+      </section>
 
 
 

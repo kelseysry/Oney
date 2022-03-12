@@ -55,8 +55,8 @@ input[type="number"] {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 300px;
-  right: -300px;
+  width: 400px;
+  right: -400px;
   transition: all 0.2s linear;
   /* box-shadow: 0px 0 15px 1px lightgray; */
   z-index: 3;
@@ -100,6 +100,8 @@ input[type="number"] {
 
 .each-cart-item-container {
   padding: 8px 8px !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .arrow-button{
@@ -129,4 +131,23 @@ input[type="number"] {
 
 .total-section {
   padding-left: 15px;
+}
+
+
+.quantity-add-subtract {
+}
+
+
+.cart-item-header {
+  text-decoration: none;
+  color: whitesmoke;
+  /* text-shadow: #222222; */
+  transition: opacity 200ms ease-out;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: white;
+  font-size: 20px;
+  text-shadow: 0 1px 0 rgb(131 116 35);
+  font-weight: 600;
+  letter-spacing: 1px;
 }
