@@ -20,7 +20,7 @@ const CheckOutItem = ({item, user_id, count, setCount}) => {
         <img className="cart-item-img-checkout" src={imgUrl} />
       </div>
       <div className="cart-item-header-quantity-container">
-        <div className="cart-item-header">
+        <div className="cart-item-header-check-out">
           {item.products.title}
         </div>
         <div className="cart-item-quantity">

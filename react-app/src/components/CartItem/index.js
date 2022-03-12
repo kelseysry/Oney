@@ -56,15 +56,19 @@ function CartItem({ item, count, setCount}) {
   }
 
   const productsArray = Object?.values(products)
-  // console.log("productsArray",productsArray)
   const getProductTitle = (item_id) => {
     const productTitle = allProductsArr.filter(function(el){
 
       return el.id === item_id
     });
     if (getProductTitle) {
-      console.log("productTitle",productTitle)
-      return productTitle[0]?.title
+      if(productTitle[0]?.title.length > 10) {
+        let shorterTitleArr = productTitle[0]?.title.split(' ')
+        let shorterTitle = shorterTitleArr.slice(0,10).join(' ')
+        return `${shorterTitle}...`
+      } else {
+        return productTitle[0]?.title
+      }
     }
     else {
       return null
@@ -83,7 +87,6 @@ function CartItem({ item, count, setCount}) {
      let editItem = {
       id, user_id, product_id, quantity
     }
-    console.log("handlesubmit", editItem, quantity)
     dispatch(updateCartThunk(editItem, id, user_id))
     setCount(count +=1)
   }
@@ -115,68 +118,85 @@ if(!item) {
   return null
 }
 
-
-  // console.log("item in cart item", item)
-
   return (
-    <div className="each-cart-item-container">
-      <span className="cart-item-menu">
-        <img className="cart-item-img-checkout" src={imgUrl} />
-        {getProductTitle(item?.product_id)}
-      </span>
-      <div className="cart-item-header">
-      </div>
-      <div>
-        ${item?.products?.price}
-      </div>
-      {
+
+    <section className="each-cart-item-container">
+
+      <div className='trash-cart-item'>
+        {
         item.id && user_id == item.user_id &&
-        <>
         <form>
-          <div className="cart-item-menu">
-
-            <label>
-                <input
-                  className="quantity"
-                  type="number"
-                  placeholder="quantity"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
-            </label>
-
-            <button
+        <button
             className="cart-item-button"
-              onClick={handleIncreaseQuantity}
-            >
-              <i className="fas fa-plus-square"></i>
-            </button>
-
-            <button
-            className="cart-item-button"
-              onClick={handleDecreaseQuantity}
-            >
-              <i className="fas fa-minus-square"></i>
-            </button>
-
-            <button
-              className="cart-item-button"
-              onClick={handleDeleteCartItem}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </button>
-
-          </div>
+            onClick={handleDeleteCartItem}
+          >
+            <i class="fas fa-times-circle fa-2x"></i>
+          </button>
         </form>
-        <hr className="cart-hr"></hr>
-        </>
-
-
-      }
-
-
-
+        }
       </div>
+
+      <div className="cart-item-menu">
+        <img className="cart-item-img-checkout" src={imgUrl} />
+        <div className="cart-item-header">
+          {getProductTitle(item?.product_id)}
+        </div>
+      </div>
+
+
+      <section className='quantity-add-subtract'>
+        {
+          item.id && user_id == item.user_id &&
+          <>
+          <form>
+            <div className="cart-item-menu">
+
+
+              <label>
+                  <input
+                    className="quantity"
+                    type="number"
+                    placeholder="quantity"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                  />
+              </label>
+
+              <button
+              className="cart-item-button"
+                onClick={handleIncreaseQuantity}
+              >
+                <i className="fas fa-plus-square"></i>
+              </button>
+
+              <button
+              className="cart-item-button"
+                onClick={handleDecreaseQuantity}
+              >
+                <i className="fas fa-minus-square"></i>
+              </button>
+
+              {/* <button
+                className="cart-item-button"
+                onClick={handleDeleteCartItem}
+              >
+                <i className="fas fa-trash-alt"></i>
+              </button> */}
+
+              <span className='cart-price'>
+              ${item?.products?.price * quantity}
+            </span>
+
+            </div>
+          </form>
+          <hr className="cart-hr"></hr>
+          </>
+        }
+      </section>
+
+
+
+      </section>
   )
 }
 

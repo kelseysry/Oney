@@ -72,7 +72,7 @@ function Menu({count, setCount, open, setOpen}) {
 
       <div
         className="sidebar"
-        style={showCart ? { transform: 'translateX(-100%)', backgroundImage: `url("${pictures.collection[10].imageUrl}")` } : {backgroundImage: `url("${pictures.collection[10].imageUrl}")`}}
+        style={showCart ? { transform: 'translateX(-100%)', backgroundImage: `url("${pictures.collection[11].imageUrl}")` } : {backgroundImage: `url("${pictures.collection[10].imageUrl}")`}}
         >
 
 
