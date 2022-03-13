@@ -11,7 +11,10 @@
 
   .productPrice {
       font-weight: bold;
-      color: black !important;
+      color: white !important;
+      text-shadow: 0 2px 0 rgb(131, 116, 35);
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
   .productTitle {
@@ -22,7 +25,10 @@
     text-overflow: ellipsis;
     font-weight: normal;
     padding-bottom: 10px;
-    color: black !important;
+    color: white !important;
+    text-shadow: 0 2px 0 rgb(131, 116, 35);
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 
   .productImage {
@@ -37,5 +43,5 @@
 
 .prod:hover {
   opacity: 1;
-  transform: scale(1.02);
+  transform: scale(1.1);
 }
