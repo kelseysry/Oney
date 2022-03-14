@@ -6,7 +6,7 @@ export default function Footer () {
     <footer>
       <div className={styles.madeby}>
         <a target="_blank" href="https://github.com/ily123/oney" rel="noreferrer">
-          <i className="fab fa-github-square" />
+          {/* <i className="fab fa-github-square" /> */}
         </a>
         Oney was made by
       </div>
