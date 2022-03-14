@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import {getTop20Products,clearProducts} from "../../store/product"
 import ProductCard from '../ProductCard'
 import './Top20Products.css'
+import pictures from "../../data/picture";
 
 const Top20Products = () => {
     const products = useSelector((state)=> Object.values(state.product))
@@ -20,9 +21,9 @@ const Top20Products = () => {
     else {
         return (
             <div>
-                <div className="nameTag">
-                    Our top picks for you
-                </div>
+
+                <img className="nameTag" src={pictures.collection[12].imageUrl} />
+
                 <div className='topProducts'>
                     {products?.map(({id,price,images,title})=>(
                         <ProductCard

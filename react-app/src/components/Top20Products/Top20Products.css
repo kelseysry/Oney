@@ -1,3 +1,5 @@
+
+
 .topProducts {
     margin-left: 100px;
     margin-right: 100px;
@@ -9,10 +11,6 @@
   }
 
 .nameTag {
-  margin-top: 30px;
-  margin-left: 150px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  font-size: 1.5em;
+  width: 500px;
+  padding-left: 100px;
 }
