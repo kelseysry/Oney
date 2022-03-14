@@ -55,3 +55,10 @@ def delete_review(id, product_id):
       return "deleted"
     else:
       return "401"
+
+
+# get all ratings for a product
+@review_routes.route('/<int:product_id>/ratings', methods=['GET'])
+def get_ratings(product_id):
+  reviews = Review.query.filter(Review.product_id == product_id).all()
+  return {review.id: review.rating for review in reviews}

@@ -46,3 +46,11 @@
   opacity: 1;
   transform: scale(1.1);
 }
+
+.fa-star {
+  color: white;
+}
+
+.product-ratings {
+  padding: 8px 0px;
+}
