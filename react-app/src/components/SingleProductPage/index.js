@@ -7,6 +7,7 @@ import HideReviewForm from '../HideReviewForm';
 import { updateCartThunk,addToCartThunk, allCartItemsThunk } from '../../store/cart';
 
 import { openCart, closeCart } from '../../store/cart';
+import ProductRating from '../ProductCard/ProductRating';
 
 function SingleProductPage({count, setCount, open, setOpen}){
     const history = useHistory();
@@ -51,6 +52,29 @@ function SingleProductPage({count, setCount, open, setOpen}){
         }
         fetchData();
       },[allProductsArr.length, count])
+
+
+      const [ratings, setRatings] = useState([])
+
+      useEffect(() => {
+          async function fetchData() {
+            const response = await fetch(`/api/products/${productId}/ratings`);
+            const responseData = await response.json();
+            setRatings(responseData);
+          }
+          fetchData();
+        }, []);
+
+        let productRatings;
+        if(ratings) {
+            productRatings = Object.values(ratings)
+
+        }
+
+      let average = Math.floor(productRatings.reduce((a,b) => a+b, 0)/ productRatings.length)
+
+        console.log("average", average)
+
 
 
     const [largeSelectedImg, setLargeSelectedImg] = useState(0);
@@ -161,7 +185,10 @@ function SingleProductPage({count, setCount, open, setOpen}){
                         </h1>
                     </div>
                     <div>
-                        <p className='productPrice'>${product[0]?.price}</p>
+                        <p className='singleProductPrice'>${product[0]?.price}</p>
+                    </div>
+                    <div className='single-rating-page'>
+                        {<ProductRating average={average} ratings={ratings}/>}
                     </div>
                     <div className='descriptionDiv'>
                         <p className='descriptionTitle'>Description</p>

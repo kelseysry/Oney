@@ -47,10 +47,11 @@
   transform: scale(1.1);
 }
 
-.fa-star {
+.product-ratings  {
+  padding: 8px 0px;
   color: white;
 }
 
-.product-ratings {
-  padding: 8px 0px;
+.single-rating-page div{
+  color: rgb(89 170 209) !important;
 }

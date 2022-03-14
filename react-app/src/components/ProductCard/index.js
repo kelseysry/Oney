@@ -25,7 +25,6 @@ const ProductCard = ({id,price,images,title}) => {
 
     let average = Math.floor(productRatings.reduce((a,b) => a+b, 0)/ productRatings.length)
 
-      console.log("average", average)
 
     let image = images[0]?.url_570xN
 
@@ -43,7 +42,7 @@ const ProductCard = ({id,price,images,title}) => {
                         <img className= 'productImage' src={image} alt="Product"/>
                         <span className='productTitle'>{title}</span>
                         <span className='productPrice'>${price}</span>
-                        {<ProductRating average={average} ratings={ratings}/>}
+                            {<ProductRating average={average} ratings={ratings}/>}
                     </div>
                 </NavLink>
                 </div>
