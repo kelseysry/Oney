@@ -89,8 +89,11 @@ function Menu({count, setCount, open, setOpen}) {
         {currentCartArr?.length > 0 ?
             <Cart count={count} setCount={setCount} open={open} setOpen={setOpen}/>
           :
-          <div>
+          <div className='no-items-cart'>
             No items in the cart. Start selecting items to purchase.
+            <div>
+              <img className="no-items-pic" src={pictures.collection[7].imageUrl} />
+            </div>
           </div>
         }
       </div>

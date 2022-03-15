@@ -182,3 +182,23 @@ a:hover{
 .nav-demo-button:hover {
     color: black;
 }
+
+.no-items-cart {
+    color: whitesmoke;
+    padding-left: 15px;
+    font-size: 20px;
+    text-shadow: 0 1px 0 rgb(131 116 35);
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: auto;
+}
+
+.no-items-pic {
+    width: 200px;
+}
