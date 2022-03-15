@@ -19,9 +19,13 @@
   background-color: rgb(226, 153, 26);
   border-radius: 10px;
   border: none;
-  padding: 10px 10px;
+  padding: 15px 10px;
   color: white;
-
+  width: 500px;
+  font-weight: 600;
+  /* text-shadow: 2px 3px 3px black; */
+  color: white;
+  font-size: 18px;
 }
 
 .review-container {
@@ -32,6 +36,8 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+
 ul {
   list-style-type: none;
 }
@@ -39,10 +45,17 @@ ul {
 .userIcon-username-date {
   display:flex;
   align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
 }
 
 .review-padding {
-  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.review-username {
+  padding-left: 5px;
 }
 
 .star-dot-dot {
@@ -50,7 +63,7 @@ ul {
   flex-direction: row;
   align-items: center;
   justify-content: space-between !important;
-  width: 300px;
+  width: 500px;
 }
 
 .all-review-container {

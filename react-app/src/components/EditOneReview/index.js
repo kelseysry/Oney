@@ -4,7 +4,8 @@ import { useParams } from "react-router";
 import { useHistory } from 'react-router';
 import { getOneProduct } from '../../store/product';
 import { editOneReview } from '../../store/review';
-
+import pictures from '../../data/picture';
+import '../CreateReview/Review.css'
 // will need to thread the review the user is passing in from the SingleBusinessPage component
 const EditOneReview = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const EditOneReview = () => {
   const { id } = useParams();
 
   const review = useSelector((state) => state.review[id])
-
+  const [hover, setHover] = useState(review?.rating);
   const [rating, setRating] = useState(review?.rating);
   const [content, setContent] = useState(review?.content);
   const [errors, setErrors] = useState([]);
@@ -28,8 +29,6 @@ const EditOneReview = () => {
   useEffect(()=>{
     dispatch(getOneProduct(productId))
 }, [dispatch, productId])
-
-
 
   // get all reviews
    let product_id = productId
@@ -69,22 +68,39 @@ const EditOneReview = () => {
     history.push(`/products/${productId}`)
   }
 
-  return (
-  <>
-    <div>
-      <div>Edit Review</div>
-    </div>
-    <form className="submit-review" onSubmit={handleSubmit}>
+  // const handleClick = () => {
+  //   if(rating === 1) {
+  //     setRating(0);
+  //   }
+  // }
 
-          <label>
-              <input
-                type="number"
-                placeholder="rating"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
+
+  return (
+  <section className='edit-review-container'>
+
+    <img className="edit-review-title" src={pictures.collection[13].imageUrl} />
+    <div className='edit-review-form-container'>
+
+    <form className="submit-review" onSubmit={handleSubmit}>
+          <div className="ratings-hover">
+          {Array(5).fill(<i className="fas fa-star fa-2x"></i>).map((ele, idx) => {
+            idx += 1;
+            return (
+              <span
+                key={idx}
+                className={idx <= (hover || rating) ? "color" : "noColor"}
+                onClick={() => {
+                  setRating(idx)
+                }}
+                onMouseEnter={() => setHover(idx)}
+                onMouseLeave={() => setHover(rating)}
               >
-              </input>
-          </label>
+                <span className={idx <= (hover || rating) ? "color" : "noColor"}><i className="fas fa-star fa-2x"></i> </span>
+              </span>
+            );
+          })}
+        </div>
+
           <label>
               <input
                 placeholder="content"
@@ -103,7 +119,8 @@ const EditOneReview = () => {
           </span>
           <button className="submit-cancel-review-button" type="button" onClick={handleCancelReviewFormClick}>Cancel</button>
         </form>
-    </>
+    </div>
+    </section>
   )
 
 }

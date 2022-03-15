@@ -54,7 +54,7 @@ const AllReviews = ({product}) => {
         const usernameDisplay = users?.filter(function(el){
           return el.id === user_id
          });
-     
+
         if (usernameDisplay) {
          return usernameDisplay[0]?.username
         }
@@ -72,13 +72,13 @@ const AllReviews = ({product}) => {
             <div className="userIcon-username-date">
               <div className="review-padding">
                 <i className="fas fa-user-circle fa-2x"></i>
+                <div className="review-username">
+                  {
+                    getUserName(review.user_id)
+                  }
+                </div>
               </div>
 
-              <div className="review-padding">
-                {
-                  getUserName(review.user_id)
-                }
-              </div>
 
               <div>
                 {review.created_at}

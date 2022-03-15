@@ -1,0 +1,42 @@
+
+.color {
+  color: rgb(226, 153, 26);
+}
+
+
+.noColor {
+  color: wheat;
+}
+
+.ratings-hover button {
+  border: none;
+  background-color: transparent;
+}
+
+.submit-review input {
+  margin: 15px 10px;
+  border-radius: 5px;
+}
+
+.reviewsDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.edit-review-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.edit-review-title {
+  width: 500px;
+}
+
+.edit-review-form-container {
+  width: 30%;
+  padding: 20px 20px;
+}

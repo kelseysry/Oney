@@ -3,13 +3,17 @@ import { useDispatch} from 'react-redux';
 import { createOneReview } from "../../store/review";
 import { useSelector } from "react-redux";
 import {useParams} from 'react-router-dom';
+import './Review.css'
 
 // need to add hideForm and hideButton inside of SingleProductPage
 const ReviewForm = ({hideForm, hideButton}) => {
 
   const [content, setContent] = useState('');
+  const [hover, setHover] = useState(0);
   const [rating, setRating] = useState('');
   const [errors, setErrors] = useState([])
+
+
   const dispatch = useDispatch();
 
   const {productId} = useParams();
@@ -50,12 +54,19 @@ const ReviewForm = ({hideForm, hideButton}) => {
     hideButton();
   }
 
+  const handleClick = () => {
+    if(rating === 1) {
+      setRating(0);
+    }
+  }
+
+
 
   return (
     <>
         <form className="submit-review" onSubmit={handleSubmit}>
 
-          <label>
+          {/* <label>
               <input
                 type="number"
                 placeholder="rating"
@@ -63,10 +74,34 @@ const ReviewForm = ({hideForm, hideButton}) => {
                 onChange={(e) => setRating(e.target.value)}
               >
               </input>
-          </label>
+          </label> */}
+
+          <div className="ratings-hover">
+          {Array(5).fill(<i className="fas fa-star fa-2x"></i>).map((ele, idx) => {
+            idx += 1;
+            return (
+              <button
+                key={idx}
+                className={idx <= (hover || rating) ? "color" : "noColor"}
+                onClick={() => {
+                  setRating(idx)
+                  handleClick()
+
+                }}
+                onMouseEnter={() => setHover(idx)}
+                onMouseLeave={() => setHover(rating)}
+              >
+                <span className={idx <= (hover || rating) ? "color" : "noColor"}><i className="fas fa-star fa-2x"></i> </span>
+              </button>
+            );
+          })}
+        </div>
+
+
           <label>
               <input
-                placeholder="content"
+                className='review-container'
+                placeholder="give an honest review about the product!"
                 type="text"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}

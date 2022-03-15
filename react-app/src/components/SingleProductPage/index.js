@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { getOneProduct, deleteProduct, clearProducts} from '../../store/product'
 import './singleProduct.css'
+import '../CreateReview/Review.css'
 import HideReviewForm from '../HideReviewForm';
 import { updateCartThunk,addToCartThunk, allCartItemsThunk } from '../../store/cart';
 
@@ -159,11 +160,6 @@ function SingleProductPage({count, setCount, open, setOpen}){
 
     return(
         <div>
-            <div className='editBackBtnDiv'>
-                <NavLink to={`/`}
-                className='editProdCancel singleProdBack'
-                >Back to Main</NavLink>
-            </div>
             <div className='mainImagesBox'>
                 <div className='smallImagesBox'>
                     {images.length ?

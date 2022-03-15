@@ -21,6 +21,7 @@
 .mainImagesBox {
   display: flex;
   margin-top: 20px;
+  justify-content: center;
 }
 /* itemInformation box */
 .itemInfoBox {
@@ -38,15 +39,16 @@
   font-style: normal;
   font-weight: 500;
   margin-top: 0px;
+  width: 400px;
 }
 
 .singleProductPrice {
   font-weight: bold;
 }
 
-.descriptionDiv {
+/* .descriptionDiv {
   width: 275px;
-}
+} */
 
 .descriptionTitle {
   margin-top: 0px;
@@ -54,13 +56,15 @@
 
 .productDescParagraph {
   max-height: 160px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: scroll; /* Show vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  width: 400px;
 }
 
-.productDescParagraph::-webkit-scrollbar {
+
+/* .productDescParagraph::-webkit-scrollbar {
   display: none;
-}
+} */
 
 
 
