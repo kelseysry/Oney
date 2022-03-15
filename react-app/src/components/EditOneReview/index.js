@@ -4,7 +4,8 @@ import { useParams } from "react-router";
 import { useHistory } from 'react-router';
 import { getOneProduct } from '../../store/product';
 import { editOneReview } from '../../store/review';
-
+import pictures from '../../data/picture';
+import '../CreateReview/Review.css'
 // will need to thread the review the user is passing in from the SingleBusinessPage component
 const EditOneReview = () => {
   const dispatch = useDispatch();
@@ -75,21 +76,12 @@ const EditOneReview = () => {
 
 
   return (
-  <>
-    <div>
-      <div>Edit Review</div>
-    </div>
-    <form className="submit-review" onSubmit={handleSubmit}>
+  <section className='edit-review-container'>
 
-          {/* <label>
-              <input
-                type="number"
-                placeholder="rating"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-              >
-              </input>
-          </label> */}
+    <img className="edit-review-title" src={pictures.collection[13].imageUrl} />
+    <div className='edit-review-form-container'>
+
+    <form className="submit-review" onSubmit={handleSubmit}>
           <div className="ratings-hover">
           {Array(5).fill(<i className="fas fa-star fa-2x"></i>).map((ele, idx) => {
             idx += 1;
@@ -127,7 +119,8 @@ const EditOneReview = () => {
           </span>
           <button className="submit-cancel-review-button" type="button" onClick={handleCancelReviewFormClick}>Cancel</button>
         </form>
-    </>
+    </div>
+    </section>
   )
 
 }

@@ -24,3 +24,19 @@
   width: 100%;
 }
 
+.edit-review-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.edit-review-title {
+  width: 500px;
+}
+
+.edit-review-form-container {
+  width: 30%;
+  padding: 20px 20px;
+}
