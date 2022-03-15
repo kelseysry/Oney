@@ -100,7 +100,8 @@ const ReviewForm = ({hideForm, hideButton}) => {
 
           <label>
               <input
-                placeholder="content"
+                className='review-container'
+                placeholder="give an honest review about the product!"
                 type="text"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}

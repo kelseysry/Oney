@@ -12,3 +12,15 @@
   border: none;
   background-color: transparent;
 }
+
+.submit-review input {
+  margin: 15px 10px;
+  border-radius: 5px;
+}
+
+.reviewsDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
