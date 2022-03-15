@@ -159,11 +159,11 @@ function SingleProductPage({count, setCount, open, setOpen}){
 
     return(
         <div>
-            <div className='editBackBtnDiv'>
+            {/* <div className='editBackBtnDiv'>
                 <NavLink to={`/`}
                 className='editProdCancel singleProdBack'
                 >Back to Main</NavLink>
-            </div>
+            </div> */}
             <div className='mainImagesBox'>
                 <div className='smallImagesBox'>
                     {images.length ?

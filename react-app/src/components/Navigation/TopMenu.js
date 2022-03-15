@@ -78,7 +78,7 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
         <li>
           <div className="Oney">
               <NavLink to='/' exact={true} activeClassName='active'>
-                Oney
+                Home
               </NavLink>
             </div>
         </li>
