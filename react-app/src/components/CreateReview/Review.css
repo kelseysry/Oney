@@ -1,0 +1,14 @@
+
+.color {
+  color: rgb(226, 153, 26);
+}
+
+
+.noColor {
+  color: wheat;
+}
+
+.ratings-hover button {
+  border: none;
+  background-color: transparent;
+}
