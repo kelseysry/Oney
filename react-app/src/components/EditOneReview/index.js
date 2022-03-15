@@ -14,7 +14,7 @@ const EditOneReview = () => {
   const { id } = useParams();
 
   const review = useSelector((state) => state.review[id])
-
+  const [hover, setHover] = useState(review?.rating);
   const [rating, setRating] = useState(review?.rating);
   const [content, setContent] = useState(review?.content);
   const [errors, setErrors] = useState([]);
@@ -28,8 +28,6 @@ const EditOneReview = () => {
   useEffect(()=>{
     dispatch(getOneProduct(productId))
 }, [dispatch, productId])
-
-
 
   // get all reviews
    let product_id = productId
@@ -69,6 +67,13 @@ const EditOneReview = () => {
     history.push(`/products/${productId}`)
   }
 
+  // const handleClick = () => {
+  //   if(rating === 1) {
+  //     setRating(0);
+  //   }
+  // }
+
+
   return (
   <>
     <div>
@@ -76,7 +81,7 @@ const EditOneReview = () => {
     </div>
     <form className="submit-review" onSubmit={handleSubmit}>
 
-          <label>
+          {/* <label>
               <input
                 type="number"
                 placeholder="rating"
@@ -84,7 +89,26 @@ const EditOneReview = () => {
                 onChange={(e) => setRating(e.target.value)}
               >
               </input>
-          </label>
+          </label> */}
+          <div className="ratings-hover">
+          {Array(5).fill(<i className="fas fa-star fa-2x"></i>).map((ele, idx) => {
+            idx += 1;
+            return (
+              <span
+                key={idx}
+                className={idx <= (hover || rating) ? "color" : "noColor"}
+                onClick={() => {
+                  setRating(idx)
+                }}
+                onMouseEnter={() => setHover(idx)}
+                onMouseLeave={() => setHover(rating)}
+              >
+                <span className={idx <= (hover || rating) ? "color" : "noColor"}><i className="fas fa-star fa-2x"></i> </span>
+              </span>
+            );
+          })}
+        </div>
+
           <label>
               <input
                 placeholder="content"

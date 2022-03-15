@@ -9,10 +9,10 @@ import './Review.css'
 const ReviewForm = ({hideForm, hideButton}) => {
 
   const [content, setContent] = useState('');
+  const [hover, setHover] = useState(0);
   const [rating, setRating] = useState('');
   const [errors, setErrors] = useState([])
 
-  const [hover, setHover] = useState(0);
 
   const dispatch = useDispatch();
 
