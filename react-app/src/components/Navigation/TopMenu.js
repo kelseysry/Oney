@@ -53,9 +53,16 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
   let noSessionUser;
 
     noSessionUser = (
-      <ul className="nav2" style={{
-        backgroundImage: `url("${pictures.collection[10].imageUrl}")`
-     }}>
+    <section style={{
+      backgroundImage: `url("${pictures.collection[10].imageUrl}")`
+    }}>
+      <button
+        className="close-nav-button"
+        onClick={handleCloseNav}
+      >
+        <i class="fas fa-times-circle fa-2x"></i>
+      </button>
+      <ul className="nav2">
         <li>
           <NavLink to='/login' onClick={handleCloseNav} exact={true} activeClassName='active'>
             Login
@@ -70,6 +77,7 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
          <button className="nav-demo-button" onClick={handleDemoLogin} type="submit">Demo</button>
         </li>
       </ul>
+      </section>
     )
 
 
@@ -77,9 +85,16 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
 
   <>
   {sessionUser?
-      <ul className="nav2" style={{
+      <section style={{
         backgroundImage: `url("${pictures.collection[10].imageUrl}")`
      }}>
+        <button
+            className="close-nav-button"
+            onClick={handleCloseNav}
+          >
+            <i class="fas fa-times-circle fa-2x"></i>
+          </button>
+      <ul className="nav2">
         <li>
           <div className="Oney">
               <NavLink to='/' exact={true} onClick={handleCloseNav} activeClassName='active'>
@@ -101,6 +116,7 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
           <LogoutButton />
         </li>
       </ul>
+      </section>
 
   :
   noSessionUser}

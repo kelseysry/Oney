@@ -202,3 +202,12 @@ a:hover{
 .no-items-pic {
     width: 200px;
 }
+
+
+.close-nav-button {
+    border: none;
+    background-color: transparent;
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
