@@ -4,6 +4,7 @@ import LogoutButton from '../auth/LogoutButton';
 import './Navigation.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { openNav, closeNav } from '../../store/navigation'
 
 import { openCart, closeCart, allCartItemsThunk } from '../../store/cart';
 import Cart from "../Cart";
@@ -43,21 +44,32 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
     ))
   }
 
+  const handleCloseNav = () => {
+    dispatch(closeNav())
+  }
+
 
 
   let noSessionUser;
 
     noSessionUser = (
-      <ul className="nav2" style={{
-        backgroundImage: `url("${pictures.collection[10].imageUrl}")`
-     }}>
+    <section style={{
+      backgroundImage: `url("${pictures.collection[10].imageUrl}")`
+    }}>
+      <button
+        className="close-nav-button"
+        onClick={handleCloseNav}
+      >
+        <i class="fas fa-times-circle fa-2x"></i>
+      </button>
+      <ul className="nav2">
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+          <NavLink to='/login' onClick={handleCloseNav} exact={true} activeClassName='active'>
             Login
           </NavLink>
         </li>
         <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
+          <NavLink to='/sign-up' onClick={handleCloseNav} exact={true} activeClassName='active'>
                 Sign Up
           </NavLink>
         </li>
@@ -65,6 +77,7 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
          <button className="nav-demo-button" onClick={handleDemoLogin} type="submit">Demo</button>
         </li>
       </ul>
+      </section>
     )
 
 
@@ -72,12 +85,19 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
 
   <>
   {sessionUser?
-      <ul className="nav2" style={{
+      <section style={{
         backgroundImage: `url("${pictures.collection[10].imageUrl}")`
      }}>
+        <button
+            className="close-nav-button"
+            onClick={handleCloseNav}
+          >
+            <i class="fas fa-times-circle fa-2x"></i>
+          </button>
+      <ul className="nav2">
         <li>
           <div className="Oney">
-              <NavLink to='/' exact={true} activeClassName='active'>
+              <NavLink to='/' exact={true} onClick={handleCloseNav} activeClassName='active'>
                 Home
               </NavLink>
             </div>
@@ -86,16 +106,17 @@ const TopMenu = ({count, setCount, open, setOpen}) => {
           <span className="hiUser"> Welcome {sessionUser.username}! </span>
         </li>
         <li>
-          <NavLink to="/check-out">Check Out</NavLink>
+          <NavLink to="/check-out" onClick={handleCloseNav} >Check Out</NavLink>
         </li>
 
         <li>
-          <NavLink to="/new-product">Sell Product</NavLink>
+          <NavLink to="/new-product" onClick={handleCloseNav} >Sell Product</NavLink>
         </li>
-        <li>
+        <li onClick={handleCloseNav} >
           <LogoutButton />
         </li>
       </ul>
+      </section>
 
   :
   noSessionUser}
