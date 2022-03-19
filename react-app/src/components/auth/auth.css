@@ -52,8 +52,15 @@ label {
     display: inline-block;
     width: 200px;
     text-align: left;
-    font-weight: bold;
-    font-size:20px;
+    font-family: "Roboto";
+    font-style: light;
+    font-weight: 300;
+    font-size: 25px;
+}
+
+.form-title-box {
+    display: flex;
+    align-items: center;
 }
 
 .button_div{

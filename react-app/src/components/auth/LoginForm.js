@@ -56,10 +56,10 @@ const LoginForm = () => {
           {errors.map((error, ind) => (
 
             <div key={ind} className='errorItem'>{(error.split(':'))[1]}</div>
-          
+
           ))}
         </div>
-        <div>
+        <div className='form-title-box'>
           <label htmlFor='email'>Email</label>
           <input
             name='email'
@@ -69,7 +69,7 @@ const LoginForm = () => {
             onChange={updateEmail}
           />
         </div>
-        <div>
+        <div className='form-title-box'>
           <label htmlFor='password'>Password</label>
           <input
             name='password'
