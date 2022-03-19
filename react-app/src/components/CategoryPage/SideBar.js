@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom';
 export default function SideBar({ categories, tree, categoryId }) {
   const currentCategory = categories[categoryId]
   const renderCategories = currentCategory.children;
-  
+
   return (
     <ul className={styles.sideBar}>
       {
-        currentCategory.parent_id 
+        currentCategory.parent_id
         ? <GoBackToParentCategoryLink parentCategory={categories[currentCategory.parent_id]} />
         : null
       }
@@ -25,8 +25,9 @@ export default function SideBar({ categories, tree, categoryId }) {
 function GoBackToParentCategoryLink({ parentCategory }) {
   return (
     <li key="back">
+      <i class="fas fa-arrow-alt-circle-left"></i>
       <NavLink to={`/category/${parentCategory.id}`}>
-        {`< Back (${parentCategory.short_name})`}
+        {` Back (${parentCategory.short_name})`}
       </NavLink>
     </li>
   )

@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.fa-circle-arrow-left {
+  color: pink;
+}
+
 @media screen and (min-width: 1300px) {
   .categoryPageWrapper {
     min-width: 1100px;
@@ -13,6 +17,7 @@
 .sideBarCardAreaWrapper {
   display: flex;
   justify-content: flex-start;
+  padding-left: 30px;
 }
 
 .cardArea {
@@ -31,12 +36,14 @@
   font-size: 2rem;
   margin: 0;
   padding-top: 20px;
+  padding-left: 30px;
 }
 .categoryPageWrapper p {
   margin: 0;
   font-size: 0.9rem;
   padding: 20px;
   color: #595959;
+  padding-left: 30px;
 }
 
 
