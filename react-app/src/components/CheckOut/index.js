@@ -6,7 +6,7 @@ import { purchaseCart } from "../../store/cart";
 import Address from './Address';
 import Credit from './Credit';
 import pictures from '../../data/picture';
-
+import './CheckOut.css'
 
 const CheckOut = ({count, setCount}) => {
 
@@ -116,8 +116,13 @@ const CheckOut = ({count, setCount}) => {
               </div>
             </div>
         :
-        <div>nothing in cart</div>
-        }
+        <div className='no-items-checkout'>
+        No items in the cart. Start selecting items to purchase.
+        <div>
+          <img className="no-items-pic" src={pictures.collection[7].imageUrl} />
+        </div>
+      </div>
+      }
       </section>
     </section>
 
