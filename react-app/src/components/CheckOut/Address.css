@@ -4,7 +4,7 @@
 }
 
 .address-header {
-  font-weight: 900;
+  font-weight: 500;
   padding-right: 20px;
   padding-top: 15px;
   font-size: 18px;
@@ -22,4 +22,3 @@
   display: flex;
   flex-direction: column;
 }
-

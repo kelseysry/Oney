@@ -117,7 +117,13 @@ const CheckOut = ({count, setCount}) => {
             </div>
         :
         <div className='no-items-checkout'>
-        No items in the cart. Start selecting items to purchase.
+          <div className='padding-no-items'>
+            No items in the cart
+          </div>
+          <i class="fas fa-grin-beam-sweat fa-2x"></i>
+          <div className='padding-no-items'>
+            Start selecting items to purchase!
+          </div>
         <div>
           <img className="no-items-pic" src={pictures.collection[7].imageUrl} />
         </div>

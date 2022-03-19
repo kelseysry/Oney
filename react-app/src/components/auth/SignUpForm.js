@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import { useHistory } from "react-router";
+import './auth.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -55,37 +56,41 @@ const SignUpForm = () => {
             <div key={ind} className='errorItem'>{error}</div>
           ))}
         </div>
-        <div>
-          <label>User Name</label>
+        <div className='form-title-box'>
+          <label>Username</label>
           <input
             type='text'
             name='username'
+            placeholder='Username'
             onChange={updateUsername}
             value={username}
           ></input>
         </div>
-        <div>
+        <div className='form-title-box'>
           <label>Email</label>
           <input
             type='text'
             name='email'
+            placeholder='Email'
             onChange={updateEmail}
             value={email}
           ></input>
         </div>
-        <div>
+        <div className='form-title-box'>
           <label>Password</label>
           <input
             type='password'
             name='password'
+            placeholder='Password'
             onChange={updatePassword}
             value={password}
           ></input>
         </div>
-        <div>
+        <div className='form-title-box'>
           <label>Confirm Password</label>
           <input
             type='password'
+            placeholder='Password'
             name='repeat_password'
             onChange={updateRepeatPassword}
             value={repeatPassword}
