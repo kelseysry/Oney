@@ -69,3 +69,8 @@ textarea{
   font-size: small;
   color:crimson
   }
+
+  .category-container {
+      width: 350px;
+      padding: 10px 10px;
+  }

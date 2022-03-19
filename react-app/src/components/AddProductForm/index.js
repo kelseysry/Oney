@@ -94,7 +94,7 @@ const AddProductForm = () =>{
                 </div>
                 <div>
                 <label> Category </label>
-                <select required onChange={(e)=>setCategory(e.target.value)}>
+                <select className="category-container" required onChange={(e)=>setCategory(e.target.value)}>
                     {(categoryList.map(category => {
                         return (
                             <option key={"newProductFormCategory-"+category.id} value={category.id}>{category.display_name}</option>
