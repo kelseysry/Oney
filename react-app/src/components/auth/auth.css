@@ -14,17 +14,22 @@
 
 /* form styling */
 .form_placing{
-    margin-top: 50px;
+    margin: 50px 0px;
     display: flex;
     flex-direction: column;
     gap: 10px
 }
 
 .submit-button{
-  padding: 0 5px 0 5px;
-  height: 30px;
-  width: 200px;
+  /* height: 30px; */
+  width: 300px;
   font-size: large;
+
+  background-color: rgb(226, 153, 26);
+  border-radius: 10px;
+  border: none;
+  padding: 10px 15px;
+  color: white;
 
 }
 
@@ -32,6 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
 }
 
 input {
@@ -54,8 +60,9 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
+    margin: 30px 30px;
     gap: 20px;
+    padding-top: 30px;
 }
 
 .errors_div{
