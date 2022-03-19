@@ -9,10 +9,13 @@
   }
 
 .searchTag {
-  margin-top: 30px;
-  margin-left: 150px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  font-size: 1.5em;
+  font-family: "Roboto";
+  font-style: light;
+  font-weight: 300;
+  font-size: 2rem;
+  padding: 30px 30px;
+  padding-top: 60px;
 }

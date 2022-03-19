@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  border-radius: 5px;
+  align-items: center;
 }
 .card:hover {
   box-shadow: 0 0 15px rgba(33,33,33,.2);
@@ -14,10 +16,9 @@
 
 
 .card img {
-  width: 100%;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   object-fit:cover;
-  border-radius: 10px 10px 0 0;
 }
 
 
@@ -36,7 +37,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: normal;
+
+  width: 200px;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: normal;
+  color: white !important;
+  text-shadow: 0 2px 0 rgb(131 116 35);
+  font-weight: 600;
+  letter-spacing: 1px;
+
 }
+
 .card figcaption .productInfo {
   /* the lines to show are to get the "..." string on overflow */
   white-space: nowrap;
@@ -47,12 +61,35 @@
   align-items:center;
   font-size: 1rem;
   font-weight: normal;
+
+  width: 200px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: normal;
+    padding-bottom: 10px;
+    color: white !important;
+    text-shadow: 0 2px 0 rgb(131 116 35);
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 
 .link {
   color: var(--text-color);
+  border-radius: 5px;
+
 }
 .link:hover {
   text-decoration: none;
+}
+
+.productRating {
+  margin: auto;
+}
+
+.imageContainer {
+  padding-top: 10px;
+  border-radius: 5px;
 }

@@ -31,7 +31,7 @@ const SearchPage = () => {
         return (
             <div>
                 <div className="searchTag">
-                    Search Results For "{tag}"
+                    Search Results for "{tag}"
                 </div>
                 <div className='searchProducts'>
                     {products?.map(({id,price,images,title})=>(
