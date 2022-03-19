@@ -74,7 +74,7 @@ const AllReviews = ({product}) => {
                 <i className="fas fa-user-circle fa-2x"></i>
                 <div className="review-username">
                   {
-                    getUserName(review.user_id)
+                    getUserName(review?.user_id)
                   }
                 </div>
               </div>
