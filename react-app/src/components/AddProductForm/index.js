@@ -69,7 +69,7 @@ const AddProductForm = () =>{
 
     return (
         <div className='add-Product-Div'>
-            <h2>Let's get started! Tell us about your product</h2>
+            <div className="title-sell-product">Let's get started! Tell us about your product</div>
             <form onSubmit={handleSubmit} className='add-product'>
                 <div className="productErrors">
                     <ul>
