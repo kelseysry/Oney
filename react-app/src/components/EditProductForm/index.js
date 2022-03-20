@@ -95,13 +95,16 @@ const EditProductForm = () =>{
     <div>
       <div className='editBackBtnDiv'>
         <NavLink to={`/products/${productId}`}
-          className='editProdCancel editBackBtn'
-        >Back</NavLink>
+          className='editBackBtn'
+        >
+          <i class="fas fa-arrow-alt-circle-left"></i>
+          &nbsp;Back
+          </NavLink>
       </div>
       <div className='EditProductDivBox'>
         <div className='innerFormContent'>
+          <div className="Edit-Title">Edit your product details</div>
           <div className='editProductDiv editProductFormContainer'>
-            <h2>Edit your product details</h2>
             <form onSubmit={handleSubmit} className='editProduct' >
               <div className="productErrors">
                 <ul>
@@ -130,6 +133,7 @@ const EditProductForm = () =>{
               <div>
                 <label>Category</label>
                   <select
+                    className="category-select"
                     onChange={(e)=>setCategory(e.target.value)}
                     value={category}
                     >
