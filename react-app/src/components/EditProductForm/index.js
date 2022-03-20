@@ -95,7 +95,7 @@ const EditProductForm = () =>{
     <div>
       <div className='editBackBtnDiv'>
         <NavLink to={`/products/${productId}`}
-          className='editProdCancel editBackBtn'
+          className='editBackBtn'
         >
           <i class="fas fa-arrow-alt-circle-left"></i>
           &nbsp;Back
@@ -133,6 +133,7 @@ const EditProductForm = () =>{
               <div>
                 <label>Category</label>
                   <select
+                    className="category-select"
                     onChange={(e)=>setCategory(e.target.value)}
                     value={category}
                     >
