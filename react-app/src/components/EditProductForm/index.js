@@ -101,7 +101,7 @@ const EditProductForm = () =>{
       <div className='EditProductDivBox'>
         <div className='innerFormContent'>
           <div className='editProductDiv editProductFormContainer'>
-            <h2>Edit your product details</h2>
+            <div className="Edit-Title">Edit your product details</div>
             <form onSubmit={handleSubmit} className='editProduct' >
               <div className="productErrors">
                 <ul>

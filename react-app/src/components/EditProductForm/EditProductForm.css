@@ -58,3 +58,9 @@
   padding: 10px;
   align-items: center;
 }
+
+.Edit-Title {
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 35px;
+}
