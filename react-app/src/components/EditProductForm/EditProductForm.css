@@ -63,4 +63,15 @@
     font-family: "Roboto";
     font-weight: 300;
     font-size: 35px;
+    padding-left: 50px;
+}
+
+
+.editProductDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.editBackBtn {
+  padding-left: 50px;
 }

@@ -96,12 +96,15 @@ const EditProductForm = () =>{
       <div className='editBackBtnDiv'>
         <NavLink to={`/products/${productId}`}
           className='editProdCancel editBackBtn'
-        >Back</NavLink>
+        >
+          <i class="fas fa-arrow-alt-circle-left"></i>
+          &nbsp;Back
+          </NavLink>
       </div>
       <div className='EditProductDivBox'>
         <div className='innerFormContent'>
+          <div className="Edit-Title">Edit your product details</div>
           <div className='editProductDiv editProductFormContainer'>
-            <div className="Edit-Title">Edit your product details</div>
             <form onSubmit={handleSubmit} className='editProduct' >
               <div className="productErrors">
                 <ul>
