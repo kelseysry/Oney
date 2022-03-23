@@ -22,3 +22,14 @@
   display: flex;
   flex-direction: column;
 }
+
+.credit-dropdown {
+  font-size: 20px !important;
+  width: 270px;
+}
+
+.credit-dropdown-category {
+  padding: 5px 5px;
+  width: 76px;
+  border-radius: 5px;
+}
