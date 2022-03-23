@@ -1,6 +1,7 @@
 
 .credit-container {
   display: flex;
+  padding-bottom: 10px;
 }
 
 .credit-header {
@@ -21,4 +22,19 @@
 .credit-form {
   display: flex;
   flex-direction: column;
+}
+
+.credit-dropdown {
+  font-size: 20px !important;
+  width: 270px;
+}
+
+.credit-dropdown-category {
+  padding: 5px 5px;
+  width: 76px;
+  border-radius: 5px;
+}
+
+.no-credit {
+  padding-bottom: 30px;
 }

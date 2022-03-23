@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { editAddress, getAddress } from '../../store/address';
+import './Address.css'
 
 const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
 
@@ -150,7 +151,7 @@ const EditAddressForm = ({userAddress, user_id, setShowModal, showModal}) => {
       }
 
       <div className="center-signup-button">
-        <button className="login-button" type='submit'>Submit</button>
+        <button className="address-button" type='submit'>Submit</button>
       </div>
 
 

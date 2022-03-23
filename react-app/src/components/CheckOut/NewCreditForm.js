@@ -87,42 +87,48 @@ const CreditForm = ({user_id, setShowModal2, showModal2}) => {
         onChange={(e) => setCardNumber(e.target.value)}
       >
       </input>
-      <label>Expiration Month</label>
-      <select
-        type="text"
-        // placeholder="Expiration Date Month"
-        value={expiration_date_month}
-        onChange={(e) => setExpirationDateMonth(String(e.target.value))}
-      >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-      <label>Expiration Year</label>
-      <select
-        type="text"
-        value={expiration_date_year}
-        onChange={(e) => setExpirationDateYear(String(e.target.value))}
-      >
-        <option value="2022">2022</option>
-        <option value="2023">2023</option>
-        <option value="2024">2024</option>
-        <option value="2025">2025</option>
-        <option value="2026">2026</option>
-        <option value="2027">2027</option>
-        <option value="2028">2028</option>
-        <option value="2029">2029</option>
-        <option value="2030">2030</option>
-      </select>
+      <div>
+        <label className='credit-dropdown'>Expiration Month</label>
+        <select
+          type="text"
+          className='credit-dropdown-category'
+          // placeholder="Expiration Date Month"
+          value={expiration_date_month}
+          onChange={(e) => setExpirationDateMonth(String(e.target.value))}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+      </div>
+      <div>
+        <label className='credit-dropdown'>Expiration Year</label>
+        <select
+          className='credit-dropdown-category'
+          type="text"
+          value={expiration_date_year}
+          onChange={(e) => setExpirationDateYear(String(e.target.value))}
+        >
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+          <option value="2029">2029</option>
+          <option value="2030">2030</option>
+        </select>
+      </div>
 
       <input
         type="text"
@@ -147,7 +153,7 @@ const CreditForm = ({user_id, setShowModal2, showModal2}) => {
       }
 
       <div className="center-signup-button">
-        <button className="login-button" type='submit'>Submit</button>
+        <button className="address-button" type='submit'>Submit</button>
       </div>
 
 

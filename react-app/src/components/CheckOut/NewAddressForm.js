@@ -150,7 +150,7 @@ const NewAddressForm = ({user_id, setShowModal2, showModal2}) => {
       }
 
       <div className="center-signup-button">
-        <button className="login-button" type='submit'>Submit</button>
+        <button className="address-button" type='submit'>Submit</button>
       </div>
 
 
