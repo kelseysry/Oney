@@ -35,11 +35,16 @@
 
 /* description */
 .productTitle1 {
-  font-size: large;
+  /* font-size: large;
   font-style: normal;
   font-weight: 500;
   margin-top: 0px;
-  width: 400px;
+  width: 400px; */
+  font-family: "Roboto";
+  font-style: light;
+  font-weight: 300;
+  font-size: 25px;
+  width: 400px; 
 }
 
 .singleProductPrice {
