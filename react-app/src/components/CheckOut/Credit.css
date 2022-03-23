@@ -1,6 +1,7 @@
 
 .credit-container {
   display: flex;
+  padding-bottom: 10px;
 }
 
 .credit-header {
@@ -32,4 +33,8 @@
   padding: 5px 5px;
   width: 76px;
   border-radius: 5px;
+}
+
+.no-credit {
+  padding-bottom: 30px;
 }
