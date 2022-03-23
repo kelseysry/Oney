@@ -44,7 +44,7 @@
   font-style: light;
   font-weight: 300;
   font-size: 25px;
-  width: 400px; 
+  width: 400px;
 }
 
 .singleProductPrice {
@@ -79,7 +79,7 @@
   background-color: white;
   font-size: 16px;
   cursor: pointer;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .delButton:hover {
@@ -112,7 +112,7 @@
   text-decoration: none;
   color: black;
   padding: 5px;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   font-weight: normal;
 }
 
